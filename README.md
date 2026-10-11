@@ -96,16 +96,31 @@ Nothing else needs changing: contact details, navigation and copy all live in th
 
 ## Deploying
 
-```bash
-docker compose up -d          # builds and runs; persists data in a volume
-```
+### Vercel
 
-Or on a Node host:
+Import the repository and Vercel detects Next.js automatically — no build configuration
+needed. Set the environment variables from the Quick start in the project settings.
+
+**One caveat:** Vercel's filesystem is read-only, so the admin dashboard's edits, review
+submissions and analytics will not persist there. The public catalogue and enquiry flow work
+fully. For the dashboard you need a writable filesystem, which means either a VPS with Docker
+(below) or a hosted database.
+
+### Any Node host
 
 ```bash
 npm ci && npm run build
 ./scripts/start-local.sh      # or: node --env-file=.env.local .next/standalone/server.js
 ```
+
+### Docker (self-hosted)
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d   # builds and runs; persists data in a volume
+```
+
+The Dockerfile lives in `deploy/` rather than the repository root so that Vercel uses its
+native Next.js builder instead of its container builder.
 
 CI (`.github/workflows/ci.yml`) runs lint, typecheck, tests and the build on every push, and
 builds and pushes the container image to GHCR on `main`. Deploy

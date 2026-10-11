@@ -506,7 +506,24 @@ built at the boundary V1 specified, not bolted on:
 
 ---
 
-## 18. Commands
+## 18. Containerisation
+
+The Dockerfile is in `deploy/`, not the repository root. That is deliberate: Vercel switches to
+its container builder whenever it finds a root `Dockerfile`, and its containers have a read-only
+filesystem, which this application cannot use — it writes catalogue documents, reviews and
+analytics to `data/store/`. Keeping the Dockerfile out of the root lets Vercel use its native
+Next.js support, while the container path remains available for a VPS:
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d
+```
+
+The image is multi-stage, runs as a non-root user, has a health check, and persists
+`data/store` and `public/uploads` in named volumes.
+
+---
+
+## 19. Commands
 
 ```bash
 npm run dev             # local dev server (dashboard at admin.localhost:3000)

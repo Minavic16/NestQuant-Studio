@@ -89,7 +89,11 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
+          # The Dockerfile lives in deploy/ so that Vercel — which switches to
+          # its container builder whenever a root Dockerfile exists — can use
+          # its native Next.js support instead.
           context: .
+          file: ./deploy/Dockerfile
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:latest
