@@ -8,6 +8,7 @@ an enquiry list, and send it to the business on WhatsApp or by email. There is n
 no payment and no customer accounts.
 
 - **Conversion path:** Discover → Browse → Inspect → Add to enquiry → Send enquiry → WhatsApp / email
+- **Also:** a gallery of past work served straight from Google Drive
 - **Business contact:** [desirenwakor@gmail.com](mailto:desirenwakor@gmail.com) · WhatsApp [+234 913 879 7980](https://wa.me/2349138797980)
 - **CEO & Creative Director:** Desire Nwakor
 
@@ -75,7 +76,8 @@ Sign in with the password whose hash is in `ADMIN_PASSWORD_HASH`.
 | **Categories** | Rename a collection, change its web address, attach a tile image. |
 | **Reviews** | Approve or reject visitor reviews. Nothing is published until you approve it. |
 | **Contact & content** | Email address, WhatsApp number, About copy and director details — the values used across the whole site. |
-| **Images** | Upload photography and copy its address into any product. |
+| **Our work** | The portfolio of completed projects. Each entry points at an image in your Google Drive — paste the share link, and the gallery updates. No uploading, no storage limits, and you keep the originals where they already are. |
+| **Images** | Upload photography for products, and copy its address into any product. |
 
 Reviews are collected by the site itself and shown only after approval, so the business never
 publishes anything it has not read.
@@ -87,8 +89,8 @@ publishes anything it has not read.
 2. **Set the three `ADMIN_*` values** (see Quick start). The dashboard refuses to sign anyone in
    while the password hash is missing.
 3. **Replace the seeded catalogue** in `data/store/` with real products through the dashboard.
-4. **Add real photography** by uploading it in the dashboard, or by dropping files into
-   `public/products/<slug>/`.
+4. **Add real photography** either by uploading product photos in the dashboard, or by sharing
+   your past-work photos in Google Drive and pasting the links into the **Our work** page.
 
 Nothing else needs changing: contact details, navigation and copy all live in the dashboard.
 
@@ -110,6 +112,19 @@ builds and pushes the container image to GHCR on `main`. Deploy
 (`.github/workflows/deploy.yml`) pulls that image, swaps the container and waits for its health
 check. Four repository secrets are needed: `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_SSH_KEY`,
 `PUBLIC_URL`.
+
+## Where portfolio images come from
+
+The gallery reads from Drive rather than storing copies: a portfolio entry holds
+a Drive reference (a file id or share link) which `lib/media/drive.ts` resolves to
+the image URL at render time. Next's image optimiser then produces responsive
+AVIF/WebP derivatives, so a visitor on a phone downloads a small file.
+
+- Only Google's image hosts are ever allowed as an image source, and anything a
+  hand-edited store can't resolve is dropped rather than stored.
+- Images that are no longer shared degrade to a neutral frame, not a broken icon.
+- If you would rather host images yourself, `public/uploads/` works too — the
+  resolver accepts both.
 
 ## Notes for developers
 
