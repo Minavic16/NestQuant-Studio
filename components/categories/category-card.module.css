@@ -1,0 +1,52 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  height: 100%;
+}
+
+.media {
+  transition: opacity var(--duration-fast) var(--ease);
+}
+
+.card:hover .media {
+  opacity: 0.92;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.name {
+  font-size: var(--text-product);
+  letter-spacing: 0;
+}
+
+.count {
+  font-size: var(--text-meta);
+  color: var(--color-muted);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-block-start: var(--space-2);
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.card:hover .cta {
+  color: var(--color-ink);
+}
+
+.arrow {
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.card:hover .arrow {
+  transform: translateX(0.125rem);
+}

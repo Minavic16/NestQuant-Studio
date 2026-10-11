@@ -1,0 +1,5 @@
+.root {
+  min-height: 100vh;
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+}

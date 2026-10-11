@@ -1,0 +1,97 @@
+/* Shared control styles: used by both <Button> and <ButtonLink>. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  padding: 0 var(--space-6);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.primary {
+  background-color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+  color: var(--color-paper);
+}
+
+.primary:hover {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-ink);
+}
+
+.secondary:hover {
+  border-color: var(--color-ink);
+}
+
+/* Quiet, text-only control for tertiary actions. */
+.quiet {
+  min-height: var(--touch-target);
+  padding: 0 var(--space-2);
+  background: none;
+  border: 0;
+  color: var(--color-muted-strong);
+  font-size: var(--text-small);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.quiet:hover {
+  color: var(--color-ink);
+}
+
+.full {
+  width: 100%;
+}
+
+/* On black surfaces the primary control inverts. */
+.on-dark .primary,
+.primaryOnDark {
+  background-color: var(--color-ivory);
+  border-color: var(--color-ivory);
+  color: var(--color-ink);
+}
+
+.on-dark .primary:hover,
+.primaryOnDark:hover {
+  background-color: var(--color-paper);
+  border-color: var(--color-paper);
+}
+
+.on-dark .secondary,
+.secondaryOnDark {
+  background-color: transparent;
+  border-color: var(--color-line-dark);
+  color: var(--color-ivory);
+}
+
+.on-dark .secondary:hover,
+.secondaryOnDark:hover {
+  border-color: var(--color-ivory);
+}
+
+.disabled,
+.disabled:hover {
+  background-color: var(--color-ivory);
+  border-color: var(--color-ivory);
+  color: var(--color-muted);
+  cursor: not-allowed;
+}

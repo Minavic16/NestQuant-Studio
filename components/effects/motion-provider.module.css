@@ -1,0 +1,30 @@
+/* ==========================================================================
+   Surface texture + reveal states
+   --------------------------------------------------------------------------
+   A very fine paper grain drawn as an inline SVG fractal-noise tile. This is a
+   texture, not a gradient: one 200×200 tile repeated across a fixed, inert
+   overlay at 3% opacity — one data URI, no network request (DESIGN.md §7).
+   ========================================================================== */
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0.032;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/*
+ * `multiply` means the grain darkens light paper and leaves the black bands
+ * untouched — the texture belongs to the paper, not to the ink, with no
+ * per-region rules needed.
+ */
+
+@media (prefers-contrast: more) {
+  .grain {
+    display: none;
+  }
+}

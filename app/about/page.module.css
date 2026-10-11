@@ -1,0 +1,84 @@
+.person {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-block-start: var(--space-6);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: var(--text-product);
+  letter-spacing: 0;
+}
+
+.role {
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.description {
+  max-width: 58ch;
+  margin-block-start: var(--space-5);
+  color: var(--color-muted-strong);
+}
+
+.lockup {
+  display: flex;
+  justify-content: center;
+  padding-block: var(--space-9);
+}
+
+.logo {
+  width: min(24rem, 72vw);
+  height: auto;
+}
+
+.servicesLabel {
+  margin-block-end: var(--space-4);
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.services {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--border-hairline);
+}
+
+.service {
+  border-bottom: var(--border-hairline);
+}
+
+.serviceName {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  font-family: var(--font-display);
+  font-size: var(--text-product);
+  color: var(--color-ink);
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  margin-block-start: var(--space-6);
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.contactLink:hover {
+  color: var(--color-ink);
+}

@@ -1,0 +1,11 @@
+.label {
+  font-size: var(--text-small);
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Shown instead of a price: quieter than a real figure. */
+.request {
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+}

@@ -1,0 +1,14 @@
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.black .eyebrow,
+.on-dark .eyebrow {
+  color: var(--color-on-dark-muted);
+}

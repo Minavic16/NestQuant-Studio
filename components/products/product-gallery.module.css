@@ -1,0 +1,36 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.main {
+  width: 100%;
+}
+
+.thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.thumb {
+  display: block;
+  width: 5.5rem;
+  padding: 0;
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--duration-fast) var(--ease);
+}
+
+.thumb:hover {
+  border-color: var(--color-muted);
+}
+
+.active,
+.active:hover {
+  border-color: var(--color-ink);
+}

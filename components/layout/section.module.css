@@ -1,0 +1,56 @@
+/* Section rhythm: 64px on mobile, 96px from tablet, 128px from desktop. */
+.section {
+  padding-block: var(--space-8);
+}
+
+@media (min-width: 48rem) {
+  .section {
+    padding-block: var(--space-9);
+  }
+}
+
+@media (min-width: 64rem) {
+  .section {
+    padding-block: var(--space-10);
+  }
+}
+
+/* The label carries the same typography as an eyebrow, but as a real heading. */
+.label {
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.black .label {
+  color: var(--color-on-dark-muted);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.containerNarrow {
+  composes: container;
+  max-width: var(--container-narrow);
+}
+
+.paper {
+  background-color: var(--color-paper);
+}
+
+.ivory {
+  background-color: var(--color-ivory);
+}
+
+.black {
+  background-color: var(--color-black);
+  color: var(--color-ivory);
+}

@@ -1,0 +1,39 @@
+.form {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  min-height: var(--touch-target);
+  padding-inline: var(--space-3);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-paper);
+  font-size: var(--text-small);
+  color: var(--color-ink);
+  transition: border-color var(--duration-fast) var(--ease);
+  appearance: none;
+}
+
+.input::placeholder {
+  color: var(--color-muted);
+}
+
+.input:hover {
+  border-color: var(--color-line-strong);
+}
+
+.input:focus {
+  border-color: var(--color-ink);
+  outline: none;
+}
+
+.input:focus-visible {
+  outline: var(--focus-ring) solid var(--color-ink);
+  outline-offset: 1px;
+}
+
+/* Remove the native search clear button: our own controls are used instead. */
+.input::-webkit-search-cancel-button {
+  appearance: none;
+}

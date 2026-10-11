@@ -1,0 +1,10 @@
+.logo {
+  display: block;
+  width: auto;
+  /*
+   * The crop keeps the logo's own black field. On a black surface it blends
+   * seamlessly; on the light header it reads as a deliberate brand plate
+   * (DESIGN.md §1).
+   */
+  background-color: var(--color-black);
+}

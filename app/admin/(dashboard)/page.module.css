@@ -1,0 +1,28 @@
+.summary {
+  padding: var(--space-5);
+  background-color: var(--color-paper);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+}
+
+.summaryTitle {
+  margin-block-end: var(--space-3);
+  font-family: var(--font-ui);
+  font-size: var(--text-small);
+  font-weight: var(--weight-semibold);
+}
+
+.summaryList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+}
+
+.summaryList strong {
+  color: var(--color-ink);
+}

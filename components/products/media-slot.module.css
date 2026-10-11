@@ -1,0 +1,30 @@
+.frame {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-ivory);
+  border: var(--border-hairline);
+}
+
+.image {
+  object-fit: cover;
+  transition: opacity var(--duration-fast) var(--ease);
+}
+
+.contain .image {
+  object-fit: contain;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-muted);
+}

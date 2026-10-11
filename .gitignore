@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+.next/
+out/
+build/
+
+# Environment — contains the dashboard password hash. Never commit.
+.env
+.env.local
+.env.*.local
+
+# Local content and artefacts
+# `data/store` holds the live catalogue; it is seeded on first run and edited
+# through the dashboard, so only the seed source belongs in version control.
+data/store/*
+!data/store/.gitkeep
+
+# Uploaded media
+public/uploads/*
+!public/uploads/.gitkeep
+
+# Test + tooling artefacts
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/

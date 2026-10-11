@@ -1,0 +1,57 @@
+name: Deploy
+
+# Deploys the container image to a host after CI has passed on main.
+#
+# The job is intentionally transport-agnostic: it authenticates over SSH,
+# pulls the image, swaps the container and waits for the health check. No
+# supplier-specific action is required, so this works with any VPS, any cloud
+# VM or a self-hosted box (ARCHITECTURE.md §18).
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    branches: [main]
+    types: [completed]
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    environment: production
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT || 22 }}
+          script: |
+            set -euo pipefail
+            cd ${{ secrets.DEPLOY_PATH }}
+
+            echo "Pulling the new image…"
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            docker compose pull
+
+            echo "Recreating the container…"
+            docker compose up -d --no-deps --wait web
+
+            echo "Cleaning up old images…"
+            docker image prune -f
+
+            echo "Deploy complete."
+
+      - name: Verify the site responds
+        run: |
+          status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "${{ secrets.PUBLIC_URL }}/robots.txt")
+          echo "Public site: $status"
+          if [ "$status" != "200" ]; then
+            echo "The public site did not answer as expected."
+            exit 1
+          fi

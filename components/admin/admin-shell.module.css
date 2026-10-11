@@ -1,0 +1,91 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  min-height: var(--header-height);
+  padding-inline: var(--gutter);
+  background-color: var(--color-black);
+  color: var(--color-ivory);
+}
+
+.brand {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.logo {
+  width: 2.25rem;
+  height: auto;
+}
+
+.nav {
+  flex: 1 1 auto;
+  overflow-x: auto;
+}
+
+.list {
+  display: flex;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-small);
+  white-space: nowrap;
+  color: var(--color-on-dark-muted);
+  transition:
+    color var(--duration-fast) var(--ease),
+    background-color var(--duration-fast) var(--ease);
+}
+
+.link:hover {
+  color: var(--color-ivory);
+}
+
+.active,
+.active:hover {
+  background-color: rgb(247 245 240 / 12%);
+  color: var(--color-ivory);
+}
+
+.signOutForm {
+  flex: 0 0 auto;
+}
+
+.signOut {
+  min-height: var(--touch-target);
+  padding-inline: var(--space-3);
+  border: 1px solid var(--color-line-dark);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-small);
+  color: var(--color-on-dark-muted);
+  transition:
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.signOut:hover {
+  color: var(--color-ivory);
+  border-color: var(--color-ivory);
+}
+
+.main {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: var(--space-7) var(--gutter) var(--space-10);
+}

@@ -1,0 +1,24 @@
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-block-start: var(--space-6);
+}
+
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target);
+  padding-inline: var(--space-6);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  color: var(--color-ink);
+  transition: border-color var(--duration-fast) var(--ease);
+}
+
+.whatsapp:hover {
+  border-color: var(--color-ink);
+}

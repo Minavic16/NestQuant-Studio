@@ -1,0 +1,17 @@
+.action {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  padding-inline: var(--space-5);
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  transition: background-color var(--duration-fast) var(--ease);
+}
+
+.action:hover {
+  background-color: var(--color-black);
+}

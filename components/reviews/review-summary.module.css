@@ -1,0 +1,14 @@
+.summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.text {
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+}
+
+.text strong {
+  color: var(--color-ink);
+}

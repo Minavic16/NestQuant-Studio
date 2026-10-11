@@ -1,0 +1,27 @@
+# ---- Docker -------------------------------------------------------------- #
+node_modules
+.next
+npm-debug.log*
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# ---- Version control ----------------------------------------------------- #
+.git
+.gitignore
+
+# ---- Environment --------------------------------------------------------- #
+.env
+.env.local
+.env.*.local
+
+# ---- Local content and artefacts ----------------------------------------- #
+# `data/store` and `public/uploads` are provided by a volume at runtime, so
+# they are never baked into the image.
+data/store/*
+!data/store/.gitkeep
+public/uploads/*
+
+# ---- Documentation and notes --------------------------------------------- #
+*.md
+coverage

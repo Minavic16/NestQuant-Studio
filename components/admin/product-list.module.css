@@ -1,0 +1,71 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.search {
+  max-width: 22rem;
+}
+
+.input {
+  width: 100%;
+  min-height: var(--touch-target);
+  padding-inline: var(--space-3);
+  border: var(--border-hairline-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-paper);
+  font-size: var(--text-small);
+}
+
+.state,
+.empty {
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-paper);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: start;
+  font-size: var(--text-small);
+  border-bottom: var(--border-hairline);
+}
+
+.table thead th {
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.name {
+  font-weight: var(--weight-medium);
+}
+
+.link {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.edit {
+  color: var(--color-muted-strong);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}

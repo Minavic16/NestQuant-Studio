@@ -1,0 +1,134 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+/* Mobile: a dedicated full-screen search view. */
+.panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-paper);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--gutter);
+  border-bottom: var(--border-hairline);
+}
+
+.headIcon {
+  display: none;
+  color: var(--color-muted);
+}
+
+.searchForm {
+  flex: 1 1 auto;
+}
+
+/* The panel provides the frame, so the field itself drops its border. */
+.searchForm input {
+  border-color: transparent;
+  font-size: var(--text-body);
+}
+
+.searchForm input:focus {
+  border-color: var(--color-ink);
+}
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  margin-inline-end: calc(var(--space-3) * -1);
+  color: var(--color-ink);
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.close:hover {
+  color: var(--color-muted-strong);
+}
+
+.body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: var(--space-4) var(--gutter) var(--space-7);
+}
+
+.hint {
+  font-size: var(--text-small);
+  color: var(--color-muted);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.emptyTitle {
+  font-size: var(--text-small);
+  color: var(--color-ink);
+}
+
+.emptyHint {
+  font-size: var(--text-small);
+  color: var(--color-muted);
+}
+
+.all {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  margin-block-start: var(--space-4);
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+.all:hover {
+  color: var(--color-ink);
+}
+
+/* Desktop: a compact panel under the header. */
+@media (min-width: 48rem) {
+  .backdrop {
+    top: var(--header-height);
+  }
+
+  .panel {
+    top: var(--header-height);
+    inset-inline: 0 auto;
+    width: min(34rem, 100%);
+    height: auto;
+    max-height: min(70vh, 34rem);
+    border: var(--border-hairline);
+    border-top: 0;
+  }
+
+  .head {
+    padding-inline: var(--space-5);
+  }
+
+  .headIcon {
+    display: inline-flex;
+  }
+
+  .body {
+    padding: var(--space-4) var(--space-5) var(--space-6);
+  }
+}

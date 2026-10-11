@@ -1,0 +1,77 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.name {
+  font-size: clamp(1.75rem, 1.35rem + 1.6vw, 2.5rem);
+  line-height: 1.12;
+}
+
+.price {
+  font-size: var(--text-body);
+}
+
+.description {
+  max-width: 40ch;
+  color: var(--color-muted-strong);
+}
+
+.specs {
+  margin-block-start: var(--space-2);
+  padding-block-start: var(--space-5);
+  border-top: var(--border-hairline);
+}
+
+.specsTitle {
+  margin-block-end: var(--space-3);
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.specList {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.specRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-2);
+  border-bottom: var(--border-hairline);
+}
+
+.specLabel {
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+}
+
+.specValue {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--color-ink);
+  text-align: end;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.metaItem {
+  font-size: var(--text-meta);
+  color: var(--color-muted);
+}
+
+.metaValue {
+  color: var(--color-muted-strong);
+}

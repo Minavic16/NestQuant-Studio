@@ -1,0 +1,15 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  margin-inline-start: calc(var(--space-2) * -1);
+  color: var(--color-ink);
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.trigger:hover {
+  color: var(--color-muted-strong);
+}

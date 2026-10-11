@@ -1,0 +1,31 @@
+.band {
+  background-color: var(--color-black);
+  color: var(--color-ivory);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: var(--space-9) var(--gutter);
+  text-align: center;
+}
+
+@media (min-width: 48rem) {
+  .inner {
+    padding-block: var(--space-10);
+  }
+}
+
+.heading {
+  max-width: 24ch;
+  font-size: var(--text-section);
+  color: var(--color-ivory);
+}
+
+.cta {
+  margin-block-start: var(--space-3);
+}

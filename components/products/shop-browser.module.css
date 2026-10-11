@@ -1,0 +1,64 @@
+.browser {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.search {
+  width: 100%;
+  max-width: 26rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  min-height: var(--touch-target);
+  padding-inline: var(--space-4);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+  transition:
+    border-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease),
+    background-color var(--duration-fast) var(--ease);
+}
+
+.chip:hover {
+  border-color: var(--color-muted);
+  color: var(--color-ink);
+}
+
+.chipActive,
+.chipActive:hover {
+  background-color: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-7) 0;
+}
+
+.emptyTitle {
+  font-size: var(--text-small);
+  color: var(--color-ink);
+}
+
+.emptyHint {
+  font-size: var(--text-small);
+  color: var(--color-muted);
+}

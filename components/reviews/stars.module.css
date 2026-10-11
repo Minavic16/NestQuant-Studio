@@ -1,0 +1,18 @@
+.stars {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--color-line-strong);
+  line-height: 1;
+}
+
+.stars [data-filled="true"] {
+  color: var(--color-ink);
+}
+
+.small {
+  font-size: var(--text-small);
+}
+
+.large {
+  font-size: var(--text-product);
+}

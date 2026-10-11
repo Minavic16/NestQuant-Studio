@@ -1,0 +1,10 @@
+/*
+ * Compound selector (`:global(.button).added`) keeps this override independent
+ * of stylesheet order — it must beat `.primary` in button.module.css.
+ */
+:global(.button).added {
+  background-color: var(--color-ivory);
+  border-color: var(--color-ivory);
+  color: var(--color-muted);
+  cursor: default;
+}

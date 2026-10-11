@@ -1,0 +1,210 @@
+.block {
+  margin-block-end: var(--space-6);
+  padding: var(--space-5);
+  background-color: var(--color-paper);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+}
+
+.blockHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-block-end: var(--space-4);
+}
+
+.blockTitle {
+  font-family: var(--font-ui);
+  font-size: var(--text-body);
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink);
+}
+
+.blockHint {
+  margin-block: calc(var(--space-2) * -1) 0 var(--space-4);
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-block-end: var(--space-4);
+}
+
+.label {
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.hint {
+  font-size: var(--text-meta);
+  color: var(--color-muted);
+}
+
+.input,
+.textarea {
+  width: 100%;
+  min-height: var(--touch-target);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-hairline-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-paper);
+  font-size: var(--text-small);
+  color: var(--color-ink);
+}
+
+.textarea {
+  line-height: var(--leading-small);
+  resize: vertical;
+}
+
+.input:focus-visible,
+.textarea:focus-visible {
+  outline: var(--focus-ring) solid var(--color-ink);
+  outline-offset: 1px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  font-size: var(--text-small);
+  color: var(--color-ink);
+}
+
+/* ---- Buttons ---- */
+.save,
+.add {
+  min-height: var(--touch-target);
+  padding-inline: var(--space-5);
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease);
+}
+
+.save:hover:not(:disabled),
+.add:hover {
+  background-color: var(--color-black);
+}
+
+.save:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.remove {
+  min-height: var(--touch-target);
+  padding-inline: var(--space-3);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  background: none;
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.remove:hover {
+  color: #a12727;
+  border-color: #a12727;
+}
+
+/* ---- Status ---- */
+.status {
+  min-height: var(--space-6);
+}
+
+.statusText {
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+}
+
+/* ---- Products ---- */
+.productList,
+.categoryList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.productRow,
+.categoryRow {
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+}
+
+.productHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-inline: var(--space-4);
+}
+
+.productToggle {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  min-height: var(--touch-target);
+  padding: var(--space-2) 0;
+  background: none;
+  border: 0;
+  text-align: start;
+  cursor: pointer;
+}
+
+.productName {
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  color: var(--color-ink);
+}
+
+.productMeta {
+  font-size: var(--text-meta);
+  color: var(--color-muted);
+}
+
+.productFields {
+  padding: var(--space-4);
+  border-top: var(--border-hairline);
+}
+
+/* ---- Attributes ---- */
+.fieldset {
+  margin: 0;
+  padding: var(--space-4);
+  border: var(--border-hairline);
+  border-radius: var(--radius-sm);
+}
+
+.attributeRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: var(--space-3);
+  margin-block-end: var(--space-3);
+}
