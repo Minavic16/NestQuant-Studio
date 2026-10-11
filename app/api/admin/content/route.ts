@@ -12,6 +12,7 @@ import {
   validateSite,
 } from "@/data/store/repositories";
 import { badRequest, jsonOk, requireAdmin } from "@/lib/admin/guard";
+import { describeWriteFailure } from "@/lib/admin/store-errors";
 
 /**
  * Admin content API: products, categories, contact details and site copy.
@@ -49,20 +50,25 @@ export async function PUT(request: Request): Promise<NextResponse> {
     unknown
   >;
 
-  if ("catalogue" in body) {
-    await saveCatalogue(validateCatalogue(body.catalogue ?? seedCatalogueDocument()));
-  }
+  try {
+    if ("catalogue" in body) {
+      await saveCatalogue(validateCatalogue(body.catalogue ?? seedCatalogueDocument()));
+    }
 
-  if ("site" in body) {
-    await saveSite(validateSite(body.site ?? {}));
-  }
+    if ("site" in body) {
+      await saveSite(validateSite(body.site ?? {}));
+    }
 
-  if ("portfolio" in body) {
-    const source = (typeof body.portfolio === "object" && body.portfolio !== null
-      ? body.portfolio
-      : {}) as Record<string, unknown>;
-    const items = Array.isArray(source.items) ? source.items : [];
-    await savePortfolio(items);
+    if ("portfolio" in body) {
+      const source = (typeof body.portfolio === "object" && body.portfolio !== null
+        ? body.portfolio
+        : {}) as Record<string, unknown>;
+      const items = Array.isArray(source.items) ? source.items : [];
+      await savePortfolio(items);
+    }
+  } catch (error) {
+    console.error("[admin] content write failed", error);
+    return NextResponse.json({ error: describeWriteFailure(error) }, { status: 507 });
   }
 
   // Refresh the public pages so an edit is visible immediately.

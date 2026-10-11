@@ -90,7 +90,16 @@ export async function POST(request: Request): Promise<NextResponse> {
     status: "pending",
   };
 
-  await saveReviews([review, ...(await getReviews())]);
+  try {
+    await saveReviews([review, ...(await getReviews())]);
+  } catch (error) {
+    console.error("[reviews] write failed", error);
+    return NextResponse.json(
+      { error: "Your review could not be saved on this deployment. Please try again shortly." },
+      { status: 507 },
+    );
+  }
+
   recent.set(key, now);
 
   return NextResponse.json({ ok: true }, { status: 201 });

@@ -126,7 +126,12 @@ export async function POST(request: Request): Promise<NextResponse> {
     next.sessions = trimmed;
   }
 
-  await writeDocument(STORE_FILES.metrics, next);
+  try {
+    await writeDocument(STORE_FILES.metrics, next);
+  } catch (error) {
+    // Analytics are never worth an error the visitor can see.
+    console.error("[metrics] write failed", error);
+  }
 
   return accepted();
 }
