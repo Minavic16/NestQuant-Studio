@@ -12,10 +12,10 @@ build/
 .env.*.local
 
 # Local content and artefacts
-# `data/store` holds the live catalogue; it is seeded on first run and edited
-# through the dashboard, so only the seed source belongs in version control.
-data/store/*
-!data/store/.gitkeep
+# The live catalogue, reviews, metrics and portfolio documents. They are seeded
+# on first run and edited through the dashboard, so they never belong in version
+# control — but the TypeScript that implements the store does.
+data/store/*.json
 
 # Uploaded media
 public/uploads/*
