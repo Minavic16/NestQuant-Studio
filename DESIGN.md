@@ -265,7 +265,43 @@ touch targets ≥ 44px, category discovery scrolls horizontally with scroll-snap
 
 ---
 
-## 12. Surface texture
+## 12. Brand assets: three approved logos
+
+The official logo is the master. A simplified SVG is a secondary asset for small
+or monochrome applications. Neither replaces the other.
+
+| Asset | File | Where it is used |
+| --- | --- | --- |
+| Official lockup (raster) | `public/brand/desired-homes-logo.jpg` | Hero, About band, mobile drawer — anywhere it must be fully legible |
+| Complete lockup (crop) | `public/brand/logo-complete.jpg` | About band |
+| Monogram (raster crop) | `public/brand/logo-monogram.jpg` | Kept as the fallback for the master |
+| **Monogram (traced SVG)** | `public/brand/desired-homes-monogram.svg` | Header mark, footer mark — inline, no image request |
+| **Favicon (SVG)** | `public/brand/favicon.svg` | Browser tab, home screen (PNG fallback retained) |
+
+The SVG is derived, not drawn: `npm run monogram:build` reads the official logo,
+measures its ink runs and emits the exact silhouette as merged bands. The D's
+counter and the H's colonnade gaps appear because they are gaps between runs, so
+the distinctive letterforms survive simplification. Flat `currentColor` only —
+no gradients, no filters, no shading — which keeps it crisp at any size and lets
+one asset serve both the light header and the dark footer.
+
+**Rule:** the monogram is only used where the full lockup would be too small to
+read. Anything that must say "Desired Homes Interiors" in words uses the raster
+lockup. The hero leads with the photography, not the logo.
+
+## 13. Photography
+
+The hero and the gallery are led by the business's own photography:
+
+- `public/editorial/hero.webp` — the hero, the LCP element and the only preloaded
+  image on the page.
+- `public/portfolio/*.webp` — completed projects, seeded from
+  `data/store/seed-portfolio.ts`.
+
+Text over photography sits on a flat scrim, never a gradient, so contrast holds
+across the whole frame without washing the image out.
+
+## 14. Surface texture
 
 The surfaces carry a very fine paper grain: a 200×200 SVG `feTurbulence` tile, repeated, on a
 fixed overlay at 3% opacity with `mix-blend-mode: multiply`.
@@ -277,7 +313,7 @@ fixed overlay at 3% opacity with `mix-blend-mode: multiply`.
 - `pointer-events: none` and above every layer, so it never interferes with interaction.
 - Disabled under `prefers-contrast: more`, where texture works against legibility.
 
-## 13. Motion (V2)
+## 15. Motion (V2)
 
 Lenis supplies smooth scrolling and GSAP ScrollTrigger supplies scroll-linked reveals. Both are
 governed by three rules:
@@ -293,7 +329,7 @@ The dashboard uses motion differently: counters animate to their value the first
 seen, and fall straight to the number when reduced motion is preferred. A metric is never
 hidden behind an animation.
 
-## 14. Explicit non-goals
+## 16. Explicit non-goals
 
 Gradients · glassmorphism · heavy cards · shadows · particle/decorative effects · autoplay or
 background video · oversized or all-caps headings · Tailwind-style utility soup · SaaS

@@ -506,7 +506,30 @@ built at the boundary V1 specified, not bolted on:
 
 ---
 
-## 18. Containerisation
+## 18. Brand assets and media
+
+`scripts/build-monogram-svg.mjs` (run with `npm run monogram:build`) traces the
+supplied logo into the simplified SVG. It reads the raster, measures its ink runs
+and emits the exact silhouette as merged horizontal bands — so the D's counter
+and the H's colonnade gaps are reproduced rather than redrawn, and no shape is
+invented. The output is committed; the script exists so the asset can be
+regenerated or verified against the original at any time.
+
+Media validation (`lib/media/drive.ts`) accepts four sources and rejects
+everything else:
+
+| Prefix | Source |
+| --- | --- |
+| `/portfolio/` | committed past-work photography |
+| `/products/<slug>/…` | product photography |
+| `/uploads/…` | dashboard uploads |
+| `https://lh3.googleusercontent.com`, `https://drive.google.com` | Drive |
+
+Every path is checked segment by segment: `..`, empty segments, `%`, spaces and
+NUL bytes are all rejected, so a hand-edited store cannot point an image outside
+the directories the application owns.
+
+## 19. Containerisation
 
 The Dockerfile is in `deploy/`, not the repository root. That is deliberate: Vercel switches to
 its container builder whenever it finds a root `Dockerfile`, and its containers have a read-only
@@ -523,7 +546,7 @@ The image is multi-stage, runs as a non-root user, has a health check, and persi
 
 ---
 
-## 19. Commands
+## 20. Commands
 
 ```bash
 npm run dev             # local dev server (dashboard at admin.localhost:3000)
@@ -532,7 +555,8 @@ npm run start           # serve the production build
 npm run typecheck       # tsc --noEmit
 npm run lint            # eslint
 npm run test            # Node test runner
-npm run brand:prepare   # regenerate logo crops + favicon from the supplied original
+npm run brand:prepare    # regenerate logo crops + favicon from the supplied original
+npm run monogram:build   # re-trace the original logo into the simplified SVG
 npm run admin:hash      # generate ADMIN_PASSWORD_HASH for the dashboard
 ./scripts/start-local.sh  # run the standalone build with .env.local loaded
 

@@ -8,7 +8,7 @@ an enquiry list, and send it to the business on WhatsApp or by email. There is n
 no payment and no customer accounts.
 
 - **Conversion path:** Discover → Browse → Inspect → Add to enquiry → Send enquiry → WhatsApp / email
-- **Also:** a gallery of past work served straight from Google Drive
+- **Also:** a gallery of the business's completed projects, and a hero led by its own interior photography
 - **Business contact:** [desirenwakor@gmail.com](mailto:desirenwakor@gmail.com) · WhatsApp [+234 913 879 7980](https://wa.me/2349138797980)
 - **CEO & Creative Director:** Desire Nwakor
 
@@ -48,6 +48,7 @@ npm run dev            # shop:  http://localhost:3000
 | `npm run test` | Test suite (Node's built-in runner). |
 | `npm run brand:prepare` | Regenerate the logo crops, favicon and social card. |
 | `npm run admin:hash` | Generate the dashboard password hash. |
+| `npm run monogram:build` | Re-trace the supplied logo into the simplified SVG. |
 | `./scripts/start-local.sh` | Run the standalone build with `.env.local` loaded. |
 
 All four checks (`lint`, `typecheck`, `test`, `build`) pass on a clean checkout: **108 tests**.
