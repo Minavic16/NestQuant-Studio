@@ -42,8 +42,13 @@
   color: var(--color-ivory);
 }
 
+/*
+ * The lockup with its black field removed, so the metallic mark sits directly
+ * on the photograph. Sized so the photography stays the dominant element
+ * (DESIGN.md §12).
+ */
 .logo {
-  width: clamp(13rem, 52vw, 20rem);
+  width: clamp(11rem, 40vw, 16.5rem);
   height: auto;
 }
 

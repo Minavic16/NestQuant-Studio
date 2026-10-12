@@ -6,8 +6,8 @@ import styles from "./brand-logo.module.css";
  * The supplied logo, served as an image — never recreated (DESIGN.md §1).
  *
  * Variants are pre-generated crops of the original file by
- * `scripts/prepare-brand-assets.mjs`. Intrinsic dimensions come from the crop;
- * the display size is set by the consumer's CSS so nothing shifts.
+ * `scripts/prepare-brand-assets.mjs`; the intrinsic dimensions are those of the
+ * crop, and the display size is set by the consumer's CSS so nothing shifts.
  */
 
 export type LogoVariant = "monogram" | "lockup" | "complete";
@@ -34,10 +34,23 @@ const LOGO_VARIANTS: Record<
   },
 };
 
+/**
+ * The transparent versions, with the logo's own black field removed, for use
+ * over photography. `npm run brand:prepare` derives them from the original by a
+ * luminance key — every visible pixel is the client's, only the field is
+ * dropped, so the mark is not redrawn (DESIGN.md §1, §12).
+ */
+const TRANSPARENT_VARIANTS: Record<string, string> = {
+  lockup: "/brand/logo-lockup.webp",
+  complete: "/brand/logo-complete.webp",
+};
+
 export type BrandLogoProps = {
   variant: LogoVariant;
   /** Override the default responsive `sizes` for this variant. */
   sizes?: string;
+  /** Remove the logo's black field so it can sit on photography. */
+  transparent?: boolean;
   className?: string;
   priority?: boolean;
   /** Optional inline size, e.g. `{ "--logo-width": "12rem" }`. */
@@ -47,15 +60,17 @@ export type BrandLogoProps = {
 export function BrandLogo({
   variant,
   sizes,
+  transparent = false,
   className,
   priority = false,
   style,
 }: BrandLogoProps) {
   const logo = LOGO_VARIANTS[variant];
+  const source = transparent ? TRANSPARENT_VARIANTS[variant] ?? logo.src : logo.src;
 
   return (
     <Image
-      src={logo.src}
+      src={source}
       alt="Desired Homes Interiors"
       width={logo.width}
       height={logo.height}

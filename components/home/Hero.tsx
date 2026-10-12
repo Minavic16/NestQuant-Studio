@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./hero.module.css";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -6,12 +8,14 @@ import { copy } from "@/data/content/copy";
 import { siteConfig } from "@/config/site";
 
 /**
- * Hero: the supplied interior photography carries the composition, with the
- * brand statement sitting over it.
+ * Hero: the supplied interior photography carries the composition.
  *
- * The image is the LCP element and is preloaded eagerly. Text sits on a flat
- * scrim — no gradient — so contrast holds across the whole image without
- * washing it out (DESIGN.md §7, §12).
+ * The image is the LCP element and the only preloaded image on the page. The
+ * logo sits on it with its black field removed, so no box is visible.
+ *
+ * The lockup is the variant *without* the tagline: the headline underneath
+ * already names the three services, and repeating them twice reads as noise
+ * (DESIGN.md §12).
  */
 export function Hero() {
   return (
@@ -30,7 +34,7 @@ export function Hero() {
       <div className={styles.scrim} aria-hidden="true" />
 
       <div className={styles.inner}>
-        <BrandLogo variant="complete" className={styles.logo} />
+        <BrandLogo variant="lockup" transparent className={styles.logo} />
 
         <h1 className={styles.headline}>{siteConfig.proposition}</h1>
 

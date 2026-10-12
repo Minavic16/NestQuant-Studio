@@ -272,8 +272,10 @@ or monochrome applications. Neither replaces the other.
 
 | Asset | File | Where it is used |
 | --- | --- | --- |
-| Official lockup (raster) | `public/brand/desired-homes-logo.jpg` | Hero, About band, mobile drawer — anywhere it must be fully legible |
-| Complete lockup (crop) | `public/brand/logo-complete.jpg` | About band |
+| Official lockup (raster) | `public/brand/desired-homes-logo.jpg` | Source of truth; About band, mobile drawer — anywhere it must be fully legible on black |
+| Complete lockup (crop) | `public/brand/logo-complete.jpg` | About band (black section, so the field blends in) |
+| Lockup without tagline (transparent) | `public/brand/logo-lockup.webp` | Hero — black field knocked out so the mark sits on photography with no box |
+| Complete lockup (transparent) | `public/brand/logo-complete.webp` | Reserved for future use over photography |
 | Monogram (raster crop) | `public/brand/logo-monogram.jpg` | Kept as the fallback for the master |
 | **Monogram (traced SVG)** | `public/brand/desired-homes-monogram.svg` | Header mark, footer mark — inline, no image request |
 | **Favicon (SVG)** | `public/brand/favicon.svg` | Browser tab, home screen (PNG fallback retained) |
@@ -287,7 +289,12 @@ one asset serve both the light header and the dark footer.
 
 **Rule:** the monogram is only used where the full lockup would be too small to
 read. Anything that must say "Desired Homes Interiors" in words uses the raster
-lockup. The hero leads with the photography, not the logo.
+lockup. The hero leads with the photography, not the logo: the hero mark is the
+tagline-free lockup (the headline already names the three services), and its
+black field is knocked out by `npm run brand:prepare` via a luminance key — the
+client's pixels are preserved, only the pure-black field becomes transparent, so
+the mark is not redrawn. WebP carries the transparency (51 kB vs 289 kB as PNG
+for the same photographic metallic noise).
 
 ## 13. Photography
 
