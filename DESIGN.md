@@ -156,6 +156,12 @@ Nothing in the UI invents photography, prices, specifications, reviews, awards o
 
 ## 8. Page-by-page composition
 
+Every interior page (Shop, Categories, Our work, About, Contact, Enquiry) opens
+with a page header — eyebrow, headline, optional standfirst — led by a quiet
+"Back to Home" link. The header logo alone proved too easy to miss, so the way
+home is explicit on every page. Product detail instead links back to Shop, the
+more useful destination mid-browse.
+
 ### 8.1 Header (all pages)
 72px tall, paper/ivory, 1px bottom hairline, sticky. Left: the **monogram chip** (the logo's
 own pixels, 36px tall). Centre/right: Shop · Categories · About · Contact. Far right: search

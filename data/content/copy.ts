@@ -17,6 +17,11 @@ export const copy = {
     note: "Enquiries answered on WhatsApp and by email.",
   },
 
+  nav: {
+    /** Quiet way back from interior pages (DESIGN.md §8). */
+    backToHome: "Back to Home",
+  },
+
   explore: {
     label: "Explore",
     itemCta: "Explore",

@@ -15,6 +15,7 @@ export const primaryNavigation = [
 export const enquiryNavigation = { label: "Enquiry", href: "/enquiry" } as const;
 
 export const footerNavigation = [
+  { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
   { label: "Categories", href: "/categories" },
   { label: "Our work", href: "/work" },
