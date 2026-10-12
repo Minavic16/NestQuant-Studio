@@ -11,12 +11,12 @@
   --color-ink: #111111; /* body text, primary controls, focus rings */
   --color-paper: #ffffff; /* default surface */
   --color-ivory: #f7f5f0; /* alternate surface, hero text on black */
-  --color-line: #e7e3dc; /* hairlines on light surfaces */
-  --color-line-strong: #dcd6cc; /* stronger separation on light surfaces */
-  --color-muted: #737373; /* labels and metadata (≥13px only) */
-  --color-muted-strong: #5c5c5c; /* secondary body copy */
-  --color-line-dark: rgb(247 245 240 / 16%); /* hairlines on black */
-  --color-on-dark-muted: rgb(247 245 240 / 72%); /* secondary text on black */
+  --color-line: #d9d3c6; /* hairlines on light surfaces */
+  --color-line-strong: #c7c0b1; /* stronger separation on light surfaces */
+  --color-muted: #616161; /* labels and metadata (≥13px only) */
+  --color-muted-strong: #4d4d4d; /* secondary body copy */
+  --color-line-dark: rgb(247 245 240 / 22%); /* hairlines on black */
+  --color-on-dark-muted: rgb(247 245 240 / 80%); /* secondary text on black */
 
   /* ---- Typography (DESIGN.md §3) ---------------------------------------- */
   --font-display: Georgia, "Times New Roman", Times, "Noto Serif", serif;
@@ -64,7 +64,9 @@
   --border-hairline-strong: 1px solid var(--color-line-strong);
   --border-hairline-dark: 1px solid var(--color-line-dark);
 
-  --shadow: none; /* the design has no shadows; this token exists to say so */
+  --shadow-lift: 0 1px 2px rgb(17 17 17 / 0.08), 0 16px 40px -16px rgb(17 17 17 / 0.22); /* photography and media frames */
+  --shadow-control: 0 1px 2px rgb(17 17 17 / 0.25); /* primary controls on light surfaces */
+  --shadow-bar: 0 1px 12px rgb(17 17 17 / 0.06); /* sticky header separation */
 
   /* ---- Layout ----------------------------------------------------------- */
   --container: 1240px;

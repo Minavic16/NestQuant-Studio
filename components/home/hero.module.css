@@ -46,10 +46,15 @@
  * The lockup with its black field removed, so the metallic mark sits directly
  * on the photograph. Sized so the photography stays the dominant element
  * (DESIGN.md §12).
+ *
+ * A faint drop-shadow grounds the silver letterforms on bright areas of the
+ * photo. `drop-shadow` — not `box-shadow` — follows the mark's own alpha, so
+ * no rectangle appears. Kept barely visible by design.
  */
 .logo {
   width: clamp(11rem, 40vw, 16.5rem);
   height: auto;
+  filter: drop-shadow(0 1px 4px rgb(0 0 0 / 28%));
 }
 
 .headline {

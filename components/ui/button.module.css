@@ -24,6 +24,7 @@
   background-color: var(--color-ink);
   border: 1px solid var(--color-ink);
   color: var(--color-paper);
+  box-shadow: var(--shadow-control);
 }
 
 .primary:hover {

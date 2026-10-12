@@ -4,6 +4,7 @@
   z-index: var(--z-header);
   background-color: var(--color-paper);
   border-bottom: var(--border-hairline);
+  box-shadow: var(--shadow-bar);
 }
 
 .inner {

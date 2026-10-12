@@ -43,18 +43,18 @@ No gradients, no glass, no accent colours. Every colour below is a token in
 | `--color-ink` | `#111111` | Body text, buttons, focus rings |
 | `--color-paper` | `#FFFFFF` | Default page surface |
 | `--color-ivory` | `#F7F5F0` | Alternative surface, image slots, hero text on black |
-| `--color-line` | `#E7E3DC` | Hairline borders on light surfaces |
-| `--color-line-strong` | `#DCD6CC` | Stronger separation, input hover |
-| `--color-muted` | `#737373` | Secondary text, labels, metadata |
-| `--color-line-dark` | `rgba(247,245,240,0.16)` | Hairlines on black surfaces |
+| `--color-line` | `#D9D3C6` | Hairline borders on light surfaces |
+| `--color-line-strong` | `#C7C0B1` | Stronger separation, input hover |
+| `--color-muted` | `#616161` | Secondary text, labels, metadata |
+| `--color-line-dark` | `rgba(247,245,240,0.22)` | Hairlines on black surfaces |
 
-Contrast (WCAG 2.2): ink on paper 19.0:1 · ink on ivory 17.9:1 · muted on paper 4.7:1 ·
-muted on ivory 4.4:1 (used only at ≥ 13px/400 with bold fallbacks avoided; body-size
-secondary text uses `#5C5C5C`, 7.0:1) · ivory on black 19.3:1. `--color-muted` is never used
+Contrast (WCAG 2.2): ink on paper 19.0:1 · ink on ivory 17.9:1 · muted on paper 6.2:1 ·
+muted on ivory 5.7:1 (used only at ≥ 13px/400 with bold fallbacks avoided; body-size
+secondary text uses `#4D4D4D`, 8.5:1) · ivory on black 19.3:1. `--color-muted` is never used
 below 13px for essential text.
 
 Dark surfaces are pure `#000000` by design (§1.1). Text on them is ivory; secondary text on
-black is `rgba(247,245,240,0.72)` (11.4:1).
+black is `rgba(247,245,240,0.80)` (12.1:1).
 
 ---
 
@@ -104,8 +104,12 @@ Section rhythm: `--space-8` (64px) on mobile, `--space-9` (96px) on tablet, `--s
 - Radii: `0` on imagery and cards, `2px` (`--radius-sm`) on controls/inputs, `4px`
   (`--radius-md`) on the enquiry drawer. No pills.
 - Separation is done with **1px hairlines** (`--color-line`, `--color-line-dark`) and
-  whitespace. **There are no shadows anywhere** — not on cards, not on the drawer, not on the
-  sticky header. The sticky header uses a hairline bottom border and a solid surface.
+  whitespace. **Elevation is soft and sparing** — three tokens, nothing else:
+  `--shadow-lift` under photography and media frames, `--shadow-control` under
+  primary controls on light surfaces, `--shadow-bar` under the sticky header.
+  No heavy cards, no floating panels, no glow. The sticky header keeps its
+  hairline bottom border and solid surface; the shadow only separates it from
+  scrolling content.
 - Controls are quiet: primary = ink fill / paper text; secondary = 1px border / transparent
   fill; both 2px radius, 44px minimum height, `140ms` colour transition.
 
@@ -311,7 +315,7 @@ across the whole frame without washing the image out.
 ## 14. Surface texture
 
 The surfaces carry a very fine paper grain: a 200×200 SVG `feTurbulence` tile, repeated, on a
-fixed overlay at 3% opacity with `mix-blend-mode: multiply`.
+fixed overlay at 5% opacity with `mix-blend-mode: multiply`.
 
 - It is a **texture, not a gradient** — the V1 rule against gradients still holds.
 - One data URI, so it costs no network request and cannot be a render-blocking asset.
@@ -338,7 +342,7 @@ hidden behind an animation.
 
 ## 16. Explicit non-goals
 
-Gradients · glassmorphism · heavy cards · shadows · particle/decorative effects · autoplay or
+Gradients · glassmorphism · heavy cards · heavy shadows · particle/decorative effects · autoplay or
 background video · oversized or all-caps headings · Tailwind-style utility soup · SaaS
 landing patterns · fake photography or fake social proof · payment · customer accounts ·
 checkout · coupons · live chat · unmoderated reviews.
