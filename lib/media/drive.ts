@@ -86,9 +86,29 @@ export function normaliseImageSource(value: unknown): string | null {
   const trimmed = value.trim();
   if (trimmed.length === 0) return null;
 
-  // Local uploads stay local.
-  if (trimmed.startsWith("/uploads/") || trimmed.startsWith("/products/")) {
-    return trimmed.split("?")[0] ?? null;
+  // Local media stays local. `portfolio/` holds the committed past-work
+  // photography, so it is allowed alongside the dashboard's uploads. Each
+  // segment must be a plain filename — no `..`, no `%`, no spaces — so a path
+  // can be nested (`/products/<slug>/01.jpg`) but can never climb out.
+  if (
+    trimmed.startsWith("/uploads/") ||
+    trimmed.startsWith("/products/") ||
+    trimmed.startsWith("/portfolio/")
+  ) {
+    const path = trimmed.split("?")[0] ?? "";
+    // `filter(Boolean)` rejects empty segments (`//`), and the per-segment
+    // check rejects `.`, `..`, `%`, spaces and anything else that is not a
+    // plain filename.
+    const segments = path.split("/").filter((segment) => segment.length > 0);
+    const isPlainSegment = (segment: string) =>
+      segment !== "." && segment !== ".." && /^[A-Za-z0-9._-]+$/.test(segment);
+    const isLocalMedia =
+      segments.length > 1 &&
+      ["uploads", "products", "portfolio"].includes(segments[0] ?? "") &&
+      segments.every(isPlainSegment) &&
+      path === `/${segments.join("/")}`;
+
+    return isLocalMedia ? path : null;
   }
 
   // A Drive reference resolves to its image URL.

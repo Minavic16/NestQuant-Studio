@@ -22,9 +22,14 @@
   gap: var(--space-3);
 }
 
+/*
+ * The traced monogram in ivory — it takes currentColor, so it needs no second
+ * asset for the dark footer.
+ */
 .logo {
   width: 2.75rem;
   height: auto;
+  color: var(--color-ivory);
 }
 
 .services {

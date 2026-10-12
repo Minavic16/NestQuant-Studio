@@ -70,6 +70,30 @@ describe("normaliseImageSource", () => {
     assert.equal(normaliseImageSource("/products/linen-sheer-curtain/01.jpg"), "/products/linen-sheer-curtain/01.jpg");
   });
 
+  it("accepts committed local media under the three allowed prefixes", () => {
+    assert.equal(normaliseImageSource("/portfolio/living-room.webp"), "/portfolio/living-room.webp");
+    assert.equal(normaliseImageSource("/products/curtain/01.jpg"), "/products/curtain/01.jpg");
+    assert.equal(normaliseImageSource("/uploads/abc.jpg?x=1"), "/uploads/abc.jpg");
+  });
+
+  it("allows nested product paths but rejects anything that climbs out", () => {
+    assert.equal(
+      normaliseImageSource("/products/linen-sheer-curtain/01.jpg"),
+      "/products/linen-sheer-curtain/01.jpg",
+    );
+
+    for (const bad of [
+      "/portfolio/../../etc/passwd",
+      "/products/../secret.jpg",
+      "/portfolio/x%00.jpg",
+      "/portfolio/ has space.jpg",
+      "/portfolio//double.jpg",
+      "/uploads//a.jpg",
+    ]) {
+      assert.equal(normaliseImageSource(bad), null, `expected ${bad} to be rejected`);
+    }
+  });
+
   it("converts a Drive reference into an image URL", () => {
     assert.equal(
       normaliseImageSource(`https://drive.google.com/file/d/${SAMPLE_ID}/view`),

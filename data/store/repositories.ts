@@ -1,6 +1,7 @@
 import { CATEGORY_IDS } from "../types";
 import type { CategoryId, Product, ProductAttribute } from "../types";
 import { normaliseImageSource } from "../../lib/media/drive";
+import { seedPortfolioItems } from "./seed-portfolio";
 import type {
   CatalogueDocument,
   PortfolioDocument,
@@ -285,7 +286,7 @@ export function validatePortfolio(value: unknown): PortfolioDocument {
 }
 
 export function seedPortfolioDocument(): PortfolioDocument {
-  return validatePortfolio({});
+  return validatePortfolio({ version: 1, items: seedPortfolioItems });
 }
 
 /** Ensure every document exists on disk, seeding from the V1 typed data. */

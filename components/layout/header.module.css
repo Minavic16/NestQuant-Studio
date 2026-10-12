@@ -22,12 +22,19 @@
   flex: 0 0 auto;
 }
 
-.brandLogo {
+/*
+ * The traced monogram: an SVG that takes currentColor, so it needs no image
+ * request, no preload, and stays crisp at any density.
+ */
+.mark {
+  display: block;
+  width: auto;
   height: 30px;
+  color: var(--color-ink);
 }
 
 @media (min-width: 30rem) {
-  .brandLogo {
+  .mark {
     height: 34px;
   }
 }

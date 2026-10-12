@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./footer.module.css";
-import { BrandLogo } from "./BrandLogo";
 import { resolveContact } from "@/lib/contact/resolve";
 import { formatWhatsAppNumber, whatsappChatUrl } from "@/lib/whatsapp/whatsapp";
 import { footerNavigation } from "@/config/navigation";
@@ -16,7 +16,14 @@ export async function Footer() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <BrandLogo variant="monogram" className={styles.logo} />
+            <Image
+              src="/brand/desired-homes-monogram.svg"
+              alt=""
+              width={288}
+              height={202}
+              className={styles.logo}
+              aria-hidden="true"
+            />
             <p className={styles.services}>{siteConfig.servicesLine}</p>
           </div>
 

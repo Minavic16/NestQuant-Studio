@@ -15,7 +15,8 @@
     "test": "node --import ./test/register.mjs --test \"**/*.test.ts\"",
     "brand:prepare": "node scripts/prepare-brand-assets.mjs",
     "test:watch": "node --import ./test/register.mjs --test --watch \"**/*.test.ts\"",
-    "admin:hash": "node --import ./test/register.mjs scripts/admin-hash.mts"
+    "admin:hash": "node --import ./test/register.mjs scripts/admin-hash.mts",
+    "monogram:build": "node --import ./test/register.mjs scripts/build-monogram-svg.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",

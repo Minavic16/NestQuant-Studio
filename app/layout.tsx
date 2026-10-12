@@ -33,6 +33,15 @@ export const metadata: Metadata = {
   },
   // Nothing on the site should be auto-detected as contact data by mobile UIs.
   formatDetection: { telephone: false, address: false, email: false },
+  // The traced monogram in SVG, with the raster PNG as the fallback.
+  icons: {
+    icon: [
+      { url: "/brand/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png", sizes: "256x256" },
+    ],
+    shortcut: "/brand/favicon.svg",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
