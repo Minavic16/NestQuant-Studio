@@ -18,10 +18,42 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  configuration:
+    name: Check deployment configuration
+    runs-on: ubuntu-latest
+    outputs:
+      configured: ${{ steps.check.outputs.configured }}
+    steps:
+      - name: Check the SSH deployment secrets
+        id: check
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
+        run: |
+          if [ -n "$DEPLOY_HOST" ] && [ -n "$DEPLOY_USER" ] && [ -n "$DEPLOY_SSH_KEY" ] && [ -n "$DEPLOY_PATH" ] && [ -n "$PUBLIC_URL" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "SSH deployment is configured; the deploy job will run."
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "### Container deployment skipped"
+              echo
+              echo "The SSH deployment secrets are not configured, so no container host was contacted."
+              echo "The public site continues to deploy through Vercel on every push."
+              echo
+              echo "To enable the optional container deployment, set:"
+              echo "\`DEPLOY_HOST\`, \`DEPLOY_USER\`, \`DEPLOY_SSH_KEY\`, \`DEPLOY_PATH\` and \`PUBLIC_URL\`."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
   deploy:
     name: Deploy to production
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: configuration
+    if: ${{ github.event.workflow_run.conclusion == 'success' && needs.configuration.outputs.configured == 'true' }}
     environment: production
     steps:
       - name: Deploy over SSH
