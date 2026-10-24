@@ -49,10 +49,14 @@ export type StoreProduct = {
   slug: string;
   name: string;
   category: CategoryId;
+  /** Product family used for grouping in the shop, e.g. "Brackets" or "Rings". */
+  type?: string;
   shortDescription?: string;
   description?: string;
   images: StoreImage[];
   price?: number;
+  /** The pre-discount price, shown struck through when it is higher than `price`. */
+  compareAtPrice?: number;
   currency?: "NGN";
   priceLabel?: string;
   sku?: string;

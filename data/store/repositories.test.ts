@@ -84,7 +84,9 @@ describe("document validation", () => {
           slug: "p",
           name: "P",
           category: "accessories",
-          price: "not a number",
+          type: "  Rings  ",
+          price: 1000,
+          compareAtPrice: 1500,
           images: [
             { src: "/a.jpg", alt: "  ", width: "10" },
             { alt: "no src" },
@@ -95,16 +97,36 @@ describe("document validation", () => {
             { label: 1, value: 2 },
           ],
         },
+        {
+          slug: "invalid-compare",
+          name: "Invalid compare",
+          category: "accessories",
+          price: 2000,
+          compareAtPrice: 1500,
+        },
       ],
     });
 
     const product = document.products[0]!;
-    assert.equal(product.price, undefined);
+    assert.equal(product.type, "Rings");
+    assert.equal(product.price, 1000);
+    assert.equal(product.compareAtPrice, 1500);
     assert.deepEqual(product.images, [
       { src: "/a.jpg", alt: "Product image" },
       { src: "/b.jpg", alt: "Curtain detail", width: 800, height: 1000 },
     ]);
     assert.deepEqual(product.attributes, [{ label: "Material", value: "Linen" }]);
+    // A "was" price at or below the sale price is not a discount, so it is dropped.
+    assert.equal(document.products[1]?.compareAtPrice, undefined);
+  });
+
+  it("drops a price that is not a positive number", () => {
+    const product = validateCatalogue({
+      products: [{ slug: "p", name: "P", category: "accessories", price: "not a number" }],
+    }).products[0]!;
+
+    assert.equal(product.price, undefined);
+    assert.equal(product.compareAtPrice, undefined);
   });
 
   it("falls back to configured contact details", () => {
@@ -143,7 +165,9 @@ describe("store round-trip", () => {
 
     const catalogue = await getCatalogue();
     assert.ok(catalogue.products.length > 0, "catalogue is seeded");
-    assert.equal(catalogue.products[0]?.name, "Linen Sheer Curtain");
+    assert.equal(catalogue.products[0]?.name, "Clamp-Style Curtain Bracket");
+    assert.equal(catalogue.products[0]?.type, "Brackets");
+    assert.ok((catalogue.products[0]?.images.length ?? 0) > 0);
     assert.deepEqual(
       (await getCategories()).map((category) => category.slug),
       ["curtains", "accessories", "window-solutions"],
@@ -157,7 +181,7 @@ describe("store round-trip", () => {
     await snapshot(reviewsPath);
 
     const original = await getCatalogue();
-    assert.equal(original.products[0]?.name, "Linen Sheer Curtain");
+    assert.equal(original.products[0]?.name, "Clamp-Style Curtain Bracket");
 
     await saveCatalogue(
       validateCatalogue({

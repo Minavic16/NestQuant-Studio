@@ -12,7 +12,7 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "Shop",
-  description: `Browse curtains, accessories and window solutions from ${siteConfig.name}.`,
+  description: `Browse curtain rods, brackets, rings and window fittings from ${siteConfig.name}.`,
   path: "/shop",
 });
 

@@ -1,11 +1,41 @@
 .label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-2);
+  margin: 0;
   font-size: var(--text-small);
   color: var(--color-ink);
   font-variant-numeric: tabular-nums;
 }
 
+.now {
+  color: var(--color-ink);
+}
+
+/* The pre-discount figure is reference, not the offer: quieter and struck through. */
+.was {
+  color: var(--color-muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.discount {
+  padding-inline: var(--space-1);
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui);
+  font-size: var(--text-meta);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-ink);
+}
+
 /* Shown instead of a price: quieter than a real figure. */
 .request {
+  display: block;
   color: var(--color-muted);
   letter-spacing: 0.02em;
 }

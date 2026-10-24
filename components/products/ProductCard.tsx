@@ -24,6 +24,8 @@ export function ProductCard({
 }) {
   const category = getCategoryById(product.category);
   const image = product.images[0] ?? null;
+  const classification = category?.name ?? product.category;
+  const label = product.type ? `${product.type} · ${classification}` : classification;
 
   return (
     <article className={styles.card}>
@@ -38,7 +40,7 @@ export function ProductCard({
 
         <div className={styles.body}>
           <h3 className={styles.name}>{product.name}</h3>
-          <p className={styles.category}>{category?.name ?? product.category}</p>
+          <p className={styles.category}>{label}</p>
           <PriceLabel product={product} className={styles.price} />
           <span className={styles.details}>
             {copy.product.viewDetails}

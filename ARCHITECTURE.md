@@ -176,14 +176,17 @@ data/store/metrics.json     one aggregated bucket per day
   `revalidatePath("/", "layout")`, so an edit is live within a minute and immediately after a save.
 - Replacing the store with a database or a CMS means providing the same repository functions.
 
-### Sample data policy
+### Catalogue data
 
-`data/products/seed-catalogue.ts` ships clearly-marked **sample** products so the site can be
-demonstrated, QA'd and deployed before real content exists. Sample data asserts nothing
-false: no prices, no specifications, no availability, no imagery, generic names drawn from the
-brief's own examples. To go live with real content: delete the seed file, add real product
-files, and point `data/products/index.ts` at them. If the catalogue is empty the site renders
-graceful empty states (and the shop shows "No products yet.").
+`data/products/seed-catalogue.ts` is the shipped catalogue: the 15 products supplied by the
+business, grouped by type (Brackets, Rods, Finials, Rings, Tiebacks, Hooks, Tape) and carrying the
+submitted price and pre-discount price. Photography lives under `public/products/<slug>/` and is
+referenced from the same file. A higher `compareAtPrice` is shown struck through, with the
+percentage saved computed in `lib/products/pricing.ts`; a missing or lower value is ignored.
+
+The store seeds from this file on first run and then becomes whatever the dashboard saves.
+Deleting `data/store/*.json` re-seeds it. If the catalogue is empty the site renders graceful
+empty states (and the shop shows "No products yet.").
 
 ---
 
@@ -500,9 +503,11 @@ built at the boundary V1 specified, not bolted on:
 
 ### Content status
 
-- **No photography yet** → `MediaSlot` placeholders and a logo-led hero. Nothing is faked.
-- **The store ships seeded** from the V1 sample catalogue, then becomes whatever the dashboard
-  saves. Deleting `data/store/*.json` re-seeds it from `data/products/seed-catalogue.ts`.
+- **Product photography** for the 15 catalogue products lives in `public/products/`; six supplied
+  images were cropped to remove another brand's mark. Products without photography still fall
+  back to `MediaSlot`'s honest placeholder.
+- **The store ships seeded** from `data/products/seed-catalogue.ts`, then becomes whatever the
+  dashboard saves. Deleting `data/store/*.json` re-seeds it.
 
 ---
 

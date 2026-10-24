@@ -28,12 +28,16 @@ export type Product = {
   slug: string;
   name: string;
   category: CategoryId;
+  /** Product family used for grouping in the shop, e.g. "Brackets" or "Rings". */
+  type?: string;
   shortDescription?: string;
   description?: string;
   /** An empty array is valid: the UI renders an honest image slot until media exists. */
   images: ProductImage[];
   /** Only set when a price is genuinely available. Never invented. */
   price?: number;
+  /** The pre-discount price, shown struck through when it is higher than `price`. */
+  compareAtPrice?: number;
   currency?: "NGN";
   /** Shown instead of a price when none has been supplied, e.g. "Price on request". */
   priceLabel?: string;

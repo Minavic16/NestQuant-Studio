@@ -9,6 +9,7 @@ const product: Product = {
   slug: "linen-sheer-curtain",
   name: "Linen Sheer Curtain",
   category: "curtains",
+  type: "Rods",
   images: [],
   price: 45000,
   currency: "NGN",
@@ -19,15 +20,27 @@ afterEach(() => {
 });
 
 describe("ProductCard", () => {
-  it("links to the product and shows name, category and price", () => {
+  it("shows name, type, category and price", () => {
     render(h(ProductCard, { product }));
 
     const link = screen.getByRole("link");
     assert.equal(link.getAttribute("href"), "/shop/linen-sheer-curtain");
     assert.match(link.textContent ?? "", /Linen Sheer Curtain/);
-    assert.match(link.textContent ?? "", /Curtains/);
+    assert.match(link.textContent ?? "", /Rods · Curtains/);
     assert.match(link.textContent ?? "", /View details/);
     assert.ok(screen.getByText(/₦/));
+  });
+
+  it("shows the was price and the percentage saved", () => {
+    render(
+      h(ProductCard, {
+        product: { ...product, price: 1000, compareAtPrice: 1500 },
+      }),
+    );
+
+    assert.ok(screen.getByText("₦1,000"));
+    assert.ok(screen.getByText("₦1,500"));
+    assert.match(screen.getByText(/off$/).textContent ?? "", /33\.3% off/);
   });
 
   it("shows 'Price on request' when no price is supplied", () => {

@@ -19,10 +19,11 @@ export function ProductDetails({
   contact: ContactDetails;
 }) {
   const category = getCategoryById(product.category);
+  const classification = category?.name ?? product.category;
 
   return (
     <div className={styles.details}>
-      <Eyebrow>{category?.name ?? product.category}</Eyebrow>
+      <Eyebrow>{product.type ? `${product.type} · ${classification}` : classification}</Eyebrow>
 
       <h1 className={styles.name}>{product.name}</h1>
 

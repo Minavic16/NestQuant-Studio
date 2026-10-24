@@ -61,8 +61,9 @@ export const copy = {
   shop: {
     eyebrow: "Shop",
     heading: "The collection",
-    searchPlaceholder: "Search curtains, accessories…",
+    searchPlaceholder: "Search brackets, rods, rings…",
     filterAll: "All",
+    filterAllTypes: "All types",
     empty: "No products found.",
     emptyHint: "Try another search.",
     noProducts: "No products yet.",
@@ -71,7 +72,7 @@ export const copy = {
 
   search: {
     title: "Search",
-    placeholder: "Search curtains, accessories…",
+    placeholder: "Search brackets, rods, rings…",
     empty: "No products found.",
     emptyHint: "Try another search.",
     resultsLabel: (count: number) => `${count} ${count === 1 ? "result" : "results"}`,

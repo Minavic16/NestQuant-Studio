@@ -14,10 +14,13 @@ export default async function AdminContentPage() {
       slug: product.slug,
       name: product.name,
       category: product.category,
+      type: product.type ?? "",
       shortDescription: product.shortDescription ?? "",
       description: product.description ?? "",
       images: product.images.map((image) => ({ src: image.src, alt: image.alt })),
       price: typeof product.price === "number" ? String(product.price) : "",
+      compareAtPrice:
+        typeof product.compareAtPrice === "number" ? String(product.compareAtPrice) : "",
       priceLabel: product.priceLabel ?? "",
       sku: product.sku ?? "",
       available:

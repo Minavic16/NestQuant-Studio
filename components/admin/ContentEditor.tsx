@@ -17,10 +17,12 @@ type EditableProduct = {
   slug: string;
   name: string;
   category: string;
+  type: string;
   shortDescription: string;
   description: string;
   images: Array<{ src: string; alt: string }>;
   price: string;
+  compareAtPrice: string;
   priceLabel: string;
   sku: string;
   available: "" | "true" | "false";
@@ -58,10 +60,12 @@ function emptyProduct(): EditableProduct {
     slug: "",
     name: "",
     category: "curtains",
+    type: "",
     shortDescription: "",
     description: "",
     images: [],
     price: "",
+    compareAtPrice: "",
     priceLabel: "",
     sku: "",
     available: "",
@@ -119,10 +123,12 @@ export function ContentEditor({
           slug: product.slug,
           name: product.name,
           category: product.category,
+          type: product.type || undefined,
           shortDescription: product.shortDescription || undefined,
           description: product.description || undefined,
           images: product.images,
           price: product.price ? Number(product.price) : undefined,
+          compareAtPrice: product.compareAtPrice ? Number(product.compareAtPrice) : undefined,
           priceLabel: product.priceLabel || undefined,
           sku: product.sku || undefined,
           available:
@@ -465,6 +471,35 @@ function ProductFields({
             placeholder="Leave empty to show “Price on request”"
             onChange={(event) => onChange({ price: event.target.value.replace(/[^\d]/g, "") })}
           />
+        </label>
+      </div>
+
+      <div className={styles.grid}>
+        <label className={styles.field}>
+          <span className={styles.label}>Type (optional)</span>
+          <input
+            className={styles.input}
+            value={product.type}
+            placeholder="e.g. Brackets, Rods, Rings"
+            onChange={(event) => onChange({ type: event.target.value })}
+          />
+          <span className={styles.hint}>Groups the product with its family in the shop filter.</span>
+        </label>
+
+        <label className={styles.field}>
+          <span className={styles.label}>Was price (₦, optional)</span>
+          <input
+            className={styles.input}
+            inputMode="numeric"
+            value={product.compareAtPrice}
+            placeholder="Pre-discount price"
+            onChange={(event) =>
+              onChange({ compareAtPrice: event.target.value.replace(/[^\d]/g, "") })
+            }
+          />
+          <span className={styles.hint}>
+            Shown struck through, with the percentage saved. Must be above the price.
+          </span>
         </label>
       </div>
 

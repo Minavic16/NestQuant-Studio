@@ -13,6 +13,7 @@ type Product = {
   slug: string;
   name: string;
   category: string;
+  type?: string;
   image?: string;
   price?: number;
   available?: boolean;
@@ -33,7 +34,7 @@ export function ProductList() {
   if (products === null) return <p className={styles.state}>Loading products…</p>;
 
   const visible = products.filter((product) =>
-    `${product.name} ${product.category}`.toLowerCase().includes(query.trim().toLowerCase()),
+    `${product.name} ${product.category} ${product.type ?? ""}`.toLowerCase().includes(query.trim().toLowerCase()),
   );
 
   return (
@@ -72,7 +73,7 @@ export function ProductList() {
                     {product.name}
                   </Link>
                 </th>
-                <td>{product.category}</td>
+                <td>{product.type ? `${product.type} · ${product.category}` : product.category}</td>
                 <td>
                   {typeof product.price === "number"
                     ? `₦${product.price.toLocaleString("en-NG")}`

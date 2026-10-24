@@ -101,12 +101,15 @@ export function validateCatalogue(value: unknown): CatalogueDocument {
         // rejected rather than coerced.
         if (!slug || !name || !isValidSlug(slug)) return [];
         const category = asCategoryId(record.category, "curtains");
+        const price = asNumberOrUndefined(record.price);
+        const compareAtPrice = asNumberOrUndefined(record.compareAtPrice);
         return [
           {
             id: asString(record.id, slug),
             slug,
             name,
             category,
+            ...(asOptionalString(record.type) ? { type: asOptionalString(record.type) } : {}),
             ...(asOptionalString(record.shortDescription)
               ? { shortDescription: asOptionalString(record.shortDescription) }
               : {}),
@@ -114,8 +117,9 @@ export function validateCatalogue(value: unknown): CatalogueDocument {
               ? { description: asOptionalString(record.description) }
               : {}),
             images: normaliseImages(record.images),
-            ...(asNumberOrUndefined(record.price) !== undefined
-              ? { price: asNumberOrUndefined(record.price) }
+            ...(price !== undefined ? { price } : {}),
+            ...(price !== undefined && compareAtPrice !== undefined && compareAtPrice > price
+              ? { compareAtPrice }
               : {}),
             ...(asOptionalString(record.priceLabel) ? { priceLabel: asOptionalString(record.priceLabel) } : {}),
             ...(asOptionalString(record.sku) ? { sku: asOptionalString(record.sku) } : {}),

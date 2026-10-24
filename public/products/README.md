@@ -1,26 +1,25 @@
-# Drop real product photography here.
+# Product photography
 
-Structure the files per product slug, and reference them from `data/products/*.ts`:
+Each product has a folder named after its slug, with images numbered in view order:
 
 ```
-public/products/linen-sheer-curtain/01.jpg
-public/products/linen-sheer-curtain/02.jpg
+public/products/clamp-style-curtain-bracket/01.jpg
+public/products/clamp-style-curtain-bracket/02.jpg
 ```
 
-In the product data:
+The catalogue in `data/products/seed-catalogue.ts` references these paths. The first image is the
+card image and the priority-loaded gallery image.
 
-```ts
-images: [
-  { src: "/products/linen-sheer-curtain/01.jpg", alt: "Sheer linen curtain in a bright living room" },
-]
-```
+Current files are 1000 × 1250 (4:5), padded with white so every card has the same proportion.
+They are copies of the processed inbox files; the submissions remain untouched in the inbox
+archive. Six images were cropped to remove another brand's mark before padding.
 
-Until an image exists, the site renders an honest "Image to come" slot (DESIGN.md §7).
+Guidelines for new photography:
 
-Guidelines:
-
-- The first image in the array is the card image and the priority-loaded gallery image.
+- Keep the 4:5 proportion, or let the card frame crop it centrally.
 - Write `alt` text that describes what the picture shows; it is required for accessibility.
 - `next/image` generates responsive AVIF/WebP derivatives at request time, so a 2000px source is
   fine — but do not upload anything above ~2400px on the long edge.
 - Use `.jpg` for photography (or `.png` for flat artwork); both are optimised automatically.
+- If a product has no image, leave `images: []`; the site renders an honest "Image to come" slot
+  (DESIGN.md §7) rather than a fake picture.
