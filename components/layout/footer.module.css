@@ -69,6 +69,7 @@
   display: inline-flex;
   align-items: center;
   min-height: var(--touch-target);
+  min-width: var(--touch-target);
   font-size: var(--text-small);
   color: var(--color-ivory);
   transition: color var(--duration-fast) var(--ease);
