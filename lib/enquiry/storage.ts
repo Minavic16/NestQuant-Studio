@@ -15,7 +15,7 @@ export interface EnquiryStorage {
   clear(): void;
 }
 
-/** A storage that silently does nothing — used when localStorage is unavailable. */
+/** A storage that silently does nothing, used when localStorage is unavailable. */
 export function createNullStorage(): EnquiryStorage {
   return { read: () => null, write: () => {}, clear: () => {} };
 }

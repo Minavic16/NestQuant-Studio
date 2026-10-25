@@ -4,7 +4,7 @@
  * V1 read from typed modules compiled into the bundle. V2 moves content into a
  * runtime store so the admin dashboard can edit it (ARCHITECTURE.md §16). The
  * shapes are deliberately the same as V1's data types so the UI layer does not
- * change — only the source of the data does.
+ * change, only the source of the data does.
  */
 
 import type { CategoryId, ProductAttribute } from "../types";
@@ -82,7 +82,7 @@ export type StoreImage = {
 export type PortfolioItem = {
   id: string;
   slug: string;
-  /** Client or project name, e.g. "Mrs Adeyemi — Ikoyi duplex". */
+  /** Client or project name, e.g. "Mrs Adeyemi, Ikoyi duplex". */
   title: string;
   /** What the job involved. */
   summary: string;

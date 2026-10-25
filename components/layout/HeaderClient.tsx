@@ -11,11 +11,12 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { MobileNav } from "./MobileNav";
 import type { ContactDetails } from "@/lib/whatsapp/whatsapp";
 import { MenuIcon } from "@/components/ui/icons";
+import { siteConfig } from "@/config/site";
 
 /**
  * Header chrome (client): opens the mobile drawer and hosts the search
- * launcher. The wordmark carries the brand name in text beside the supplied
- * monogram, so the business is legible without relying on a raster logo.
+ * launcher. The supplied lockup carries the brand name in its own letterforms,
+ * so the header does not depend on a typed approximation.
  */
 export function HeaderClient({ contact }: { contact: ContactDetails }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,19 +25,20 @@ export function HeaderClient({ contact }: { contact: ContactDetails }) {
     <>
       <header className={styles.header}>
         <div className={styles.inner}>
-          <Link href="/" className={styles.brand}>
+          <Link
+            href="/"
+            className={styles.brand}
+            aria-label={`${siteConfig.name}, home`}
+          >
             <Image
-              src="/brand/desired-homes-monogram.svg"
+              src="/brand/desired-homes-logo.svg"
               alt=""
-              width={288}
-              height={202}
-              className={styles.mark}
+              width={1764}
+              height={789}
+              className={styles.logo}
+              priority
               aria-hidden="true"
             />
-            <span className={styles.wordmark}>
-              <span className={styles.wordmarkName}>Desired Homes</span>
-              <span className={styles.wordmarkSub}>Interiors</span>
-            </span>
           </Link>
 
           <PrimaryNav className={styles.desktopNav} />

@@ -23,7 +23,7 @@ export function organizationData() {
     description: siteConfig.description,
     email: contactConfig.email,
     telephone: `+${contactConfig.whatsappNumber}`,
-    logo: absoluteUrl("/brand/logo-complete.jpg"),
+    logo: absoluteUrl("/brand/logo-complete.png"),
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",

@@ -94,7 +94,7 @@ export function SearchPanel({ onClose }: { onClose: () => void }) {
                 className={styles.all}
                 onClick={onClose}
               >
-                {copy.search.resultsLabel(results.length)} — see all results
+                See all {copy.search.resultsLabel(results.length)}
               </Link>
             </>
           )}

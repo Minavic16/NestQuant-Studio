@@ -39,8 +39,8 @@ export default async function AboutPage() {
             <p className={styles.body}>
               The work shown on this site is documented with the photography and scope supplied by
               the business. Alongside it, the collection lists the practical components that finish
-              a window — brackets, rods, rings, tiebacks, hooks and heading tape — so a room can be
-              considered from the window outwards.
+              a window, including brackets, rods, rings, tiebacks, hooks and heading tape, so a room
+              can be considered from the window outwards.
             </p>
             <p className={styles.body}>
               Desired Homes Interiors is led by Desire Nwakor, CEO &amp; Creative Director.
@@ -68,7 +68,7 @@ export default async function AboutPage() {
               />
             </div>
             <figcaption className={styles.caption}>
-              Material study — linen and gathered curtain fabric.
+              Material study of linen and gathered curtain fabric.
             </figcaption>
           </figure>
         </div>

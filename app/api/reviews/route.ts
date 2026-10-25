@@ -105,7 +105,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   return NextResponse.json({ ok: true }, { status: 201 });
 }
 
-/** Approved reviews for a subject — used by the public review list. */
+/** Approved reviews for a subject, used by the public review list. */
 export async function GET(request: Request): Promise<NextResponse> {
   const subject = new URL(request.url).searchParams.get("subject");
   const reviews = await getReviews();

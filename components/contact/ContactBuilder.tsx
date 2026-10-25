@@ -95,8 +95,8 @@ export function ContactBuilder({
       <div className={styles.head}>
         <h2 className={styles.title}>Prepare a message</h2>
         <p className={styles.intro}>
-          Fill in what you know. The message is prepared here and sent by you in WhatsApp or email
-          — nothing is submitted from this page.
+          Fill in what you know. The message is prepared here and sent by you in WhatsApp or
+          email. Nothing is submitted from this page.
         </p>
       </div>
 

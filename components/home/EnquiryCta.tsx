@@ -30,7 +30,7 @@ export async function EnquiryCta() {
             Let&rsquo;s discuss your space.
           </h2>
           <p className={styles.body}>
-            Tell us what you are working on — a window that needs dressing, a room that feels
+            Tell us what you are working on, a window that needs dressing, a room that feels
             unfinished, or a product you would like to compare. A photo and a rough idea are
             enough to begin.
           </p>

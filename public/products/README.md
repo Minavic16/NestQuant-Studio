@@ -19,7 +19,7 @@ Guidelines for new photography:
 - Keep the 4:5 proportion, or let the card frame crop it centrally.
 - Write `alt` text that describes what the picture shows; it is required for accessibility.
 - `next/image` generates responsive AVIF/WebP derivatives at request time, so a 2000px source is
-  fine — but do not upload anything above ~2400px on the long edge.
+  fine, but do not upload anything above ~2400px on the long edge.
 - Use `.jpg` for photography (or `.png` for flat artwork); both are optimised automatically.
 - If a product has no image, leave `images: []`; the site renders an honest "Image to come" slot
   (DESIGN.md §7) rather than a fake picture.

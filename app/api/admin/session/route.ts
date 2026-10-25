@@ -5,7 +5,7 @@ import { serverEnv } from "@/lib/admin/env";
 
 /**
  * Admin sign-in. A single password, verified against the scrypt hash in the
- * environment. No accounts, no password reset, no recovery flow — there is one
+ * environment. No accounts, no password reset, no recovery flow, there is one
  * administrator (ARCHITECTURE.md §10).
  */
 

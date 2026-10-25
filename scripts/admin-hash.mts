@@ -4,7 +4,7 @@
  *   npm run admin:hash -- "your-password-here"
  *
  * The password is read from the argument if given, otherwise prompted for. The
- * plaintext is never printed and never stored — only the hash is shown, so it
+ * plaintext is never printed and never stored, only the hash is shown, so it
  * can be pasted into the deployment's environment.
  *
  * Run through `test/register.mjs` so it can import the same hashing module the

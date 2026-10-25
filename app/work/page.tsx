@@ -12,7 +12,7 @@ import type { PortfolioItem } from "@/data/store/schema";
 export const metadata: Metadata = buildMetadata({
   title: "Our work",
   description:
-    "Completed interiors by Desired Homes Interiors — curtains, pelmets, accessories and window treatments photographed in real rooms.",
+    "Completed interiors by Desired Homes Interiors, including curtains, pelmets, accessories and window treatments photographed in real rooms.",
   path: "/work",
 });
 
@@ -34,7 +34,7 @@ export default async function WorkPage() {
           <h1 className={styles.heading}>Rooms finished from the window in.</h1>
           <p className={styles.intro}>
             Curtains, pelmets and window treatments from completed projects. Each project below is
-            shown with the scope the business has recorded — no invented briefs or before-and-after
+            shown with the scope the business has recorded, with no invented briefs or before-and-after
             claims.
           </p>
         </header>

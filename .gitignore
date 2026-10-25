@@ -6,7 +6,7 @@ node_modules/
 out/
 build/
 
-# Environment — contains the dashboard password hash. Never commit.
+# Environment, contains the dashboard password hash. Never commit.
 .env
 .env.local
 .env.*.local
@@ -14,7 +14,7 @@ build/
 # Local content and artefacts
 # The live catalogue, reviews, metrics and portfolio documents. They are seeded
 # on first run and edited through the dashboard, so they never belong in version
-# control — but the TypeScript that implements the store does.
+# control, but the TypeScript that implements the store does.
 data/store/*.json
 
 # Uploaded media

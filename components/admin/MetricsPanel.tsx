@@ -82,7 +82,7 @@ export function MetricsPanel() {
         />
         <Metric
           label="Average rating"
-          value={metrics.reviews.average === null ? "—" : metrics.reviews.average}
+          value={metrics.reviews.average === null ? "None yet" : metrics.reviews.average}
           hint={`${metrics.reviews.approved} published`}
         />
       </div>
@@ -129,7 +129,7 @@ export function MetricsPanel() {
       </div>
 
       <p className={styles.footnote}>
-        Collected by the website itself — no third-party analytics service (ARCHITECTURE.md §11).{" "}
+        Collected by the website itself, no third-party analytics service (ARCHITECTURE.md §11).{" "}
         <Link href="/" className={styles.link}>
           View the public site
         </Link>

@@ -6,7 +6,7 @@ import type { NextConfig } from "next";
  * `output: "standalone"` emits a self-contained server directory (used by the
  * Dockerfile) but does not include `_next/static`, which is why `next start`
  * warns about it. Locally we run `next start`, which serves the normal build
- * output — so the flag is enabled only when the build asks for it.
+ * output, so the flag is enabled only when the build asks for it.
  */
 const isContainerBuild = process.env.STANDALONE === "1";
 

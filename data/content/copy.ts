@@ -115,7 +115,7 @@ export const copy = {
     removeLabel: (name: string) => `Remove ${name}`,
     empty: {
       title: "Your enquiry list is empty.",
-      body: "Explore the collection and add the pieces you would like to know more about — or start a general conversation about a room.",
+      body: "Explore the collection and add the pieces you would like to know more about, or start a general conversation about a room.",
       cta: "Explore the collection",
     },
     countLabel: (count: number) => `${count} ${count === 1 ? "item" : "items"} in enquiry`,

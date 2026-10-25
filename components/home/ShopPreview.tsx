@@ -18,7 +18,7 @@ export function ShopPreview({ products, total }: { products: readonly Product[];
           <h2 className={styles.heading}>The components that finish a window.</h2>
           <p className={styles.intro}>
             Brackets, rods, rings, tiebacks and hooks from the collection. These are pieces to
-            enquire about — not completed interiors.
+            enquire about, not completed interiors.
           </p>
         </div>
         <Link href="/shop" className={styles.allLink}>

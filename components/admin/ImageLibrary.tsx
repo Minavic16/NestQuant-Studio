@@ -89,7 +89,7 @@ export function ImageLibrary() {
                     void navigator.clipboard
                       ?.writeText(upload.src)
                       .then(() => setStatus("Image address copied."))
-                      .catch(() => setStatus("Could not copy — you can select the address instead."));
+                      .catch(() => setStatus("Could not copy, you can select the address instead."));
                   }}
                 >
                   Copy address

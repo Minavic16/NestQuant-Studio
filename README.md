@@ -1,6 +1,6 @@
 # Desired Homes Interiors
 
-Production website for **Desired Homes Interiors** — a Nigerian interiors business selling
+Production website for **Desired Homes Interiors**, a Nigerian interiors business selling
 curtains, interior decoration accessories and window solutions.
 
 The site is a **catalogue + enquiry platform**: visitors browse the collection, add pieces to
@@ -8,7 +8,7 @@ an enquiry list, and send it to the business on WhatsApp or by email. There is n
 no payment and no customer accounts.
 
 - **Conversion path:** Discover → Browse → Inspect → Add to enquiry → Send enquiry → WhatsApp / email
-- **Also:** a gallery of the business's completed projects, and a hero led by its own interior photography
+- **Also:** a gallery of the business's completed projects, and a hero led by editorial interior photography
 - **Business contact:** [desirenwakor@gmail.com](mailto:desirenwakor@gmail.com) · WhatsApp [+234 913 879 7980](https://wa.me/2349138797980)
 - **CEO & Creative Director:** Desire Nwakor
 
@@ -16,9 +16,9 @@ no payment and no customer accounts.
 
 | Document | What it covers |
 | --- | --- |
-| [`DESIGN.md`](./DESIGN.md) | The design system: logo analysis, colour, typography, space, texture, motion, page composition, accessibility, content rules. |
+| [`DESIGN.md`](./DESIGN.md) | The design system: brand, colour, typography, space, texture, motion, page composition, accessibility, content rules. |
 | [`ARCHITECTURE.md`](./ARCHITECTURE.md) | Engineering decisions: stack, rendering, directory map, the document store, enquiry/search/contact boundaries, dashboard security, performance, testing, containerisation. |
-| [`scripts/_notes/logo-analysis.md`](./scripts/_notes/logo-analysis.md) | The measured geometry of the supplied logo and how its crops were derived. |
+| [`public/brand/README.md`](./public/brand/README.md) | The supplied logo, how its SVG was traced, the colour values and the QR code. |
 
 ## Quick start
 
@@ -46,12 +46,13 @@ npm run dev            # shop:  http://localhost:3000
 | `npm run typecheck` | `tsc --noEmit`. |
 | `npm run lint` | ESLint (flat config, Next + TypeScript presets). |
 | `npm run test` | Test suite (Node's built-in runner). |
-| `npm run brand:prepare` | Regenerate the logo crops, favicon and social card. |
 | `npm run admin:hash` | Generate the dashboard password hash. |
-| `npm run monogram:build` | Re-trace the supplied logo into the simplified SVG. |
 | `./scripts/start-local.sh` | Run the standalone build with `.env.local` loaded. |
 
-All four checks (`lint`, `typecheck`, `test`, `build`) pass on a clean checkout: **108 tests**.
+All four checks (`lint`, `typecheck`, `test`, `build`) pass on a clean checkout: **134 tests**.
+
+The brand files are committed and documented in `public/brand/README.md`. There is no
+runtime build step for the logo.
 
 ## Two web addresses
 
@@ -76,8 +77,8 @@ Sign in with the password whose hash is in `ADMIN_PASSWORD_HASH`.
 | **Products** | The catalogue at a glance; add, edit or remove products and their images, prices, SKUs and specifications. |
 | **Categories** | Rename a collection, change its web address, attach a tile image. |
 | **Reviews** | Approve or reject visitor reviews. Nothing is published until you approve it. |
-| **Contact & content** | Email address, WhatsApp number, About copy and director details — the values used across the whole site. |
-| **Our work** | The portfolio of completed projects. Each entry points at an image in your Google Drive — paste the share link, and the gallery updates. No uploading, no storage limits, and you keep the originals where they already are. |
+| **Contact & content** | Email address, WhatsApp number, About copy and director details, the values used across the whole site. |
+| **Our work** | The portfolio of completed projects. Each entry points at an image in your Google Drive, paste the share link, and the gallery updates. No uploading, no storage limits, and you keep the originals where they already are. |
 | **Images** | Upload photography for products, and copy its address into any product. |
 
 Reviews are collected by the site itself and shown only after approval, so the business never
@@ -85,8 +86,8 @@ publishes anything it has not read.
 
 ## Before going live
 
-1. **Set `NEXT_PUBLIC_SITE_URL`** to the real domain — canonical URLs, `sitemap.xml` and Open
-   Graph tags point at a placeholder origin until you do.
+1. **Set `NEXT_PUBLIC_SITE_URL`** to the real domain. Until you do, canonical URLs, `sitemap.xml`
+   and Open Graph tags use the known production origin `https://desired-homes-interiors.vercel.app`.
 2. **Set the three `ADMIN_*` values** (see Quick start). The dashboard refuses to sign anyone in
    while the password hash is missing.
 3. **Replace the seeded catalogue** in `data/store/` with real products through the dashboard.
@@ -99,7 +100,7 @@ Nothing else needs changing: contact details, navigation and copy all live in th
 
 ### Vercel
 
-Import the repository and Vercel detects Next.js automatically — no build configuration
+Import the repository and Vercel detects Next.js automatically, no build configuration
 needed. Set the environment variables from the Quick start in the project settings.
 
 **One caveat:** Vercel's filesystem is read-only, so the admin dashboard's edits, review
@@ -139,7 +140,7 @@ AVIF/WebP derivatives, so a visitor on a phone downloads a small file.
 - Only Google's image hosts are ever allowed as an image source, and anything a
   hand-edited store can't resolve is dropped rather than stored.
 - Images that are no longer shared degrade to a neutral frame, not a broken icon.
-- If you would rather host images yourself, `public/uploads/` works too — the
+- If you would rather host images yourself, `public/uploads/` works too, the
   resolver accepts both.
 
 ## Notes for developers

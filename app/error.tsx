@@ -5,7 +5,7 @@ import { copy } from "@/data/content/copy";
 import styles from "./error.module.css";
 
 /**
- * Route-level error boundary. Never shows a stack trace — only a recovery
+ * Route-level error boundary. Never shows a stack trace, only a recovery
  * action (DESIGN.md §40).
  */
 export default function Error({ reset }: { reset: () => void }) {

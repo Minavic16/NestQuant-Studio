@@ -23,12 +23,12 @@ export const siteConfig = {
   servicesLine: "Curtains • Accessories • Window Solutions",
   locale: "en_NG",
   currency: "NGN",
-  /** CEO & Creative Director — supplied by the business. */
+  /** CEO & Creative Director, supplied by the business. */
   ceo: {
     name: "Desire Nwakor",
     role: "CEO & Creative Director",
   },
   url: resolveSiteUrl(),
   description:
-    "Desired Homes Interiors — curtains, interior decoration accessories and window solutions. See completed work, browse the collection and enquire directly on WhatsApp or by email.",
+    "Desired Homes Interiors, curtains, interior decoration accessories and window solutions. See completed work, browse the collection and enquire directly on WhatsApp or by email.",
 } as const;

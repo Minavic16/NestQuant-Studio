@@ -21,7 +21,7 @@ export type MediaSlotProps = {
   alt?: string;
   /** CSS aspect ratio, e.g. "4 / 5". */
   ratio?: string;
-  /** Responsive `sizes` attribute — required so cards download the right derivative. */
+  /** Responsive `sizes` attribute, required so cards download the right derivative. */
   sizes: string;
   /** Cover fills the frame; contain never crops (used for product detail). */
   fit?: "cover" | "contain";

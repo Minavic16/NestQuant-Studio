@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:1
 
 ##############################################################################
-# Desired Homes Interiors — production image
+# Desired Homes Interiors, production image
 #
 # Multi-stage build:
-#   1. deps      — install from the lockfile
-#   2. builder   — build the Next.js application
-#   3. runner    — the smallest possible runtime image
+#   1. deps (install from the lockfile)
+#   2. builder (build the Next.js application)
+#   3. runner (the smallest possible runtime image)
 #
 # The application needs a persistent filesystem only for `data/store` and
 # `public/uploads`; both are mounted as a volume so content survives redeploys

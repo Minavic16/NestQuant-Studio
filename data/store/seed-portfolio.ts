@@ -58,7 +58,7 @@ export const seedPortfolioItems: readonly PortfolioItem[] = [
     slug: "reception-royal-gold",
     title: "Reception, royal gold and crystal",
     summary:
-      "Heavy gold drapes with a crystal chandelier over a tufted royal-purple suite — a formal reception in gold tones.",
+      "Heavy gold drapes with a crystal chandelier over a tufted royal-purple suite, a formal reception in gold tones.",
     services: ["Curtains", "Accessories"],
     image: "/portfolio/living-room-royal-gold.webp",
     order: 5,

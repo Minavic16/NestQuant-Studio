@@ -255,7 +255,7 @@ export function validatePortfolio(value: unknown): PortfolioDocument {
         const slug = asOptionalString(record.slug);
         const title = asOptionalString(record.title);
         // A portfolio item without a usable image cannot be shown, so it is
-        // not stored — the admin is told the image was rejected.
+        // not stored, the admin is told the image was rejected.
         const image = normaliseImageSource(record.image);
         if (!slug || !title || !image) return [];
 
@@ -316,7 +316,7 @@ async function fileExists(file: string): Promise<boolean> {
 }
 
 /* ------------------------------------------------------------------ *
- * Public read API — the shape the UI consumes
+ * Public read API, the shape the UI consumes
  * ------------------------------------------------------------------ */
 
 export async function getCatalogue(): Promise<CatalogueDocument> {

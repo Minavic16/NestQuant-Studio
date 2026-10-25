@@ -10,7 +10,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = buildMetadata({
   title: "Categories",
   description:
-    "Explore curtains, accessories and window solutions from Desired Homes Interiors — project work, listed components and a direct way to ask.",
+    "Explore curtains, accessories and window solutions from Desired Homes Interiors, with project work, listed components and a direct way to ask.",
   path: "/categories",
 });
 

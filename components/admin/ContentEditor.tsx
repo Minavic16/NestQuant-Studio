@@ -214,7 +214,7 @@ export function ContentEditor({
                 }))
               }
             />
-            <span className={styles.hint}>Digits only, including the country code — e.g. 2349138797980.</span>
+            <span className={styles.hint}>Digits only, including the country code, e.g. 2349138797980.</span>
           </label>
         </div>
       </section>
@@ -564,7 +564,7 @@ function ProductFields({
           onChange({
             images: sources.map((src, index) => ({
               src,
-                alt: product.images[index]?.alt || `${product.name || "Product"} — image ${index + 1}`,
+                alt: product.images[index]?.alt || `${product.name || "Product"}, image ${index + 1}`,
               })),
           });
         }}

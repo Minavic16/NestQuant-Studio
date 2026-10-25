@@ -2,7 +2,7 @@ import type { EnquiryEntry } from "@/data/types";
 import { buildEnquiryMessage, type ContactDetails } from "@/lib/whatsapp/whatsapp";
 
 /**
- * Email enquiries via `mailto:` — no backend mail server (ARCHITECTURE.md §7).
+ * Email enquiries via `mailto:`, no backend mail server (ARCHITECTURE.md §7).
  */
 
 export const ENQUIRY_EMAIL_SUBJECT = "Product Enquiry - Desired Homes Interiors";

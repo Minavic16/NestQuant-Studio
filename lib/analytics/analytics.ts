@@ -2,7 +2,7 @@
  * Analytics abstraction (ARCHITECTURE.md §14).
  *
  * No vendor is installed. The call sites already use these functions, so adding
- * a provider later is a single implementation — no component changes, and the
+ * a provider later is a single implementation, no component changes, and the
  * UI never depends on a particular vendor.
  */
 

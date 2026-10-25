@@ -5,7 +5,7 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 
 /**
  * Editorial hero: the photograph carries the room, the copy explains the
- * business. The image is inspiration, not a claim about completed work — the
+ * business. The image is inspiration, not a claim about completed work, the
  * selected work section immediately below is the portfolio.
  *
  * The image is the LCP element and the only preloaded photograph on the page.
@@ -33,7 +33,7 @@ export function Hero() {
           </h1>
 
           <p className={styles.lede}>
-            Explore curtains, accessories and window solutions from Desired Homes Interiors — or
+            Explore curtains, accessories and window solutions from Desired Homes Interiors, or
             tell us about the room you have in mind.
           </p>
 

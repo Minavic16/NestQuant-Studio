@@ -48,7 +48,7 @@ export function GettingStarted() {
               <h3 className={styles.itemTitle}>Approximate measurements, if you have them</h3>
               <p className={styles.itemBody}>
                 Width and drop for a window, or the item name for a product. Rough figures are
-                fine — they are a starting point, not a commitment.
+                fine, and they are a starting point, not a commitment.
               </p>
             </div>
           </li>
@@ -69,7 +69,7 @@ export function GettingStarted() {
 
       <p className={styles.note}>
         The conversation continues on WhatsApp or by email. You will review and send your own
-        message — nothing is submitted automatically from this site.
+        message. Nothing is submitted automatically from this site.
       </p>
     </Section>
   );

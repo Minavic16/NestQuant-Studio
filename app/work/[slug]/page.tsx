@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: WorkDetailProps): Promise<Met
 
   return buildMetadata({
     title: item.title,
-    description: item.summary || `${item.title} — a completed project by ${siteConfig.name}.`,
+    description: item.summary || `${item.title}, a completed project by ${siteConfig.name}.`,
     path: `/work/${item.slug}`,
   });
 }

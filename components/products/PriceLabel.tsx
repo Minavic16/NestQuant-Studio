@@ -5,7 +5,7 @@ import type { Product } from "@/data/types";
 
 /**
  * A price is shown only when the business has supplied one. Otherwise the card
- * says "Price on request" — never an invented figure (DESIGN.md §11).
+ * says "Price on request", never an invented figure (DESIGN.md §11).
  *
  * When a higher pre-discount price is supplied, it is shown struck through next
  * to the current price, followed by the computed percentage saved.

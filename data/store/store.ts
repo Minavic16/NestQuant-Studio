@@ -9,9 +9,9 @@ import { fileURLToPath } from "node:url";
  * without a database, and so a container can persist it with a single volume.
  *
  * Properties that matter:
- *   • atomic writes (temp file + rename) — a crash never leaves a half document
- *   • mtime-keyed cache — edits are picked up without restarting the process
- *   • typed readers with validation — a hand-edited file fails loudly, not silently
+ *   • atomic writes (temp file + rename), a crash never leaves a half document
+ *   • mtime-keyed cache, edits are picked up without restarting the process
+ *   • typed readers with validation, a hand-edited file fails loudly, not silently
  */
 
 const STORE_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "store");

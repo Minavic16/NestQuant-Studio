@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
  * Keeps SEO consistent across routes (ARCHITECTURE.md §9).
  */
 
-const DEFAULT_TITLE = `${siteConfig.name} — Curtains, Accessories & Window Solutions`;
+const DEFAULT_TITLE = `${siteConfig.name}, Curtains, Accessories & Window Solutions`;
 
 export function buildMetadata({
   title,
@@ -20,7 +20,7 @@ export function buildMetadata({
   path: string;
 }): Metadata {
   const url = `${siteConfig.url}${path}`;
-  const resolvedTitle = title ? `${title} — ${siteConfig.name}` : DEFAULT_TITLE;
+  const resolvedTitle = title ? `${title}, ${siteConfig.name}` : DEFAULT_TITLE;
 
   return {
     ...(title ? { title } : {}),
@@ -38,7 +38,7 @@ export function buildMetadata({
           url: "/opengraph-image.jpg",
           width: 1200,
           height: 630,
-          alt: `${siteConfig.name} — curtains, accessories and window solutions`,
+          alt: `${siteConfig.name}, curtains, accessories and window solutions`,
         },
       ],
     },

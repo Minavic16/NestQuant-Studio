@@ -24,7 +24,7 @@ export function BrandStatement() {
             />
           </div>
           <figcaption className={styles.caption}>
-            Material study — linen and gathered curtain fabric.
+            Material study of linen and gathered curtain fabric.
           </figcaption>
         </figure>
 

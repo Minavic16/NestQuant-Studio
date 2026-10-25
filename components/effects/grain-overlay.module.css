@@ -3,7 +3,7 @@
    --------------------------------------------------------------------------
    A very fine paper grain drawn as an inline SVG fractal-noise tile. This is a
    texture, not a gradient: one 200×200 tile repeated across a fixed, inert
-   overlay at 5% opacity — one data URI, no network request (DESIGN.md §7).
+   overlay at 5% opacity, one data URI, no network request (DESIGN.md §7).
    ========================================================================== */
 
 .grain {
@@ -19,7 +19,7 @@
 
 /*
  * `multiply` means the grain darkens light paper and leaves the black bands
- * untouched — the texture belongs to the paper, not to the ink, with no
+ * untouched, the texture belongs to the paper, not to the ink, with no
  * per-region rules needed.
  */
 

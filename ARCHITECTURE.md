@@ -1,4 +1,4 @@
-# ARCHITECTURE.md — Desired Homes Interiors
+# ARCHITECTURE.md, Desired Homes Interiors
 
 How the site is built, why, and where things change. Written for a developer who joins the
 project later: every "where does X live" question is answered once, here.
@@ -12,15 +12,13 @@ project later: every "where does X live" question is answered once, here.
 | Next.js (App Router) | 16.4 | Static-first rendering, file-based routes, built-in image optimisation, metadata/sitemap/robots APIs. No bespoke SSR to maintain. |
 | React | 19.3 | Server Components keep the shipped JS tiny; only interactive islands are client-side. |
 | TypeScript | 5.9.3 | Strict mode, `noUncheckedIndexedAccess`. Pinned to 5.x for toolchain compatibility (Next's type generation and the ESLint toolchain). |
-| CSS Modules + design tokens | — | No utility framework, no runtime CSS-in-JS, no component library. Styles are plain CSS with custom properties; zero style runtime cost. |
-| Node test runner + jsdom + Testing Library | — | No test-framework dependency; runs anywhere Node runs. |
-| sharp (WASM build on this host) | 0.35 | Image optimisation for `next/image` and the brand-asset pipeline. |
-| GSAP (ScrollTrigger) | 3.15 | Scroll-linked reveals, registered once in `MotionProvider`. |
-| Lenis | 1.3 | Smooth scrolling, driven by GSAP's ticker. |
+| CSS Modules + design tokens | None | No utility framework, no runtime CSS-in-JS, no component library. Styles are plain CSS with custom properties; zero style runtime cost. |
+| Node test runner + jsdom + Testing Library | None | No test-framework dependency; runs anywhere Node runs. |
+| sharp (WASM build on this host) | 0.35 | Image optimisation for `next/image`. |
 
 **V2 additions** (requested by the business): a document store, an admin dashboard on a
 separate origin, moderated reviews and first-party analytics. These are the items the V1
-plan listed as "future evolution", built now because they were asked for — and each lands in
+plan listed as "future evolution", built now because they were asked for, and each lands in
 the module it was planned to land in (see §16).
 
 Deliberately **not** used: Tailwind, a component library, a state-manager library, a data
@@ -46,7 +44,7 @@ database and no external API in V1, which removes whole classes of latency and f
 | `/admin/*` | dynamic (reads the live store) | dashboard, session-guarded |
 | `/api/admin/*` | dynamic | authenticated content, reviews, metrics, uploads |
 | `/api/metrics`, `/api/reviews` | dynamic | public ingestion, rate-limited |
-| `not-found`, `error` | static | — |
+| `not-found`, `error` | static | n/a |
 
 Because the catalogue is a typed local module, `getProducts()` is synchronous and the same
 code runs on the server (HTML) and the client (filtering). When the catalogue grows past a few
@@ -63,8 +61,8 @@ app/                     Routes (App Router). Each folder is a route; page.tsx r
   shop/…, categories/…   Catalogue routes.
   about/ contact/ enquiry/ …
   sitemap.ts robots.ts   SEO artefacts.
-  icon.png               Favicon generated from the monogram.
-  opengraph-image.jpg    Generated social card (logo on black).
+  icon.png               512px app icon generated from the monogram.
+  opengraph-image.jpg    1200x630 social card (logo on the dark field).
 
 components/
   layout/                Header, Footer, MobileNav, Container, SectionHeading, SkipLink.
@@ -86,7 +84,7 @@ data/
   types.ts               Product / Category / ProductImage / ProductAttribute types.
   categories.ts          The three categories (id, name, slug, blurb-free).
   products/index.ts      Catalogue re-export (swap this file to change the data source).
-  products/seed-catalogue.ts   SAMPLE data, clearly marked — replace with real products.
+  products/seed-catalogue.ts   SAMPLE data, clearly marked, replace with real products.
   content/about.ts       Editable content fields (empty until supplied).
 
 lib/
@@ -103,14 +101,13 @@ lib/
   analytics/analytics.ts  No-op analytics abstraction (tracking call sites only).
   seo/metadata.ts        Shared metadata builders (title, canonical, Open Graph).
 
-public/brand/            Logo crops (generated — see scripts/prepare-brand-assets.mjs).
+public/brand/            Logo SVGs, app and social rasters, QR code, brand notes.
 public/products/         Drop real product photography here (referenced by data files).
+public/portfolio/        Completed project photography, seeded from data/store/seed-portfolio.ts.
 public/editorial/        Drop interior photography here (hero, about, category tiles).
 
 styles/tokens.css        Design tokens: colour, type, space, radii, borders, motion, z.
 styles/base.css          Reset, element defaults, focus, reduced-motion, print.
-scripts/prepare-brand-assets.mjs   Regenerates logo crops + favicon from the original.
-scripts/_notes/logo-analysis.md    Measured crop geometry.
 ```
 
 Rule: **business facts live in `config/`, content lives in `data/`, behaviour lives in
@@ -151,7 +148,7 @@ interface ProductRepository {
 }
 ```
 
-The UI depends on the interface, never on the module — swapping in a CMS or a database means
+The UI depends on the interface, never on the module, swapping in a CMS or a database means
 providing a new implementation, not editing components.
 
 ### 4a. The document store (V2)
@@ -200,15 +197,15 @@ EnquiryButton ──dispatch──▶ EnquiryStore ──persist──▶ localS
                                   └──subscribe──▶ useSyncExternalStore ──▶ UI
 ```
 
-- `lib/enquiry/reducer.ts` — pure reducer, no React, no DOM. Fully unit-tested.
-- `lib/enquiry/store.ts` — tiny external store (`subscribe` / `getSnapshot` / `getServerSnapshot`).
+- `lib/enquiry/reducer.ts`, pure reducer, no React, no DOM. Fully unit-tested.
+- `lib/enquiry/store.ts`, tiny external store (`subscribe` / `getSnapshot` / `getServerSnapshot`).
   `getServerSnapshot` returns a constant empty state, so server HTML and the first client
   render always agree (no hydration mismatch) and the header renders identically for everyone.
-- `lib/enquiry/storage.ts` — the only module that touches `localStorage`. Wrapped in
+- `lib/enquiry/storage.ts`, the only module that touches `localStorage`. Wrapped in
   try/catch (private mode, disabled storage, quota) and validates every field on read: slug
   must match `^[a-z0-9-]+$`, quantity an integer 1–99, at most 50 items. Corrupt data is
   discarded, never trusted.
-- `components/enquiry/EnquiryProvider.tsx` — hydrates the store once on mount and provides
+- `components/enquiry/EnquiryProvider.tsx`, hydrates the store once on mount and provides
   the hook; `EnquiryView` renders the list, quantities, removal and the two send actions.
 
 Persistence key is versioned (`desired-homes:enquiry:v1`) so a future schema change can
@@ -232,7 +229,7 @@ implementation swap. Empty query returns everything; no match returns `[]` and t
 "No products found."
 
 The header search panel is code-split (`next/dynamic`) and imports the index only when the
-user opens search — visitors who never search never download it.
+user opens search, visitors who never search never download it.
 
 ---
 
@@ -263,12 +260,13 @@ export const contactConfig = {
 `next/image` everywhere with explicit `width`/`height` and CSS `aspect-ratio` boxes, so
 nothing shifts. Formats: AVIF then WebP. `sizes` are declared per usage so a 300px mobile card
 never downloads a 2000px file. The first gallery image is `priority` (eager, high
-fetchpriority); everything below the fold is lazy. The logo crops are pre-generated at the
-sizes actually used (7–50 kB total for the whole brand) and never re-encoded on the fly unless
-a responsive derivative is requested.
+fetchpriority); everything below the fold is lazy. The brand lockups are committed SVGs,
+served as-is (about 24 kB for the full lockup and 2 kB for the favicon), so they are never
+re-encoded or resized on the fly.
 
-Real photography is dropped into `public/products/<slug>/…` or `public/editorial/…` and
-referenced from the data files; `MediaSlot` renders the honest placeholder until then.
+Real photography is dropped into `public/products/<slug>/…`, `public/portfolio/…` or
+`public/editorial/…` and referenced from the data files; `MediaSlot` renders the honest
+placeholder until then.
 
 ---
 
@@ -318,7 +316,7 @@ dashboard is served at `/`; on any other host `/admin` is not addressable at all
 development `http://admin.localhost:3000` works with no DNS setup.
 
 - **Authentication**: one admin password (`ADMIN_PASSWORD_HASH`, a scrypt hash generated by
-  `npm run admin:hash`). Sessions are stateless signed cookies — httpOnly, `SameSite=strict`,
+  `npm run admin:hash`). Sessions are stateless signed cookies, httpOnly, `SameSite=strict`,
   12 hours, verified with a constant-time comparison. There are no accounts, because there is
   one administrator.
 - **Defence in depth**: `proxy.ts` redirects unauthenticated dashboard requests to the sign-in
@@ -326,7 +324,7 @@ development `http://admin.localhost:3000` works with no DNS setup.
   checks the session through `lib/admin/guard.ts`. A mistake in one layer cannot expose the
   back office, and API routes are protected regardless of which host they arrive on.
 - **Uploads** are validated by magic bytes (never by the claimed extension), capped at 6 MB,
-  restricted to JPEG/PNG/WebP — SVG is rejected because it can carry script — and stored under
+  restricted to JPEG/PNG/WebP, SVG is rejected because it can carry script, and stored under
   a server-generated name, so nothing a client sends influences a path.
 - The dashboard sets `robots: { index: false }` on every page.
 
@@ -341,20 +339,20 @@ Measured on the production build (`npm run build && npm run start`, gzip, modern
 | First-load JS, home | < 200 kB | **~153 kB** (framework ~136 kB + app code ~17 kB) |
 | Legacy-browser polyfills | modern browsers skip them | 39 kB, loaded with `nomodule` only |
 | Route JS: `/shop`, `/shop/[slug]`, `/enquiry` | < 40 kB each | 12–17 kB each |
-| Images above the fold | logo only | 7–50 kB total brand assets |
+| Images above the fold | one hero photograph, plus the SVG logo | responsive AVIF/WebP hero; 23 kB logo |
 | Web fonts | 0 requests | 0 |
 | Third-party scripts | 0 | 0 |
 
 Only the framework's React + App Router runtime is large, and it is shared and cached. The
 application itself is ~17 kB gzipped on the home page. (`next build` runs on Webpack in this
-project — see §17 — which adds a ~2 kB runtime chunk; a Turbopack build would not
+project, see §17, which adds a ~2 kB runtime chunk; a Turbopack build would not
 have it.)
 
 How the rest of the budget is met: everything is static HTML; only the header, search launcher,
 shop filter, enquiry island and product enquiry button are client components; the search panel and
 enquiry view are code-split; no route preloads another route's assets; images are sized and lazy;
 no animation library, no icon font, no CSS framework; and no route ships the catalogue into a
-shared chunk — verified: the home page's JavaScript contains no product data.
+shared chunk, verified: the home page's JavaScript contains no product data.
 
 "The initial page must not download the entire catalogue" is enforced structurally: product
 data is a static module that is only imported by the routes and islands that need it, and the
@@ -397,7 +395,7 @@ Tests are co-located as `*.test.ts` next to the code they cover.
 No analytics vendor is installed. `lib/analytics/analytics.ts` exposes
 `trackProductView()`, `trackEnquiryAdded()`, `trackWhatsAppClick()`, `trackEmailClick()` as a
 no-op provider behind an interface, and the call sites already use it. Adding a provider
-later means implementing one interface — no component changes.
+later means implementing one interface, no component changes.
 
 ### Visitor metrics (V2)
 
@@ -437,9 +435,10 @@ node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
 npm run admin:hash -- "the-password-you-choose"
 ```
 
-Until `NEXT_PUBLIC_SITE_URL` is set, metadata falls back to a placeholder origin that must be
-replaced before launch (see `config/site.ts`). The dashboard refuses to sign anyone in while
-`ADMIN_PASSWORD_HASH` is unset — it fails closed rather than open.
+Until `NEXT_PUBLIC_SITE_URL` is set, metadata falls back to the known production origin
+`https://desired-homes-interiors.vercel.app` (see `config/site.ts`). Set it explicitly before
+launch if the domain differs. The dashboard refuses to sign anyone in while
+`ADMIN_PASSWORD_HASH` is unset, it fails closed rather than open.
 
 ---
 
@@ -468,7 +467,7 @@ Each row is a single-module change: the UI never learns where data comes from.
 ### Where V2 differs from the V1 brief
 
 The original brief (V1) explicitly deferred an admin dashboard, analytics, reviews, accounts and
-payments. The business then asked for the first three, so they exist now — but each one is
+payments. The business then asked for the first three, so they exist now, but each one is
 built at the boundary V1 specified, not bolted on:
 
 - **The document store** replaces the typed modules *behind* the same repository functions, so
@@ -476,10 +475,11 @@ built at the boundary V1 specified, not bolted on:
 - **Reviews are moderated by default.** The brief forbade inventing social proof; publishing
   whatever a stranger types would be worse. Submissions queue for approval and only approved
   reviews render, so the site can never display a review the business has not read.
-- **Motion is still restrained.** GSAP and Lenis were added for polish, and both are switched off
-  entirely under `prefers-reduced-motion`; the reveals start from JavaScript (`gsap.set`), never
-  from CSS, so a failed script leaves content visible rather than invisible. The surface texture
-  is an SVG noise tile, not a gradient, so the "no gradients" rule still holds.
+- **Motion is still restrained.** There is no animation library: interaction feedback is CSS
+  transitions on colour, opacity and a 6px translate, all collapsed to 0.01ms under
+  `prefers-reduced-motion`. The dashboard's metric counter uses one `requestAnimationFrame`
+  loop, renders the final value first and skips the animation under reduced motion. The
+  surface texture is an SVG noise tile, not a gradient, so the "no gradients" rule still holds.
 - **react-bits** is *not* a dependency: the npm package of that name is an unrelated, abandoned
   library that pulls in React 16-era dependencies. The effects it is known for (texture, counters,
   reveals) are implemented directly in `components/effects/` instead.
@@ -513,12 +513,11 @@ built at the boundary V1 specified, not bolted on:
 
 ## 18. Brand assets and media
 
-`scripts/build-monogram-svg.mjs` (run with `npm run monogram:build`) traces the
-supplied logo into the simplified SVG. It reads the raster, measures its ink runs
-and emits the exact silhouette as merged horizontal bands — so the D's counter
-and the H's colonnade gaps are reproduced rather than redrawn, and no shape is
-invented. The output is committed; the script exists so the asset can be
-regenerated or verified against the original at any time.
+`public/brand/README.md` records the supplied artwork and the trace settings.
+The lockup and monogram are committed as SVG, so the header, footer and drawer
+use the client's own letterforms at any size. The flat SVG is the working asset;
+the 1200x1200 complete square is used for structured data, and the QR code points
+at the production origin.
 
 Media validation (`lib/media/drive.ts`) accepts four sources and rejects
 everything else:
@@ -538,7 +537,7 @@ the directories the application owns.
 
 The Dockerfile is in `deploy/`, not the repository root. That is deliberate: Vercel switches to
 its container builder whenever it finds a root `Dockerfile`, and its containers have a read-only
-filesystem, which this application cannot use — it writes catalogue documents, reviews and
+filesystem, which this application cannot use, it writes catalogue documents, reviews and
 analytics to `data/store/`. Keeping the Dockerfile out of the root lets Vercel use its native
 Next.js support, while the container path remains available for a VPS:
 
@@ -560,8 +559,6 @@ npm run start           # serve the production build
 npm run typecheck       # tsc --noEmit
 npm run lint            # eslint
 npm run test            # Node test runner
-npm run brand:prepare    # regenerate logo crops + favicon from the supplied original
-npm run monogram:build   # re-trace the original logo into the simplified SVG
 npm run admin:hash      # generate ADMIN_PASSWORD_HASH for the dashboard
 ./scripts/start-local.sh  # run the standalone build with .env.local loaded
 

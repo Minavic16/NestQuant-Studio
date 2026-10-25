@@ -7,7 +7,7 @@ import { copy } from "@/data/content/copy";
 /**
  * Route header: tracked eyebrow label, headline, optional standfirst.
  *
- * Interior pages carry a quiet way back — the header logo alone was felt to be
+ * Interior pages carry a quiet way back, the header logo alone was felt to be
  * too easy to miss, so every page header leads with an explicit link home
  * unless the page supplies its own destination (DESIGN.md §8).
  */

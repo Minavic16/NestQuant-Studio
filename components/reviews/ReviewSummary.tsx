@@ -3,7 +3,7 @@ import { Stars } from "./Stars";
 
 /**
  * Rating summary for a product (or the business), shown above the review list.
- * Nothing is rendered when there are no approved reviews — the site never
+ * Nothing is rendered when there are no approved reviews, the site never
  * implies social proof that does not exist (DESIGN.md §11).
  */
 

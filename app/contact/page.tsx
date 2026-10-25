@@ -40,7 +40,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           <h1 className={styles.heading}>Let&rsquo;s discuss your space.</h1>
           <p className={styles.intro}>
             Tell us about the room, the window or the piece you are considering. A photo and a
-            rough idea are enough to start — you do not need a complete brief.
+            rough idea are enough to start, and you do not need a complete brief.
           </p>
 
           <div className={styles.channels}>
@@ -100,7 +100,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           />
         </div>
         <figcaption className={styles.editorialCaption}>
-          Editorial image — a styled room for reference, not a completed project.
+          Editorial image of a styled room for reference, not a completed project.
         </figcaption>
       </figure>
     </Section>

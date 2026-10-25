@@ -26,7 +26,7 @@ describe("MobileNav", () => {
   it("shows the business name and the supplied contact details", () => {
     render(h(MobileNav, { onClose: () => {}, contact }));
 
-    assert.ok(screen.getByText("Desired Homes"));
+    assert.ok(screen.getByRole("link", { name: "Desired Homes Interiors, home" }));
     assert.equal(
       screen.getByRole("link", { name: "desirenwakor@gmail.com" }).getAttribute("href"),
       "mailto:desirenwakor@gmail.com",

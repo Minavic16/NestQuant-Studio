@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Counts up to a value the first time it scrolls into view.
+ * Counts up to a value when it mounts.
  *
  * Falls back to the final value immediately when the visitor prefers reduced
- * motion, or when the element never becomes visible — a number is never hidden
- * behind an animation (DESIGN.md §6).
+ * motion, or when the value is zero, a number is never hidden behind an
+ * animation (DESIGN.md §6, §15).
  */
 export function Counter({
   value,

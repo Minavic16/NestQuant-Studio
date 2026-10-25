@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     description:
       product.shortDescription ??
       product.description ??
-      `${product.name} — ${getCategoryById(product.category)?.name ?? ""} from ${siteConfig.name}.`,
+      `${product.name}, ${getCategoryById(product.category)?.name ?? ""} from ${siteConfig.name}.`,
     path: `/shop/${slug}`,
   });
 }

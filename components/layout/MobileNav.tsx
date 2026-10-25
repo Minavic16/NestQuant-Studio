@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { createPortal } from "react-dom";
 import styles from "./mobile-nav.module.css";
 import { EnquiryLink } from "@/components/enquiry/EnquiryLink";
@@ -10,11 +11,12 @@ import { useDialogBehaviour } from "@/lib/hooks/use-dialog-behaviour";
 import { formatWhatsAppNumber, whatsappChatUrl } from "@/lib/whatsapp/whatsapp";
 import type { ContactDetails } from "@/lib/whatsapp/whatsapp";
 import { CloseIcon } from "@/components/ui/icons";
+import { siteConfig } from "@/config/site";
 
 /**
  * Mobile navigation drawer: a real dialog with focus handling, Escape to close,
- * background scroll lock and focus restoration. The wordmark is set in text so
- * the business name stays legible without a raster logo panel.
+ * background scroll lock and focus restoration. The supplied light lockup keeps
+ * the brand legible on the dark panel.
  */
 export function MobileNav({
   onClose,
@@ -38,9 +40,20 @@ export function MobileNav({
         data-testid="mobile-nav"
       >
         <div className={styles.head}>
-          <Link href="/" className={styles.brand} onClick={onClose}>
-            <span className={styles.wordmark}>Desired Homes</span>
-            <span className={styles.wordmarkSub}>Interiors</span>
+          <Link
+            href="/"
+            className={styles.brand}
+            onClick={onClose}
+            aria-label={`${siteConfig.name}, home`}
+          >
+            <Image
+              src="/brand/desired-homes-logo-light.svg"
+              alt=""
+              width={1764}
+              height={789}
+              className={styles.logo}
+              aria-hidden="true"
+            />
           </Link>
           <button
             type="button"

@@ -141,7 +141,7 @@ export function PortfolioEditor({ initialItems }: { initialItems: Item[] }) {
             access to <strong>“Anyone with the link”</strong>.
           </li>
           <li>
-            Copy the link and paste it below — or just paste the file id from the link.
+            Copy the link and paste it below, or just paste the file id from the link.
           </li>
         </ol>
         <p className={styles.noticeNote}>
@@ -214,7 +214,7 @@ export function PortfolioEditor({ initialItems }: { initialItems: Item[] }) {
                 />
                 <span className={styles.hint}>
                   {preview?.src
-                    ? "Recognised — the preview below is what visitors will see."
+                    ? "Recognised, the preview below is what visitors will see."
                     : "Not recognised yet. Paste a Drive share link, or the file id from one."}
                 </span>
               </label>

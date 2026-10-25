@@ -40,7 +40,7 @@ export const categoryProfiles: Record<CategoryId, CategoryProfile> = {
     short:
       "Full-height drapes, pelmets and layered window treatments appear throughout the work shown here. Tell us about the room you have in mind.",
     intro:
-      "Curtains run through the projects shown on this site — from full-height gold drapes to layered sheers and formal pelmets. The online catalogue does not list ready-made curtains, so a curtain enquiry starts with a conversation about the room, the window and the finish you are considering.",
+      "Curtains run through the projects shown on this site, from full-height gold drapes to layered sheers and formal pelmets. The online catalogue does not list ready-made curtains, so a curtain enquiry starts with a conversation about the room, the window and the finish you are considering.",
     actionLabel: "Discuss curtains",
     imagePosition: "center 42%",
   },
@@ -49,7 +49,7 @@ export const categoryProfiles: Record<CategoryId, CategoryProfile> = {
     image: "/editorial/accessories.webp",
     alt: "Close-up of white curtain fabric gathered with a decorative tieback",
     short:
-      "Brackets, rods, rings, tiebacks and hooks — the components that finish a window and help curtains hang properly.",
+      "Brackets, rods, rings, tiebacks and hooks are the components that finish a window and help curtains hang properly.",
     intro:
       "The accessories collection covers the working details around a window: brackets, rods, rings, tiebacks, hooks and heading tape. Browse the listed pieces, compare prices, and add anything you would like to ask about to your enquiry list.",
     actionLabel: "Shop accessories",

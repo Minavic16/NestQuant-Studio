@@ -3,8 +3,8 @@ import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Dashboard — Desired Homes Interiors",
-    template: "%s — Dashboard",
+    default: "Dashboard, Desired Homes Interiors",
+    template: "%s, Dashboard",
   },
   robots: { index: false, follow: false },
 };

@@ -12,7 +12,7 @@ export const contactConfig = {
 } as const;
 
 /**
- * Human-readable rendering of the same number — formatting only, so the digits
+ * Human-readable rendering of the same number, formatting only, so the digits
  * can never drift from the configured value.
  */
 export const whatsappDisplayNumber = formatWhatsAppNumber(contactConfig.whatsappNumber);

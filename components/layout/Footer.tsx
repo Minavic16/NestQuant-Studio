@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./footer.module.css";
 import { resolveContact } from "@/lib/contact/resolve";
 import { formatWhatsAppNumber, whatsappChatUrl } from "@/lib/whatsapp/whatsapp";
@@ -15,7 +16,20 @@ export async function Footer() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <p className={styles.wordmark}>{siteConfig.name}</p>
+            <Link
+              href="/"
+              className={styles.logoLink}
+              aria-label={`${siteConfig.name}, home`}
+            >
+              <Image
+                src="/brand/desired-homes-logo-light.svg"
+                alt=""
+                width={1764}
+                height={789}
+                className={styles.logo}
+                aria-hidden="true"
+              />
+            </Link>
             <p className={styles.services}>{siteConfig.servicesLine}</p>
             <p className={styles.note}>
               A catalogue and project enquiry service for curtains, accessories and window

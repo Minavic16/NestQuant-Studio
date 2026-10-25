@@ -26,7 +26,7 @@ export function isValidQuantity(value: unknown): value is number {
 
 /**
  * Validate and de-duplicate a persisted enquiry list. Any untrustworthy value
- * results in an empty list rather than a partially-trusted one — the worst case
+ * results in an empty list rather than a partially-trusted one, the worst case
  * is an empty enquiry, never corrupt state.
  */
 export function parseEnquiryItems(value: unknown): EnquiryItem[] {

@@ -2,7 +2,7 @@
   "name": "desired-homes-interiors",
   "version": "1.0.0",
   "private": true,
-  "description": "Desired Homes Interiors — production catalogue and enquiry website.",
+  "description": "Desired Homes Interiors, production catalogue and enquiry website.",
   "engines": {
     "node": ">=20.9.0"
   },
@@ -13,10 +13,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "node --import ./test/register.mjs --test \"**/*.test.ts\"",
-    "brand:prepare": "node scripts/prepare-brand-assets.mjs",
     "test:watch": "node --import ./test/register.mjs --test --watch \"**/*.test.ts\"",
-    "admin:hash": "node --import ./test/register.mjs scripts/admin-hash.mts",
-    "monogram:build": "node --import ./test/register.mjs scripts/build-monogram-svg.mjs"
+    "admin:hash": "node --import ./test/register.mjs scripts/admin-hash.mts"
   },
   "dependencies": {
     "next": "16.4.3",

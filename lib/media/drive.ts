@@ -10,7 +10,7 @@
  *
  * All three resolve to the same `lh3.googleusercontent.com` URL, which is the
  * only host actually served in an `<img>`. Google requires the file to be
- * shared as "anyone with the link" — that is the business's decision, not the
+ * shared as "anyone with the link", that is the business's decision, not the
  * site's, and the admin UI says so.
  *
  * The resolved URL is always validated against an allow-list of hosts before it
@@ -88,7 +88,7 @@ export function normaliseImageSource(value: unknown): string | null {
 
   // Local media stays local. `portfolio/` holds the committed past-work
   // photography, so it is allowed alongside the dashboard's uploads. Each
-  // segment must be a plain filename — no `..`, no `%`, no spaces — so a path
+  // segment must be a plain filename, no `..`, no `%`, no spaces, so a path
   // can be nested (`/products/<slug>/01.jpg`) but can never climb out.
   if (
     trimmed.startsWith("/uploads/") ||

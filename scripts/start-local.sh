@@ -11,13 +11,13 @@
 #
 # `HOSTNAME=::` makes Node listen on the IPv6 wildcard, which on a dual-stack
 # host also accepts IPv4 connections. This matters because `admin.localhost`
-# resolves to `::1` before `127.0.0.1` on many systems — binding IPv4 only
+# resolves to `::1` before `127.0.0.1` on many systems, binding IPv4 only
 # would make the dashboard unreachable even though the shop works.
 set -eo pipefail
 cd "$(dirname "$0")/.."
 
 if [ ! -f .env.local ]; then
-  echo "Missing .env.local — copy .env.example and fill it in." >&2
+  echo "Missing .env.local, copy .env.example and fill it in." >&2
   exit 1
 fi
 

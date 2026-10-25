@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Base — reset, element defaults and global utilities.
+   Base, reset, element defaults and global utilities.
    Plain CSS, no framework, no runtime.
    ========================================================================== */
 
@@ -183,7 +183,7 @@ b {
   color: var(--color-ivory);
 }
 
-/* Inline text link — underlined, because it must not be mistaken for a button. */
+/* Inline text link, underlined, because it must not be mistaken for a button. */
 .link-underline {
   text-decoration: underline;
   text-decoration-thickness: 1px;

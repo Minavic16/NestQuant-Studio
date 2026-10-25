@@ -11,7 +11,7 @@ export type CategoryId = (typeof CATEGORY_IDS)[number];
 export type ProductImage = {
   /** Path under `public/` (e.g. `/products/linen-sheer-curtain/01.jpg`) or an https URL. */
   src: string;
-  /** Meaningful description for screen readers. Required — never decorative filler. */
+  /** Meaningful description for screen readers. Required, never decorative filler. */
   alt: string;
   /** Intrinsic pixel size when known; used to reserve space and avoid layout shift. */
   width?: number;

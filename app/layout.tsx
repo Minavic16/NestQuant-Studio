@@ -12,8 +12,8 @@ import styles from "./layout.module.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Curtains, Accessories & Window Solutions`,
-    template: `%s — ${siteConfig.name}`,
+    default: `${siteConfig.name}, Curtains, Accessories & Window Solutions`,
+    template: `%s, ${siteConfig.name}`,
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: siteConfig.name,
     locale: siteConfig.locale,
-    title: `${siteConfig.name} — Curtains, Accessories & Window Solutions`,
+    title: `${siteConfig.name}, Curtains, Accessories & Window Solutions`,
     description: siteConfig.description,
     url: siteConfig.url,
     images: [
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
         url: "/opengraph-image.jpg",
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} — curtains, accessories and window solutions`,
+        alt: `${siteConfig.name}, curtains, accessories and window solutions`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Curtains, Accessories & Window Solutions`,
+    title: `${siteConfig.name}, Curtains, Accessories & Window Solutions`,
     description: siteConfig.description,
     images: ["/opengraph-image.jpg"],
   },
@@ -47,11 +47,11 @@ export const metadata: Metadata = {
   },
   // Nothing on the site should be auto-detected as contact data by mobile UIs.
   formatDetection: { telephone: false, address: false, email: false },
-  // The traced monogram in SVG, with the raster PNG as the fallback.
+  // The traced monogram in SVG, with the 512px raster as the fallback.
   icons: {
     icon: [
       { url: "/brand/favicon.svg", type: "image/svg+xml" },
-      { url: "/icon.png", type: "image/png", sizes: "256x256" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
     ],
     shortcut: "/brand/favicon.svg",
     apple: "/icon.png",

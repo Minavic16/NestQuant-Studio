@@ -14,7 +14,7 @@ import { organizationData } from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = buildMetadata({
   description:
-    "Desired Homes Interiors — curtains, interior decoration accessories and window solutions. See completed work, browse the collection, and start a conversation on WhatsApp or by email.",
+    "Desired Homes Interiors, curtains, interior decoration accessories and window solutions. See completed work, browse the collection, and start a conversation on WhatsApp or by email.",
   path: "/",
 });
 

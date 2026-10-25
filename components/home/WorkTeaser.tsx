@@ -77,7 +77,7 @@ export function WorkTeaser({ items }: { items: readonly PortfolioItem[] }) {
           <p className={styles.eyebrow}>Selected work</p>
           <h2 className={styles.heading}>Details that shape a room.</h2>
           <p className={styles.intro}>
-            Curtains, pelmets and window treatments from completed projects — photographed in the
+            Curtains, pelmets and window treatments from completed projects, photographed in the
             rooms where they were fitted.
           </p>
         </div>

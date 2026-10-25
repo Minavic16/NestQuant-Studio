@@ -25,36 +25,23 @@
   min-height: var(--touch-target);
 }
 
-/* The traced monogram takes currentColor; no extra image request. */
-.mark {
+/* The supplied lockup is served as a single vector asset. */
+.logo {
   display: block;
   width: auto;
-  height: 30px;
-  color: var(--color-ink);
+  height: 40px;
 }
 
-.wordmark {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  line-height: 1;
+@media (min-width: 48rem) {
+  .logo {
+    height: 46px;
+  }
 }
 
-.wordmarkName {
-  font-family: var(--font-display);
-  font-size: 1.1875rem;
-  letter-spacing: -0.025em;
-  color: var(--color-ink);
-  white-space: nowrap;
-}
-
-.wordmarkSub {
-  font-family: var(--font-ui);
-  font-size: 0.5625rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--color-accent);
+@media (min-width: 64rem) {
+  .logo {
+    height: 50px;
+  }
 }
 
 .desktopNav {

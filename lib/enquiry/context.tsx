@@ -16,7 +16,7 @@ import { createBrowserEnquiryStorage } from "./storage";
  * React bindings for the enquiry store.
  *
  * `getServerSnapshot` returns a constant empty state so the server HTML and the
- * first client render always match — no hydration mismatch, and the header
+ * first client render always match, no hydration mismatch, and the header
  * renders identically for every visitor until the list is restored from
  * localStorage after mount.
  */
