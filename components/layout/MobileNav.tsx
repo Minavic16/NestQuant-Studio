@@ -3,17 +3,18 @@
 import Link from "next/link";
 import { createPortal } from "react-dom";
 import styles from "./mobile-nav.module.css";
-import { BrandLogo } from "./BrandLogo";
 import { EnquiryLink } from "@/components/enquiry/EnquiryLink";
-import { primaryNavigation } from "@/config/navigation";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { primaryNavigation, secondaryNavigation } from "@/config/navigation";
 import { useDialogBehaviour } from "@/lib/hooks/use-dialog-behaviour";
 import { formatWhatsAppNumber, whatsappChatUrl } from "@/lib/whatsapp/whatsapp";
 import type { ContactDetails } from "@/lib/whatsapp/whatsapp";
 import { CloseIcon } from "@/components/ui/icons";
 
 /**
- * Mobile navigation drawer. Black so the supplied lockup sits on its own field
- * (DESIGN.md §8.2); a real dialog with focus handling and Escape to close.
+ * Mobile navigation drawer: a real dialog with focus handling, Escape to close,
+ * background scroll lock and focus restoration. The wordmark is set in text so
+ * the business name stays legible without a raster logo panel.
  */
 export function MobileNav({
   onClose,
@@ -37,7 +38,10 @@ export function MobileNav({
         data-testid="mobile-nav"
       >
         <div className={styles.head}>
-          <BrandLogo variant="complete" className={styles.logo} />
+          <Link href="/" className={styles.brand} onClick={onClose}>
+            <span className={styles.wordmark}>Desired Homes</span>
+            <span className={styles.wordmarkSub}>Interiors</span>
+          </Link>
           <button
             type="button"
             className={styles.close}
@@ -58,6 +62,13 @@ export function MobileNav({
                 </Link>
               </li>
             ))}
+            {secondaryNavigation.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className={styles.secondaryLink} onClick={onClose}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
             <li>
               <EnquiryLink className={styles.enquiryLink} />
             </li>
@@ -65,6 +76,9 @@ export function MobileNav({
         </nav>
 
         <div className={styles.foot}>
+          <ButtonLink href="/contact" variant="primary" fullWidth onClick={onClose}>
+            Discuss your space
+          </ButtonLink>
           <a href={`mailto:${contact.email}`} className={styles.contact} onClick={onClose}>
             {contact.email}
           </a>

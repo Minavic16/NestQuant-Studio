@@ -10,3 +10,11 @@
     flex-direction: row;
   }
 }
+
+.note {
+  flex-basis: 100%;
+  max-width: 58ch;
+  margin-block-start: var(--space-2);
+  font-size: var(--text-meta);
+  color: var(--color-muted);
+}

@@ -19,7 +19,7 @@ export function ProductGallery({ product }: { product: Product }) {
   if (images.length === 0) {
     return (
       <MediaSlot
-        ratio="4 / 5"
+        ratio="1 / 1"
         fit="contain"
         sizes={PRODUCT_GALLERY_SIZES}
         priority
@@ -37,7 +37,7 @@ export function ProductGallery({ product }: { product: Product }) {
         key={active.src}
         image={active}
         alt={active.alt}
-        ratio="4 / 5"
+        ratio="1 / 1"
         fit="contain"
         sizes={PRODUCT_GALLERY_SIZES}
         priority
@@ -57,7 +57,14 @@ export function ProductGallery({ product }: { product: Product }) {
                 aria-pressed={index === activeIndex}
                 aria-label={`Image ${index + 1} of ${images.length}`}
               >
-                <MediaSlot image={image} alt="" ratio="1 / 1" sizes="5.5rem" fit="cover" />
+                <MediaSlot
+                  image={image}
+                  alt=""
+                  ratio="1 / 1"
+                  sizes="5.5rem"
+                  fit="cover"
+                  className={styles.thumbFrame}
+                />
               </button>
             </li>
           ))}

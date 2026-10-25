@@ -36,6 +36,11 @@ export function EnquiryActions({
       >
         {copy.enquiry.emailCta}
       </ButtonLink>
+
+      <p className={styles.note}>
+        Your selection opens in WhatsApp or your email app. You review and send the message
+        yourself; this is a request for information, not an order.
+      </p>
     </div>
   );
 }

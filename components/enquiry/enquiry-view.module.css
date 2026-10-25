@@ -39,3 +39,10 @@
 .emptyCta {
   margin-block-start: var(--space-2);
 }
+
+.emptyActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block-start: var(--space-2);
+}

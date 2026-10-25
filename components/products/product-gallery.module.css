@@ -10,20 +10,29 @@
 
 .thumbs {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: var(--space-3);
   margin: 0;
-  padding: 0;
+  padding: 0 0 var(--space-1);
   list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
 }
 
 .thumb {
   display: block;
+  flex: 0 0 auto;
   width: 5.5rem;
   padding: 0;
   border: var(--border-hairline);
   border-radius: var(--radius-sm);
   transition: border-color var(--duration-fast) var(--ease);
+}
+
+.thumbFrame {
+  border: 0;
+  border-radius: calc(var(--radius-sm) - 1px);
 }
 
 .thumb:hover {

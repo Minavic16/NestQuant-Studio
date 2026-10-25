@@ -4,7 +4,7 @@ import "@/styles/base.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { EnquiryProvider } from "@/lib/enquiry/context";
-import { MotionProvider } from "@/components/effects/MotionProvider";
+import { GrainOverlay } from "@/components/effects/GrainOverlay";
 import { MetricsReporter } from "@/components/effects/MetricsReporter";
 import { siteConfig } from "@/config/site";
 import styles from "./layout.module.css";
@@ -25,6 +25,20 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — Curtains, Accessories & Window Solutions`,
     description: siteConfig.description,
     url: siteConfig.url,
+    images: [
+      {
+        url: "/opengraph-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} — curtains, accessories and window solutions`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} — Curtains, Accessories & Window Solutions`,
+    description: siteConfig.description,
+    images: ["/opengraph-image.jpg"],
   },
   robots: {
     index: true,
@@ -52,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
 
-        <MotionProvider />
+        <GrainOverlay />
         <MetricsReporter />
 
         <EnquiryProvider>

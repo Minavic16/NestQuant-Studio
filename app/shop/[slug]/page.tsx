@@ -6,6 +6,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { Section } from "@/components/layout/Section";
 import { ProductGallery } from "@/components/products/ProductGallery";
 import { ProductDetails } from "@/components/products/ProductDetails";
+import { ProductGrid } from "@/components/products/ProductGrid";
 import { ProductViewTracker } from "@/components/products/ProductViewTracker";
 import { ReviewSection } from "@/components/reviews/ReviewSection";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -59,6 +60,22 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) notFound();
 
   const category = getCategoryById(product.category);
+  const related = [...products]
+    .filter(
+      (entry) =>
+        entry.slug !== product.slug &&
+        (entry.type === product.type || entry.category === product.category),
+    )
+    .sort((a, b) => {
+      const aSameType = a.type && a.type === product.type ? 0 : 1;
+      const bSameType = b.type && b.type === product.type ? 0 : 1;
+      if (aSameType !== bSameType) return aSameType - bSameType;
+      const aSameCategory = a.category === product.category ? 0 : 1;
+      const bSameCategory = b.category === product.category ? 0 : 1;
+      return aSameCategory - bSameCategory;
+    })
+    .slice(0, 3)
+    .map(toProduct);
 
   return (
     <Section tone="paper">
@@ -86,6 +103,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <Suspense fallback={null}>
         <ReviewSection product={product} />
       </Suspense>
+
+      {related.length > 0 ? (
+        <section className={styles.related} aria-labelledby="related-heading">
+          <div className={styles.relatedHead}>
+            <h2 id="related-heading" className={styles.relatedTitle}>
+              More from the collection
+            </h2>
+            <p className={styles.relatedNote}>
+              Related pieces from the same category or type.
+            </p>
+          </div>
+          <ProductGrid products={related} />
+        </section>
+      ) : null}
 
       <Link href="/shop" className={styles.back}>
         <span className={styles.backArrow} aria-hidden="true">

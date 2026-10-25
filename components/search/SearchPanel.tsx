@@ -63,7 +63,6 @@ export function SearchPanel({ onClose }: { onClose: () => void }) {
             onValueChange={setQuery}
             onSubmit={submit}
             placeholder={copy.search.placeholder}
-            autoFocus
             label={copy.search.placeholder}
             className={styles.searchForm}
           />

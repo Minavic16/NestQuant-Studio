@@ -12,9 +12,9 @@ export function EnquiryLink({ className }: { className?: string }) {
     <Link
       href="/enquiry"
       className={[styles.link, className ?? ""].filter(Boolean).join(" ")}
-      aria-label={count > 0 ? `Enquiry, ${count} items` : "Enquiry"}
+      aria-label={count > 0 ? `Enquiry list, ${count} items` : "Enquiry list"}
     >
-      <span>Enquiry</span>
+      <span>Enquiry list</span>
       {count > 0 && (
         <span className={styles.count} data-testid="enquiry-count">
           {count}

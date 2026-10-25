@@ -22,7 +22,14 @@ export function organizationData() {
     url: siteConfig.url,
     description: siteConfig.description,
     email: contactConfig.email,
+    telephone: `+${contactConfig.whatsappNumber}`,
     logo: absoluteUrl("/brand/logo-complete.jpg"),
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      email: contactConfig.email,
+      telephone: `+${contactConfig.whatsappNumber}`,
+    },
     founder: {
       "@type": "Person",
       name: siteConfig.ceo.name,
@@ -54,10 +61,14 @@ export function productData(product: Product) {
             "@type": "Offer",
             price: product.price,
             priceCurrency: product.currency ?? siteConfig.currency,
-            availability:
-              product.available === false
-                ? "https://schema.org/OutOfStock"
-                : "https://schema.org/InStock",
+            url: absoluteUrl(`/shop/${product.slug}`),
+            ...(typeof product.available === "boolean"
+              ? {
+                  availability: product.available
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/OutOfStock",
+                }
+              : {}),
           },
         }
       : {}),

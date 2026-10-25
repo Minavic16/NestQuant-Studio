@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./motion-provider.module.css";
+import styles from "./grain-overlay.module.css";
 
 /**
  * Surface texture: one fixed, inert overlay for the whole document.

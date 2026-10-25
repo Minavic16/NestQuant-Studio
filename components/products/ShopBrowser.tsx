@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import styles from "./shop-browser.module.css";
 import { ProductGrid } from "@/components/products/ProductGrid";
@@ -15,8 +16,7 @@ import type { CategoryId, Product } from "@/data/types";
  * Shop view: search, category and product-type filtering over the catalogue.
  *
  * State lives in the URL (`?q=`, `?category=` and `?type=`) so a filtered view is
- * shareable and the back button behaves; the filtering itself is local and
- * instant, and goes through the same pure helpers the search service uses.
+ * shareable and the back button behaves; the filtering itself is local.
  */
 export function ShopBrowser({ products }: { products: readonly Product[] }) {
   const router = useRouter();
@@ -30,7 +30,15 @@ export function ShopBrowser({ products }: { products: readonly Product[] }) {
       ? (categoryParam as CategoryId | "all")
       : "all";
 
-  const types = useMemo(() => productTypes(products), [products]);
+  const types = useMemo(
+    () =>
+      productTypes(
+        activeCategory === "all"
+          ? products
+          : products.filter((product) => product.category === activeCategory),
+      ),
+    [products, activeCategory],
+  );
   const typeParam = searchParams.get("type");
   const activeType = typeParam && types.includes(typeParam) ? typeParam : "all";
 
@@ -38,6 +46,8 @@ export function ShopBrowser({ products }: { products: readonly Product[] }) {
     () => filterProducts(products, { query, category: activeCategory, type: activeType }),
     [products, query, activeCategory, activeType],
   );
+
+  const hasFilters = Boolean(query.trim()) || activeCategory !== "all" || activeType !== "all";
 
   const updateParams = (updates: {
     q?: string | null;
@@ -60,6 +70,9 @@ export function ShopBrowser({ products }: { products: readonly Product[] }) {
       <div className={styles.empty}>
         <p className={styles.emptyTitle}>{copy.shop.noProducts}</p>
         <p className={styles.emptyHint}>{copy.shop.noProductsHint}</p>
+        <Link href="/contact" className={styles.emptyLink}>
+          Discuss what you need
+        </Link>
       </div>
     );
   }
@@ -82,7 +95,7 @@ export function ShopBrowser({ products }: { products: readonly Product[] }) {
               className={[styles.chip, activeCategory === "all" ? styles.chipActive : ""]
                 .filter(Boolean)
                 .join(" ")}
-              onClick={() => updateParams({ category: null })}
+              onClick={() => updateParams({ category: null, type: null })}
               aria-pressed={activeCategory === "all"}
             >
               {copy.shop.filterAll}
@@ -95,7 +108,7 @@ export function ShopBrowser({ products }: { products: readonly Product[] }) {
                 className={[styles.chip, activeCategory === category.id ? styles.chipActive : ""]
                   .filter(Boolean)
                   .join(" ")}
-                onClick={() => updateParams({ category: category.id })}
+                onClick={() => updateParams({ category: category.id, type: null })}
                 aria-pressed={activeCategory === category.id}
               >
                 {category.name}
@@ -137,10 +150,42 @@ export function ShopBrowser({ products }: { products: readonly Product[] }) {
         ) : null}
       </div>
 
+      <div className={styles.resultBar}>
+        <p className={styles.resultCount} role="status" aria-live="polite">
+          {results.length === products.length
+            ? `${products.length} products`
+            : `${results.length} of ${products.length} products`}
+        </p>
+        {hasFilters ? (
+          <button
+            type="button"
+            className={styles.reset}
+            onClick={() => updateParams({ q: null, category: null, type: null })}
+          >
+            Clear filters
+          </button>
+        ) : null}
+      </div>
+
       {results.length === 0 ? (
         <div className={styles.empty}>
           <p className={styles.emptyTitle}>{copy.shop.empty}</p>
-          <p className={styles.emptyHint}>{copy.shop.emptyHint}</p>
+          <p className={styles.emptyHint}>
+            Try a different term, or clear the filters. If you cannot find what you need, tell us
+            what you are looking for.
+          </p>
+          <div className={styles.emptyActions}>
+            <button
+              type="button"
+              className={styles.resetButton}
+              onClick={() => updateParams({ q: null, category: null, type: null })}
+            >
+              Clear filters
+            </button>
+            <Link href="/contact" className={styles.emptyLink}>
+              Ask about a piece
+            </Link>
+          </div>
         </div>
       ) : (
         <ProductGrid products={results} priorityCount={4} />

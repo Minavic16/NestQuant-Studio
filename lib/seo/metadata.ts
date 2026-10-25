@@ -33,6 +33,20 @@ export function buildMetadata({
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",
+      images: [
+        {
+          url: "/opengraph-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${siteConfig.name} — curtains, accessories and window solutions`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: resolvedTitle,
+      description,
+      images: ["/opengraph-image.jpg"],
     },
   };
 }

@@ -29,13 +29,15 @@ export function ProductDetails({
 
       <PriceLabel product={product} className={styles.price} />
 
-      {product.description ? (
-        <p className={styles.description}>{product.description}</p>
+      {product.description || product.shortDescription ? (
+        <p className={styles.description}>
+          {product.description ?? product.shortDescription}
+        </p>
       ) : null}
 
-      {product.attributes && product.attributes.length > 0 ? (
-        <section className={styles.specs} aria-label={copy.product.specifications}>
-          <h2 className={styles.specsTitle}>{copy.product.specifications}</h2>
+      <section className={styles.specs} aria-label={copy.product.specifications}>
+        <h2 className={styles.specsTitle}>{copy.product.specifications}</h2>
+        {product.attributes && product.attributes.length > 0 ? (
           <dl className={styles.specList}>
             {product.attributes.map((attribute) => (
               <div key={attribute.label} className={styles.specRow}>
@@ -44,8 +46,13 @@ export function ProductDetails({
               </div>
             ))}
           </dl>
-        </section>
-      ) : null}
+        ) : (
+          <p className={styles.specFallback}>
+            Dimensions, materials and compatibility have not been listed for this piece. Ask about
+            them using the WhatsApp link below and we can check the details with you.
+          </p>
+        )}
+      </section>
 
       <div className={styles.meta}>
         {product.sku ? (

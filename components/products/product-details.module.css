@@ -61,6 +61,13 @@
   text-align: end;
 }
 
+.specFallback {
+  max-width: 48ch;
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+  color: var(--color-muted-strong);
+}
+
 .meta {
   display: flex;
   flex-direction: column;

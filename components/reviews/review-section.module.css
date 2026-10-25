@@ -1,7 +1,7 @@
 .section {
   margin-block-start: var(--space-9);
-  padding-block-start: var(--space-7);
-  border-top: var(--border-hairline);
+  padding-block-start: var(--space-6);
+  border-top: var(--border-hairline-strong);
 }
 
 .head {
@@ -10,26 +10,47 @@
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-4);
-  margin-block-end: var(--space-5);
+  margin-block-end: var(--space-4);
 }
 
 .title {
-  font-size: var(--text-product);
-  letter-spacing: 0;
+  font-size: var(--text-subsection);
+  letter-spacing: -0.01em;
+}
+
+.empty {
+  max-width: 54ch;
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
 }
 
 .form {
-  margin-block-start: var(--space-7);
-  padding-block-start: var(--space-6);
+  margin-block-start: var(--space-6);
+  padding-block-start: var(--space-4);
   border-top: var(--border-hairline);
 }
 
-.formTitle {
-  margin-block-end: var(--space-4);
-  font-family: var(--font-ui);
+.formSummary {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
   font-size: var(--text-small);
-  font-weight: var(--weight-semibold);
   color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+
+.formSummary:hover {
+  color: var(--color-accent);
+}
+
+.formNote {
+  max-width: 56ch;
+  margin-block: var(--space-3) var(--space-5);
+  font-size: var(--text-meta);
+  color: var(--color-muted);
 }
 
 /* ---- Review list (owned by this section) ---- */

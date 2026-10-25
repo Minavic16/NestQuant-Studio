@@ -53,7 +53,7 @@ describe("ProductCard", () => {
     render(h(ProductCard, { product }));
 
     assert.ok(screen.getByTestId("media-slot"));
-    assert.ok(screen.getByText("Image to come"));
+    assert.ok(screen.getByText("Photograph unavailable"));
   });
 
   it("renders the product image when one exists", () => {

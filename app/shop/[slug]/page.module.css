@@ -12,6 +12,30 @@
   }
 }
 
+.related {
+  margin-block-start: var(--space-9);
+  padding-block-start: var(--space-6);
+  border-top: var(--border-hairline-strong);
+}
+
+.relatedHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+  margin-block-end: var(--space-5);
+}
+
+.relatedTitle {
+  font-size: var(--text-subsection);
+}
+
+.relatedNote {
+  font-size: var(--text-meta);
+  color: var(--color-muted);
+}
+
 .back {
   display: inline-flex;
   align-items: center;

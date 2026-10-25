@@ -1,83 +1,112 @@
 .hero {
-  position: relative;
-  isolation: isolate;
-  min-height: min(78vh, 40rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: var(--color-black);
+  background-color: var(--color-paper);
+  border-bottom: var(--border-hairline);
+}
+
+/*
+ * Mobile: photograph first, then a generous text block. The photograph is not
+ * forced behind the copy, so contrast never depends on the crop.
+ */
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: var(--container);
+  margin-inline: auto;
 }
 
 .media {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
+  position: relative;
+  min-height: clamp(17rem, 58vw, 24rem);
+  overflow: hidden;
 }
 
 .image {
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  object-position: center 45%;
 }
 
-/*
- * A flat scrim, not a gradient: one translucent layer over the whole frame
- * keeps text legible without washing the photograph out (DESIGN.md §12).
- */
-.scrim {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-color: rgb(0 0 0 / 46%);
-}
-
-.inner {
+.content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-5);
-  padding: var(--space-9) var(--gutter);
-  text-align: center;
-  color: var(--color-ivory);
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-7) var(--gutter) var(--space-8);
 }
 
-/*
- * The lockup with its black field removed, so the metallic mark sits directly
- * on the photograph. Sized so the photography stays the dominant element
- * (DESIGN.md §12).
- *
- * A faint drop-shadow grounds the silver letterforms on bright areas of the
- * photo. `drop-shadow` — not `box-shadow` — follows the mark's own alpha, so
- * no rectangle appears. Kept barely visible by design.
- */
-.logo {
-  width: clamp(11rem, 40vw, 16.5rem);
-  height: auto;
-  filter: drop-shadow(0 1px 4px rgb(0 0 0 / 28%));
+.eyebrow {
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
 }
 
-.headline {
-  max-width: 24ch;
+.heading {
+  max-width: 12ch;
   font-size: var(--text-hero);
   line-height: var(--leading-hero);
   letter-spacing: var(--tracking-tight);
-  color: var(--color-ivory);
-  text-shadow: 0 1px 12px rgb(0 0 0 / 45%);
+  color: var(--color-ink);
 }
 
-.cta {
-  margin-block-start: var(--space-3);
+.lede {
+  max-width: 44ch;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-muted-strong);
 }
 
-.note {
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block-start: var(--space-2);
+}
+
+.shopLink {
+  margin-block-start: var(--space-1);
   font-size: var(--text-small);
-  color: rgb(247 245 240 / 88%);
-  text-shadow: 0 1px 8px rgb(0 0 0 / 45%);
+  color: var(--color-muted-strong);
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   .inner {
-    padding-block: var(--space-10);
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    min-height: clamp(37rem, 76vh, 45rem);
+    padding-inline-start: max(
+      var(--gutter),
+      calc((100vw - var(--container)) / 2 + var(--gutter))
+    );
+  }
+
+  /* The photograph runs to the right edge of the viewport. */
+  .media {
+    order: 2;
+    min-height: 100%;
+  }
+
+  .image {
+    object-position: center 48%;
+  }
+
+  .content {
+    order: 1;
+    justify-content: center;
+    max-width: 34rem;
+    padding: var(--space-8) clamp(var(--space-6), 5vw, var(--space-9)) var(--space-8) 0;
+  }
+
+  .heading {
+    max-width: 11ch;
+  }
+}
+
+@media (max-width: 63.999rem) and (min-width: 48rem) {
+  .media {
+    min-height: 26rem;
+  }
+
+  .content {
+    max-width: 38rem;
   }
 }

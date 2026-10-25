@@ -1,13 +1,18 @@
 /**
  * Site identity and defaults.
  *
- * `NEXT_PUBLIC_SITE_URL` must be set to the production origin before launch: it drives
- * canonical URLs, sitemap.xml and Open Graph tags. Until then a clearly-marked
- * placeholder is used (ARCHITECTURE.md §15). It is the only configuration value in the
- * project.
+ * `NEXT_PUBLIC_SITE_URL` should be set to the approved production origin in the
+ * deployment environment. When it is absent the known production deployment is
+ * used rather than a placeholder, so canonicals, sitemap and social metadata
+ * never ship an example domain.
  */
 
-const PLACEHOLDER_ORIGIN = "https://replace-me-before-launch.example";
+const PRODUCTION_ORIGIN = "https://desired-homes-interiors.vercel.app";
+
+function resolveSiteUrl(): string {
+  const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  return (configured && configured.length > 0 ? configured : PRODUCTION_ORIGIN).replace(/\/+$/, "");
+}
 
 export const siteConfig = {
   name: "Desired Homes Interiors",
@@ -23,7 +28,7 @@ export const siteConfig = {
     name: "Desire Nwakor",
     role: "CEO & Creative Director",
   },
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? PLACEHOLDER_ORIGIN).replace(/\/+$/, ""),
+  url: resolveSiteUrl(),
   description:
-    "Desired Homes Interiors — curtains, interior decoration accessories and window solutions. Browse the collection and enquire directly on WhatsApp or by email.",
+    "Desired Homes Interiors — curtains, interior decoration accessories and window solutions. See completed work, browse the collection and enquire directly on WhatsApp or by email.",
 } as const;

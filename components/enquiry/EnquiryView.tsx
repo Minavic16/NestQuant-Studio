@@ -39,9 +39,14 @@ export function EnquiryView({
       <div className={styles.empty} data-testid="enquiry-empty">
         <h2 className={styles.emptyTitle}>{copy.enquiry.empty.title}</h2>
         <p className={styles.emptyBody}>{copy.enquiry.empty.body}</p>
-        <ButtonLink href="/shop" variant="primary" className={styles.emptyCta}>
-          {copy.enquiry.empty.cta}
-        </ButtonLink>
+        <div className={styles.emptyActions}>
+          <ButtonLink href="/shop" variant="primary">
+            {copy.enquiry.empty.cta}
+          </ButtonLink>
+          <ButtonLink href="/contact" variant="secondary">
+            Discuss your space
+          </ButtonLink>
+        </div>
       </div>
     );
   }

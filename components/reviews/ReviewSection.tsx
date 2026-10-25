@@ -10,9 +10,8 @@ import type { Review } from "@/data/store/schema";
 /**
  * Reviews block for a product page.
  *
- * Fetches the approved reviews once, shows a rating summary and the reviews
- * themselves, and offers the submission form. `useSearchParams` is not used, so
- * the block needs no Suspense wrapper.
+ * Approved reviews are shown when they exist. The submission form is a
+ * secondary, collapsed action rather than a large form dominating the page.
  */
 export function ReviewSection({ product }: { product: { slug: string; name: string } }) {
   const [reviews, setReviews] = useState<Review[]>([]);
@@ -59,12 +58,20 @@ export function ReviewSection({ product }: { product: { slug: string; name: stri
             </li>
           ))}
         </ul>
-      ) : null}
+      ) : (
+        <p className={styles.empty}>
+          No approved reviews yet. Reviews are checked by the business before they appear here.
+        </p>
+      )}
 
-      <div className={styles.form}>
-        <h3 className={styles.formTitle}>Write a review</h3>
+      <details className={styles.form}>
+        <summary className={styles.formSummary}>Write a review</summary>
+        <p className={styles.formNote}>
+          If you have worked with Desired Homes Interiors, you can share a review. It will be held
+          for approval before it appears.
+        </p>
         <ReviewForm subject={subject} />
-      </div>
+      </details>
     </section>
   );
 }

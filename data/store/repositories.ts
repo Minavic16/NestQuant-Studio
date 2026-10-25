@@ -299,6 +299,7 @@ export async function ensureStore(): Promise<void> {
     [STORE_FILES.catalogue, seedCatalogueDocument()],
     [STORE_FILES.site, seedSiteDocument()],
     [STORE_FILES.reviews, seedReviewDocument()],
+    [STORE_FILES.portfolio, seedPortfolioDocument()],
     [STORE_FILES.metrics, { version: 1, days: {}, sessions: {} }],
   ] as const) {
     if (!(await fileExists(file))) await writeDocument(file, seed);

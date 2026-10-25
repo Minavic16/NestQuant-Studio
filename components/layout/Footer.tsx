@@ -1,12 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
 import styles from "./footer.module.css";
 import { resolveContact } from "@/lib/contact/resolve";
 import { formatWhatsAppNumber, whatsappChatUrl } from "@/lib/whatsapp/whatsapp";
 import { footerNavigation } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 
-/** Small, quiet footer — not a corporate sitemap (DESIGN.md §8.11). */
+/** Warm, quiet footer with the verified business details. */
 export async function Footer() {
   const contact = await resolveContact();
   const year = new Date().getFullYear();
@@ -16,18 +15,16 @@ export async function Footer() {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <Image
-              src="/brand/desired-homes-monogram.svg"
-              alt=""
-              width={288}
-              height={202}
-              className={styles.logo}
-              aria-hidden="true"
-            />
+            <p className={styles.wordmark}>{siteConfig.name}</p>
             <p className={styles.services}>{siteConfig.servicesLine}</p>
+            <p className={styles.note}>
+              A catalogue and project enquiry service for curtains, accessories and window
+              solutions.
+            </p>
           </div>
 
           <nav aria-label="Footer" className={styles.nav}>
+            <p className={styles.columnLabel}>Explore</p>
             <ul className={styles.list}>
               {footerNavigation.map((item) => (
                 <li key={item.href}>
@@ -40,6 +37,7 @@ export async function Footer() {
           </nav>
 
           <div className={styles.contact}>
+            <p className={styles.columnLabel}>Talk to us</p>
             <a href={`mailto:${contact.email}`} className={styles.link}>
               {contact.email}
             </a>
@@ -51,12 +49,15 @@ export async function Footer() {
             >
               WhatsApp {formatWhatsAppNumber(contact.whatsappNumber)}
             </a>
+            <p className={styles.small}>Enquiries are prepared in WhatsApp or email.</p>
           </div>
         </div>
 
-        <p className={styles.copyright}>
-          © {year} {siteConfig.name}
-        </p>
+        <div className={styles.bottom}>
+          <p className={styles.copyright}>
+            © {year} {siteConfig.name}
+          </p>
+        </div>
       </div>
     </footer>
   );

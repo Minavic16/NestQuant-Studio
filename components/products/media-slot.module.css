@@ -3,7 +3,6 @@
   overflow: hidden;
   background-color: var(--color-ivory);
   border: var(--border-hairline);
-  box-shadow: var(--shadow-lift);
 }
 
 .image {

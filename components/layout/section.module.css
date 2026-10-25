@@ -1,29 +1,31 @@
-/* Section rhythm: 64px on mobile, 96px from tablet, 128px from desktop. */
+/* Content-driven section rhythm: no blanket 128px padding on every block. */
 .section {
-  padding-block: var(--space-8);
+  padding-block: var(--section-y);
 }
 
-@media (min-width: 48rem) {
-  .section {
-    padding-block: var(--space-9);
-  }
+.section + .section {
+  border-top: var(--border-hairline);
 }
 
-@media (min-width: 64rem) {
-  .section {
-    padding-block: var(--space-10);
-  }
+.ivory + .ivory,
+.paper + .paper {
+  border-top: 0;
 }
 
-/* The label carries the same typography as an eyebrow, but as a real heading. */
+/* Optional quiet support section for shorter text blocks. */
+.compact {
+  padding-block: var(--section-y-compact);
+}
+
+/* A supplementary label; never the only meaningful heading in a section. */
 .label {
-  margin: 0 0 var(--space-5);
+  margin: 0 0 var(--space-4);
   font-family: var(--font-ui);
   font-size: var(--text-label);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: var(--color-accent);
 }
 
 .black .label {
@@ -51,6 +53,6 @@
 }
 
 .black {
-  background-color: var(--color-black);
+  background-color: var(--color-dark);
   color: var(--color-ivory);
 }

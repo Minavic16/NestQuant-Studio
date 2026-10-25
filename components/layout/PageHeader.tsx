@@ -32,7 +32,7 @@ export function PageHeader({
       {backHref ? (
         <Link href={backHref} className={styles.back}>
           <span className={styles.backArrow} aria-hidden="true">
-            →
+            ←
           </span>
           {backLabel}
         </Link>

@@ -16,6 +16,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-height) + var(--space-5));
 }
 
 body {
@@ -113,8 +114,8 @@ b {
 /* ---- Focus ------------------------------------------------------------- */
 
 :focus-visible {
-  outline: var(--focus-ring) solid var(--color-ink);
-  outline-offset: 2px;
+  outline: var(--focus-ring) solid var(--color-accent);
+  outline-offset: 3px;
   border-radius: 1px;
 }
 
@@ -126,6 +127,21 @@ b {
 ::selection {
   background-color: var(--color-ink);
   color: var(--color-paper);
+}
+
+/* A quiet reading measure for long paragraphs. */
+.measure {
+  max-width: 65ch;
+}
+
+/* Small caps label used as a supplementary cue above a real heading. */
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
 }
 
 /* ---- Reduced motion (DESIGN.md §6) ------------------------------------- */

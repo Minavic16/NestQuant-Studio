@@ -7,18 +7,15 @@ import styles from "./header.module.css";
 import { PrimaryNav } from "@/components/navigation/PrimaryNav";
 import { EnquiryLink } from "@/components/enquiry/EnquiryLink";
 import { SearchLauncher } from "@/components/search/SearchLauncher";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import { MobileNav } from "./MobileNav";
 import type { ContactDetails } from "@/lib/whatsapp/whatsapp";
 import { MenuIcon } from "@/components/ui/icons";
 
 /**
  * Header chrome (client): opens the mobile drawer and hosts the search
- * launcher. Contact details are resolved on the server and passed down.
- *
- * The brand mark is an inline SVG — a traced silhouette of the logo's
- * monogram — rather than the raster logo. It is a few kilobytes instead of
- * tens, scales to any density, and takes `currentColor`, so it needs no
- * preload and no separate asset request (DESIGN.md §1).
+ * launcher. The wordmark carries the brand name in text beside the supplied
+ * monogram, so the business is legible without relying on a raster logo.
  */
 export function HeaderClient({ contact }: { contact: ContactDetails }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,7 +24,7 @@ export function HeaderClient({ contact }: { contact: ContactDetails }) {
     <>
       <header className={styles.header}>
         <div className={styles.inner}>
-          <Link href="/" className={styles.brand} aria-label="Desired Homes Interiors — home">
+          <Link href="/" className={styles.brand}>
             <Image
               src="/brand/desired-homes-monogram.svg"
               alt=""
@@ -36,6 +33,10 @@ export function HeaderClient({ contact }: { contact: ContactDetails }) {
               className={styles.mark}
               aria-hidden="true"
             />
+            <span className={styles.wordmark}>
+              <span className={styles.wordmarkName}>Desired Homes</span>
+              <span className={styles.wordmarkSub}>Interiors</span>
+            </span>
           </Link>
 
           <PrimaryNav className={styles.desktopNav} />
@@ -43,6 +44,9 @@ export function HeaderClient({ contact }: { contact: ContactDetails }) {
           <div className={styles.actions}>
             <SearchLauncher />
             <EnquiryLink className={styles.enquiryLink} />
+            <ButtonLink href="/contact" variant="primary" className={styles.contactCta}>
+              Discuss your space
+            </ButtonLink>
           </div>
 
           <div className={styles.mobileActions}>

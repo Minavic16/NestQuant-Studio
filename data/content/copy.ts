@@ -9,7 +9,7 @@
 export const copy = {
   media: {
     /** Shown inside an image slot until real media is supplied (DESIGN.md §7). */
-    pending: "Image to come",
+    pending: "Photograph unavailable",
   },
 
   hero: {
@@ -104,8 +104,9 @@ export const copy = {
 
   enquiry: {
     eyebrow: "Enquiry",
-    heading: "Your enquiry",
-    intro: "Review your selection, then send it to us on WhatsApp or by email.",
+    heading: "Enquiry list",
+    intro:
+      "Review the pieces you have saved, then continue in WhatsApp or email. This is a request for information, not a paid order.",
     clear: "Clear enquiry",
     whatsappCta: "Send enquiry on WhatsApp",
     emailCta: "Send enquiry by Email",
@@ -114,7 +115,7 @@ export const copy = {
     removeLabel: (name: string) => `Remove ${name}`,
     empty: {
       title: "Your enquiry list is empty.",
-      body: "Explore the collection and add the pieces you would like to know more about.",
+      body: "Explore the collection and add the pieces you would like to know more about — or start a general conversation about a room.",
       cta: "Explore the collection",
     },
     countLabel: (count: number) => `${count} ${count === 1 ? "item" : "items"} in enquiry`,

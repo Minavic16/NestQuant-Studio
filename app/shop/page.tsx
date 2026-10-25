@@ -23,7 +23,11 @@ export default async function ShopPage() {
 
   return (
     <Section tone="paper">
-      <PageHeader eyebrow={copy.shop.eyebrow} title={copy.shop.heading} />
+      <PageHeader
+        eyebrow={copy.shop.eyebrow}
+        title={copy.shop.heading}
+        intro="Brackets, rods, rings, tiebacks and window fittings from the working catalogue. Prices are listed per piece; add anything you would like to compare to your enquiry list."
+      />
 
       {/*
        * `useSearchParams` needs a boundary. The fallback is the full server-rendered

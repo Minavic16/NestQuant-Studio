@@ -21,16 +21,12 @@
 }
 
 .discount {
-  padding-inline: var(--space-1);
-  border: 1px solid var(--color-ink);
-  border-radius: var(--radius-sm);
   font-family: var(--font-ui);
   font-size: var(--text-meta);
-  font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0;
   white-space: nowrap;
-  color: var(--color-ink);
+  color: var(--color-accent);
 }
 
 /* Shown instead of a price: quieter than a real figure. */

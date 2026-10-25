@@ -1,0 +1,224 @@
+.page {
+  padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  font-size: var(--text-small);
+  color: var(--color-muted-strong);
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.back:hover {
+  color: var(--color-ink);
+}
+
+.backArrow {
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.back:hover .backArrow {
+  transform: translateX(-0.2rem);
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 52rem;
+  margin-block: var(--space-5) var(--space-7);
+}
+
+.eyebrow {
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.heading {
+  font-size: var(--text-section);
+  line-height: var(--leading-section);
+  letter-spacing: var(--tracking-tight);
+}
+
+.summary {
+  max-width: 58ch;
+  color: var(--color-muted-strong);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+.media {
+  background-color: var(--color-ivory);
+}
+
+.caption {
+  font-size: var(--text-meta);
+  color: var(--color-muted);
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-block-start: var(--space-1);
+}
+
+.detailGroup {
+  padding-block-start: var(--space-4);
+  border-top: var(--border-hairline);
+}
+
+.detailTitle {
+  font-family: var(--font-ui);
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.services li {
+  padding: var(--space-1) var(--space-3);
+  border: var(--border-hairline);
+  border-radius: 999px;
+  font-size: var(--text-small);
+  color: var(--color-ink);
+}
+
+.detailBody {
+  max-width: 46ch;
+  margin-block-start: var(--space-3);
+  font-size: var(--text-small);
+  line-height: var(--leading-small);
+  color: var(--color-muted-strong);
+}
+
+.actionGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.actionNote {
+  font-size: var(--text-meta);
+  color: var(--color-muted);
+}
+
+.relatedBand {
+  background-color: var(--color-ivory);
+  border-top: var(--border-hairline);
+}
+
+.relatedInner {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: var(--section-y-compact) var(--gutter);
+}
+
+.relatedHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-block-end: var(--space-5);
+}
+
+.relatedHeading {
+  font-size: var(--text-subsection);
+}
+
+.relatedLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target);
+  font-size: var(--text-small);
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.28em;
+}
+
+.arrow {
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.relatedLink:hover .arrow {
+  transform: translateX(0.2rem);
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.relatedCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.relatedMedia {
+  transition: opacity var(--duration-fast) var(--ease);
+}
+
+.relatedCard:hover .relatedMedia {
+  opacity: 0.94;
+}
+
+.relatedTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-product);
+  color: var(--color-ink);
+}
+
+@media (min-width: 48rem) {
+  .relatedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .layout {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+
+  .aside {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-6));
+  }
+}

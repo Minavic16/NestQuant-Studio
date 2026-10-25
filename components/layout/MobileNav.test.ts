@@ -23,10 +23,10 @@ describe("MobileNav", () => {
     assert.equal(screen.getByRole("link", { name: /Enquiry/ }).getAttribute("href"), "/enquiry");
   });
 
-  it("shows the supplied logo and the business contact details", () => {
+  it("shows the business name and the supplied contact details", () => {
     render(h(MobileNav, { onClose: () => {}, contact }));
 
-    assert.ok(screen.getByAltText("Desired Homes Interiors"));
+    assert.ok(screen.getByText("Desired Homes"));
     assert.equal(
       screen.getByRole("link", { name: "desirenwakor@gmail.com" }).getAttribute("href"),
       "mailto:desirenwakor@gmail.com",

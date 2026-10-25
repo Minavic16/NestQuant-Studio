@@ -33,6 +33,7 @@ import { STORE_FILES, clearStoreCache } from "./store";
 const cataloguePath = join(process.cwd(), "data", "store", STORE_FILES.catalogue);
 const sitePath = join(process.cwd(), "data", "store", STORE_FILES.site);
 const reviewsPath = join(process.cwd(), "data", "store", STORE_FILES.reviews);
+const portfolioPath = join(process.cwd(), "data", "store", STORE_FILES.portfolio);
 
 const snapshots = new Map<string, string>();
 
@@ -173,6 +174,7 @@ describe("store round-trip", () => {
       ["curtains", "accessories", "window-solutions"],
     );
     assert.equal((await getProducts()).length, catalogue.products.length);
+    assert.equal((await getPublishedPortfolio()).length, 5, "portfolio is seeded");
   });
 
   it("persists edits and reads them back", async () => {
@@ -283,6 +285,7 @@ describe("portfolio validation", () => {
 
 describe("portfolio persistence", () => {
   it("round-trips through the store", async () => {
+    await snapshot(portfolioPath);
     await savePortfolio([
       {
         id: "p1",

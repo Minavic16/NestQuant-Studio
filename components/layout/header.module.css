@@ -10,7 +10,7 @@
 .inner {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-5);
   height: var(--header-height);
   max-width: var(--container);
   margin-inline: auto;
@@ -20,13 +20,12 @@
 .brand {
   display: inline-flex;
   align-items: center;
+  gap: var(--space-3);
   flex: 0 0 auto;
+  min-height: var(--touch-target);
 }
 
-/*
- * The traced monogram: an SVG that takes currentColor, so it needs no image
- * request, no preload, and stays crisp at any density.
- */
+/* The traced monogram takes currentColor; no extra image request. */
 .mark {
   display: block;
   width: auto;
@@ -34,21 +33,48 @@
   color: var(--color-ink);
 }
 
-@media (min-width: 30rem) {
-  .mark {
-    height: 34px;
-  }
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1;
+}
+
+.wordmarkName {
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  letter-spacing: -0.025em;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+.wordmarkSub {
+  font-family: var(--font-ui);
+  font-size: 0.5625rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
 }
 
 .desktopNav {
-  margin-inline-start: var(--space-7);
+  margin-inline-start: var(--space-6);
 }
 
 .actions {
   display: none;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
   margin-inline-start: auto;
+}
+
+.contactCta {
+  padding-inline: var(--space-5);
+  font-size: var(--text-meta);
+}
+
+.enquiryLink {
+  font-size: var(--text-meta);
 }
 
 .mobileActions {
@@ -64,17 +90,17 @@
   justify-content: center;
   width: var(--touch-target);
   height: var(--touch-target);
-  margin-inline-end: calc(var(--space-2) * -1);
+  margin-inline-end: calc(var(--space-3) * -1);
   color: var(--color-ink);
   border-radius: var(--radius-sm);
   transition: color var(--duration-fast) var(--ease);
 }
 
 .iconButton:hover {
-  color: var(--color-muted-strong);
+  color: var(--color-accent);
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   .actions {
     display: flex;
   }
