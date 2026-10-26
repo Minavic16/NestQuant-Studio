@@ -1,6 +1,6 @@
 .band {
   background-color: var(--color-dark);
-  color: var(--color-ivory);
+  color: var(--color-on-dark);
 }
 
 .inner {
@@ -31,7 +31,7 @@
   font-size: var(--text-section);
   line-height: var(--leading-section);
   letter-spacing: var(--tracking-tight);
-  color: var(--color-ivory);
+  color: var(--color-on-dark);
 }
 
 .body {
@@ -48,15 +48,15 @@
 
 /* The warm light control is the one high-emphasis action on the dark panel. */
 .primary {
-  background-color: var(--color-ivory);
-  border-color: var(--color-ivory);
-  color: var(--color-ink);
+  background-color: var(--color-inverse-action);
+  border-color: var(--color-inverse-action);
+  color: var(--color-inverse-action-text);
   box-shadow: none;
 }
 
 .primary:hover {
-  background-color: var(--color-paper-bright);
-  border-color: var(--color-paper-bright);
+  background-color: var(--color-inverse-action-hover);
+  border-color: var(--color-inverse-action-hover);
 }
 
 .whatsapp {
@@ -65,7 +65,7 @@
   min-height: var(--touch-target);
   margin-block-start: var(--space-2);
   font-size: var(--text-small);
-  color: var(--color-ivory);
+  color: var(--color-on-dark);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.28em;
@@ -91,7 +91,7 @@
 }
 
 .listLink {
-  color: var(--color-ivory);
+  color: var(--color-on-dark);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;

@@ -25,22 +25,36 @@
   min-height: var(--touch-target);
 }
 
-/* The supplied lockup is served as a single vector asset. */
+/* The supplied lockup is decorative: the home link carries the accessible
+   name. A CSS background lets the theme select one SVG without preloading the
+   other variant, and the ratio is fixed by the source artwork. */
 .logo {
   display: block;
-  width: auto;
+  width: calc(40px * 1764 / 789);
   height: 40px;
+  background-image: url("/brand/desired-homes-logo.svg");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 @media (min-width: 48rem) {
   .logo {
+    width: calc(46px * 1764 / 789);
     height: 46px;
   }
 }
 
 @media (min-width: 64rem) {
   .logo {
+    width: calc(50px * 1764 / 789);
     height: 50px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    background-image: url("/brand/desired-homes-logo-light.svg");
   }
 }
 

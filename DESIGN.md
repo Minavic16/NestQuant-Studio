@@ -33,28 +33,47 @@ vector lockup, ink on paper and ivory on dark. Four consequences drive the visua
 No gradients and no glass. A single bronze accent carries links and labels. Every colour
 below is a token in `styles/tokens.css`.
 
-| Token | Value | Use |
-| --- | --- | --- |
-| `--color-black` | `#211e1b` | Closing bands and footer |
-| `--color-ink` | `#24211e` | Body text and primary controls |
-| `--color-paper` | `#fbf9f5` | Default warm page surface |
-| `--color-paper-bright` | `#fffdf9` | Product and form surfaces |
-| `--color-ivory` | `#f2ece2` | Alternative warm surface |
-| `--color-surface-soft` | `#eae3d8` | Quiet support panels |
-| `--color-line` | `#ddd3c5` | Hairlines on light surfaces |
-| `--color-line-strong` | `#c4b8a8` | Stronger separation and control borders |
-| `--color-muted` | `#625b54` | Labels and metadata |
-| `--color-muted-strong` | `#4a433c` | Secondary body copy |
-| `--color-accent` | `#725239` | Bronze accent, links, labels and focus rings |
-| `--color-line-dark` | `rgb(251 249 245 / 22%)` | Hairlines on dark surfaces |
-| `--color-on-dark-muted` | `#d6ccc1` | Secondary text on dark |
+The site ships **two themes**. The light theme is the default. The dark theme follows the
+visitor's `prefers-color-scheme` and is defined by the same token names at the end of the
+file, so every component switches without a second stylesheet. There is no theme toggle, no
+stored preference and no theme script: the operating-system preference is the single source
+of truth, which means the first paint is already correct and theme switching costs zero
+JavaScript.
 
-Contrast (WCAG 2.2): ink on paper 15.0:1 · muted on paper 5.9:1 · muted on soft 5.3:1 ·
-accent on paper 6.0:1 · on-dark-muted on dark 9.2:1. `--color-muted` is not used below
-13px for essential text.
+| Token | Light | Dark | Use |
+| --- | --- | --- | --- |
+| `--color-black` / `--color-dark` | `#211e1b` | `#0e0c0a` | Inverse surfaces: closing bands, footer, drawer, dashboard chrome |
+| `--color-ink` | `#24211e` | `#f2ede4` | Body text and primary controls |
+| `--color-paper` | `#fbf9f5` | `#141210` | Default warm page surface |
+| `--color-paper-bright` | `#fffdf9` | `#1d1915` | Product and form surfaces |
+| `--color-ivory` | `#f2ece2` | `#241f1a` | Alternative warm surface |
+| `--color-surface-soft` | `#eae3d8` | `#2b2620` | Quiet support panels |
+| `--color-line` | `#ddd3c5` | `#3a342d` | Hairlines |
+| `--color-line-strong` | `#c4b8a8` | `#756a5a` | Stronger separation and control borders |
+| `--color-muted` | `#625b54` | `#b3a89a` | Labels and metadata |
+| `--color-muted-strong` | `#4a433c` | `#d3c8ba` | Secondary body copy |
+| `--color-accent` | `#725239` | `#d6ad7f` | Bronze accent, links, labels and focus rings |
+| `--color-accent-soft` | `#a8815f` | `#c09b72` | Decorative rules and text on inverse surfaces |
+| `--color-danger` | `#8c2f2f` | `#f0a6a6` | Validation errors |
 
-Dark surfaces are the warm ink `#211e1b`, not pure black. Text on them is ivory; secondary
-text is `--color-on-dark-muted`.
+Inverse surfaces are fixed, not themed: `--color-inverse-surface` is `#211e1b` in light and
+`#0e0c0a` in dark, while `--color-on-dark` stays `#f2ece2` and `--color-on-dark-muted` stays
+close to it. A dark footer therefore never inherits the page's dark-mode text colour, and a
+light control on a dark band stays a light control in both themes. The dedicated
+`--color-inverse-action*` tokens carry the warm light button used on those bands.
+
+Contrast (WCAG 2.2), light theme: ink on paper 15.0:1 · muted on paper 5.9:1 · muted on soft
+5.3:1 · accent on paper 6.0:1 · on-dark-muted on inverse 9.2:1. Dark theme: ink on paper
+16.0:1 · muted on paper 8.0:1 · muted on soft 6.4:1 · accent on paper 9.0:1 ·
+on-dark-muted on inverse 11.4:1. `--color-muted` is not used below 13px for essential text.
+`prefers-contrast: more` strengthens hairlines and secondary text in both themes.
+
+`color-scheme` is declared as `light` by default and `dark` under the media query, and the
+document meta advertises `light dark`, so form controls, scrollbars and the browser's own
+surfaces follow the same preference. Two `theme-color` metas, one per scheme, keep the
+mobile browser chrome in step with the page.
+The header logo uses the ivory lockup in dark mode; the footer and drawer use it in both
+themes because their surfaces are always inverse.
 
 ---
 
@@ -260,7 +279,8 @@ swipe-only rail.
 
 - Semantic landmarks: `header`, `nav`, `main`, `footer`; one `h1` per page; no skipped levels.
 - Skip link as the first focusable element.
-- Focus is always visible: 2px bronze outline, 3px offset, ivory on dark surfaces.
+- Focus is always visible: 2px bronze outline, 3px offset, ivory on inverse surfaces. The
+  bronze lightens in dark mode so it keeps contrast against the dark page.
 - Mobile menu and search panel are real dialogs (`role="dialog"`, `aria-modal`, focus trap,
   `Escape` to close, focus restored to the trigger).
 - Enquiry count is announced through a polite live region; `Add to Enquiry` confirms with
@@ -269,7 +289,11 @@ swipe-only rail.
   the product name.
 - All interactive elements are reachable and operable by keyboard; nothing relies on hover.
 - Meaningful `alt` text on every product image; decorative slots are marked `aria-hidden`.
-- `prefers-reduced-motion` and `prefers-contrast` respected.
+- Dark mode follows `prefers-color-scheme`, so the page is correct on first paint, including
+  for visitors who change their OS preference while the page is open. Both themes were
+  checked with axe at 390px and 1440px across the public routes, with zero violations.
+- `prefers-reduced-motion` and `prefers-contrast` respected, including the combined
+  dark-mode and high-contrast case.
 
 ---
 
@@ -296,8 +320,8 @@ surfaces and ivory on dark, and never adds gradients, shadows or metallic effect
 
 | Asset | File | Where it is used |
 | --- | --- | --- |
-| Full lockup, ink | `public/brand/desired-homes-logo.svg` | Header on every page |
-| Full lockup, ivory | `public/brand/desired-homes-logo-light.svg` | Footer and mobile drawer |
+| Full lockup, ink | `public/brand/desired-homes-logo.svg` | Header in light mode |
+| Full lockup, ivory | `public/brand/desired-homes-logo-light.svg` | Header in dark mode, footer and mobile drawer in both themes |
 | Monogram, ink | `public/brand/desired-homes-monogram.svg` | Reserved for light surfaces |
 | Monogram, ivory | `public/brand/desired-homes-monogram-light.svg` | Dashboard |
 | Wordmark, ink | `public/brand/desired-homes-wordmark.svg` | Reserved for narrow brand contexts |
@@ -306,6 +330,11 @@ surfaces and ivory on dark, and never adds gradients, shadows or metallic effect
 | Complete square | `public/brand/logo-complete.png` | Structured-data logo |
 | Social card | `app/opengraph-image.jpg` | Open Graph and social previews |
 | QR code | `public/brand/desired-homes-qr.svg` and `.png` | Print and social link to production |
+
+The header logo is a decorative CSS background whose URL changes under
+`prefers-color-scheme: dark`, so the browser requests only the lockup for the active
+theme. There is no JavaScript, no duplicate request for the hidden variant, and no flash
+of the wrong logo. The home link keeps the accessible name.
 
 The SVGs are traced from the supplied 2300 x 2300 PNG, not redrawn. Potrace runs at threshold
 145 with `blackOnWhite: false`, `turdSize: 2`, `alphaMax: 1`, `optCurve: true` and
@@ -334,8 +363,9 @@ fixed overlay at 5% opacity with `mix-blend-mode: multiply`.
 
 - It is a **texture, not a gradient**, the V1 rule against gradients still holds.
 - One data URI, so it costs no network request and cannot be a render-blocking asset.
-- `multiply` darkens the paper and leaves the dark bands untouched, so the grain belongs to
-  the light surfaces only.
+- `multiply` darkens the paper and leaves the inverse bands effectively untouched because
+  they are already near-black. On dark-theme surfaces it is deliberately very low contrast:
+  texture, not soot.
 - `pointer-events: none` and above every layer, so it never interferes with interaction.
 - Disabled under `prefers-contrast: more`, where texture works against legibility.
 
@@ -354,7 +384,8 @@ Nothing animates on scroll, and no motion blocks input or reading.
 Gradients · glassmorphism · heavy cards · heavy shadows · particle/decorative effects · autoplay or
 background video · oversized or all-caps headings · Tailwind-style utility soup · SaaS
 landing patterns · fake photography or fake social proof · payment · customer accounts ·
-checkout · coupons · live chat · unmoderated reviews.
+checkout · coupons · live chat · unmoderated reviews · a manual theme switch that overrides
+the visitor's operating-system preference.
 
 **Reviews arrived in V2**, through moderation: a review is invisible on the site until the
 business approves it. Nothing is ever published that a person has not read first, which is the

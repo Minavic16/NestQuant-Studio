@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import styles from "./header.module.css";
 import { PrimaryNav } from "@/components/navigation/PrimaryNav";
 import { EnquiryLink } from "@/components/enquiry/EnquiryLink";
@@ -30,15 +29,10 @@ export function HeaderClient({ contact }: { contact: ContactDetails }) {
             className={styles.brand}
             aria-label={`${siteConfig.name}, home`}
           >
-            <Image
-              src="/brand/desired-homes-logo.svg"
-              alt=""
-              width={1764}
-              height={789}
-              className={styles.logo}
-              priority
-              aria-hidden="true"
-            />
+            {/* Decorative: the link carries the accessible name. The CSS
+                background selects one theme variant without preloading the
+                other, which <picture> would keep in the DOM as a fallback. */}
+            <span className={styles.logo} aria-hidden="true" />
           </Link>
 
           <PrimaryNav className={styles.desktopNav} />

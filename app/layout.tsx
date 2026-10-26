@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@/styles/tokens.css";
 import "@/styles/base.css";
 import { Header } from "@/components/layout/Header";
@@ -8,6 +8,14 @@ import { GrainOverlay } from "@/components/effects/GrainOverlay";
 import { MetricsReporter } from "@/components/effects/MetricsReporter";
 import { siteConfig } from "@/config/site";
 import styles from "./layout.module.css";
+
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fbf9f5" },
+    { media: "(prefers-color-scheme: dark)", color: "#141210" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

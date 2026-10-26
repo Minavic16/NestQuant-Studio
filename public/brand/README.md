@@ -9,8 +9,8 @@ letterspaced capitals below it.
 
 | File | Size | Use |
 | --- | --- | --- |
-| `desired-homes-logo.svg` | 1764 x 789 | Full lockup, ink on light surfaces |
-| `desired-homes-logo-light.svg` | 1764 x 789 | Full lockup, ivory on dark surfaces |
+| `desired-homes-logo.svg` | 1764 x 789 | Full lockup, ink; header in light mode |
+| `desired-homes-logo-light.svg` | 1764 x 789 | Full lockup, ivory; header in dark mode, footer and drawer in both themes |
 | `desired-homes-monogram.svg` | 825 x 789 | D monogram only, ink on light surfaces |
 | `desired-homes-monogram-light.svg` | 825 x 789 | D monogram only, ivory on dark surfaces |
 | `desired-homes-wordmark.svg` | 849 x 428 | Wordmark only, ink on light surfaces |
@@ -21,6 +21,11 @@ letterspaced capitals below it.
 
 `app/icon.png` is the 512 x 512 opaque app icon. `app/opengraph-image.jpg` is the
 1200 x 630 social card. Both are generated from the same traced artwork.
+
+The header uses a decorative CSS background whose URL changes under
+`prefers-color-scheme: dark`, so the browser requests only the active theme's lockup.
+The footer and mobile drawer sit on inverse surfaces and always use the ivory lockup, in
+both themes.
 
 ## How the SVG was made
 

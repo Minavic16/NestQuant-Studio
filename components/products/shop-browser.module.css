@@ -61,7 +61,7 @@
 .chipActive:hover {
   background-color: var(--color-ink);
   border-color: var(--color-ink);
-  color: var(--color-paper);
+  color: var(--color-on-ink);
 }
 
 .resultBar {

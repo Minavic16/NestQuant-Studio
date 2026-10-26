@@ -93,7 +93,7 @@
   border: 1px solid var(--color-ink);
   border-radius: var(--radius-sm);
   background-color: var(--color-ink);
-  color: var(--color-paper);
+  color: var(--color-on-ink);
   font-size: var(--text-small);
   font-weight: var(--weight-medium);
   cursor: pointer;
@@ -102,7 +102,7 @@
 
 .save:hover:not(:disabled),
 .add:hover {
-  background-color: var(--color-black);
+  background-color: var(--color-ink-hover);
 }
 
 .save:disabled {
@@ -125,8 +125,8 @@
 }
 
 .remove:hover {
-  color: #a12727;
-  border-color: #a12727;
+  color: var(--color-danger);
+  border-color: var(--color-danger);
 }
 
 /* ---- Status ---- */

@@ -167,12 +167,12 @@
 .save,
 .add {
   background-color: var(--color-ink);
-  color: var(--color-paper);
+  color: var(--color-on-ink);
 }
 
 .save:hover:not(:disabled),
 .add:hover {
-  background-color: var(--color-black);
+  background-color: var(--color-ink-hover);
 }
 
 .save:disabled {

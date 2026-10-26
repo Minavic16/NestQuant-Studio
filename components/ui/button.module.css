@@ -23,13 +23,13 @@
 .primary {
   background-color: var(--color-ink);
   border: 1px solid var(--color-ink);
-  color: var(--color-paper);
+  color: var(--color-on-ink);
   box-shadow: var(--shadow-control);
 }
 
 .primary:hover {
-  background-color: var(--color-black);
-  border-color: var(--color-black);
+  background-color: var(--color-ink-hover);
+  border-color: var(--color-ink-hover);
 }
 
 .secondary {
@@ -63,30 +63,30 @@
   width: 100%;
 }
 
-/* On black surfaces the primary control inverts. */
+/* On inverse surfaces the primary control stays a fixed warm light. */
 .on-dark .primary,
 .primaryOnDark {
-  background-color: var(--color-ivory);
-  border-color: var(--color-ivory);
-  color: var(--color-ink);
+  background-color: var(--color-inverse-action);
+  border-color: var(--color-inverse-action);
+  color: var(--color-inverse-action-text);
 }
 
 .on-dark .primary:hover,
 .primaryOnDark:hover {
-  background-color: var(--color-paper);
-  border-color: var(--color-paper);
+  background-color: var(--color-inverse-action-hover);
+  border-color: var(--color-inverse-action-hover);
 }
 
 .on-dark .secondary,
 .secondaryOnDark {
   background-color: transparent;
   border-color: var(--color-line-dark);
-  color: var(--color-ivory);
+  color: var(--color-on-dark);
 }
 
 .on-dark .secondary:hover,
 .secondaryOnDark:hover {
-  border-color: var(--color-ivory);
+  border-color: var(--color-on-dark);
 }
 
 .disabled,

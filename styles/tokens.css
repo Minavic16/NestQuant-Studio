@@ -5,31 +5,63 @@
    ========================================================================== */
 
 :root {
+  color-scheme: light;
+
   /* ---- Colour ------------------------------------------------------------
      Warm paper, near-black ink and bronze used for material character only.
-     Text pairings are checked against their actual surface:
+     The light theme is the default; the dark theme is defined at the end of
+     this file and follows the visitor's operating-system preference.
+
+     Light pairings, checked against their actual surface:
        ink / paper            15.0:1
        muted / paper           5.9:1
        muted / soft            5.3:1
        on-dark-muted / dark    9.2:1
        accent / paper          6.0:1
+
+     Dark pairings:
+       ink / paper            16.0:1
+       muted / paper           8.0:1
+       muted / soft            6.4:1
+       accent / paper          9.0:1
+       on-dark-muted / dark   11.4:1
      ---------------------------------------------------------------------- */
-  --color-black: #211e1b; /* closing bands and footer */
-  --color-dark: #211e1b; /* semantic alias for dark surfaces */
-  --color-ink: #24211e; /* body text, primary controls, focus rings */
-  --color-paper: #fbf9f5; /* default warm surface */
+
+  /* Theme surfaces. */
+  --color-paper: #fbf9f5; /* default warm page surface */
   --color-paper-bright: #fffdf9; /* product and form surfaces */
   --color-ivory: #f2ece2; /* alternate warm surface */
   --color-surface-soft: #eae3d8; /* quiet support panels */
-  --color-line: #ddd3c5; /* hairlines on light surfaces */
-  --color-line-strong: #c4b8a8; /* stronger separation and control borders */
+
+  /* Theme text and accents. */
+  --color-ink: #24211e; /* body text, primary controls, focus rings */
   --color-muted: #625b54; /* labels and metadata */
   --color-muted-strong: #4a433c; /* secondary body copy */
   --color-accent: #725239; /* bronze accent, links and labels */
-  --color-accent-soft: #a8815f; /* decorative rules only */
-  --color-line-dark: rgb(251 249 245 / 22%);
+  --color-accent-soft: #a8815f; /* decorative rules and text on dark */
+  --color-danger: #8c2f2f; /* validation errors */
+
+  /* Theme borders. */
+  --color-line: #ddd3c5; /* hairlines on light surfaces */
+  --color-line-strong: #c4b8a8; /* stronger separation and control borders */
+
+  /* Fixed inverse roles. Footer, drawer, closing bands and dashboard chrome
+     stay dark in both themes, so their text never follows the page theme. */
+  --color-inverse-surface: #211e1b;
+  --color-black: var(--color-inverse-surface);
+  --color-dark: var(--color-inverse-surface);
+  --color-on-dark: #f2ece2;
   --color-on-dark-muted: #d6ccc1; /* secondary text on dark, 9.2:1 */
-  --color-danger: #8c2f2f;
+  --color-line-dark: rgb(251 249 245 / 22%);
+  --color-inverse-wash: rgb(247 245 240 / 12%);
+  --color-inverse-action: #f2ece2;
+  --color-inverse-action-text: #24211e;
+  --color-inverse-action-hover: #fffdf9;
+  --color-scrim: rgb(33 30 27 / 42%);
+
+  /* Primary controls: an ink surface with paper text, and a deeper hover. */
+  --color-on-ink: #fbf9f5;
+  --color-ink-hover: #211e1b;
 
   /* ---- Typography --------------------------------------------------------
      One display serif and one practical UI face, both system stacks. No
@@ -124,6 +156,66 @@
     --color-line-strong: #8f806d;
     --color-muted: #4a433c;
     --color-muted-strong: #3a342e;
+    --color-on-dark-muted: #f0e8de;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Dark theme, follows the visitor's system preference.
+
+   The public site, catalogue and dashboard all share these tokens. Inverse
+   surfaces (footer, drawer, closing bands, dashboard chrome) stay dark and
+   use the fixed on-dark roles above, so they remain legible in both themes.
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-paper: #141210;
+    --color-paper-bright: #1d1915;
+    --color-ivory: #241f1a;
+    --color-surface-soft: #2b2620;
+
+    --color-ink: #f2ede4;
+    --color-muted: #b3a89a;
+    --color-muted-strong: #d3c8ba;
+    --color-accent: #d6ad7f;
+    --color-accent-soft: #c09b72;
+    --color-danger: #f0a6a6;
+
+    --color-line: #3a342d;
+    --color-line-strong: #756a5a;
+
+    --color-inverse-surface: #0e0c0a;
+    --color-black: var(--color-inverse-surface);
+    --color-dark: var(--color-inverse-surface);
+    --color-on-dark: #f2ece2;
+    --color-on-dark-muted: #cfc4b7;
+    --color-line-dark: rgb(242 236 226 / 18%);
+    --color-inverse-wash: rgb(247 245 240 / 10%);
+    --color-inverse-action: #f2ece2;
+    --color-inverse-action-text: #24211e;
+    --color-inverse-action-hover: #fffdf9;
+    --color-scrim: rgb(0 0 0 / 62%);
+
+    --color-on-ink: #141210;
+    --color-ink-hover: #e4dbcd;
+
+    --shadow-lift: 0 1px 2px rgb(0 0 0 / 0.4), 0 18px 44px -22px rgb(0 0 0 / 0.7);
+    --shadow-control: 0 1px 2px rgb(0 0 0 / 0.5);
+    --shadow-bar: 0 1px 12px rgb(0 0 0 / 0.32);
+  }
+}
+
+/* Dark theme with a stronger contrast preference. */
+@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
+  :root {
+    --color-line: #6b6053;
+    --color-line-strong: #8a7d6c;
+    --color-muted: #d3c8ba;
+    --color-muted-strong: #e6ddd1;
+    --color-accent: #e6c39a;
+    --color-accent-soft: #d4b088;
     --color-on-dark-muted: #f0e8de;
   }
 }

@@ -9,6 +9,7 @@ no payment and no customer accounts.
 
 - **Conversion path:** Discover → Browse → Inspect → Add to enquiry → Send enquiry → WhatsApp / email
 - **Also:** a gallery of the business's completed projects, and a hero led by editorial interior photography
+- **Theme:** light and dark, following the visitor's operating-system preference; no toggle, no stored override
 - **Business contact:** [desirenwakor@gmail.com](mailto:desirenwakor@gmail.com) · WhatsApp [+234 913 879 7980](https://wa.me/2349138797980)
 - **CEO & Creative Director:** Desire Nwakor
 

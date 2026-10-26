@@ -122,11 +122,11 @@
 .primary {
   background-color: var(--color-ink);
   border: 1px solid var(--color-ink);
-  color: var(--color-paper);
+  color: var(--color-on-ink);
 }
 
 .primary:hover {
-  background-color: var(--color-dark);
+  background-color: var(--color-ink-hover);
 }
 
 .secondary {

@@ -11,7 +11,7 @@
 }
 
 .error {
-  color: #a12727;
+  color: var(--color-danger);
 }
 
 /* ---- Summary cards ---- */

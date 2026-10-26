@@ -1,6 +1,6 @@
 .footer {
   background-color: var(--color-dark);
-  color: var(--color-ivory);
+  color: var(--color-on-dark);
 }
 
 .inner {
@@ -77,7 +77,7 @@
   min-height: var(--touch-target);
   min-width: var(--touch-target);
   font-size: var(--text-small);
-  color: var(--color-ivory);
+  color: var(--color-on-dark);
   transition: color var(--duration-fast) var(--ease);
 }
 

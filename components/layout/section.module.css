@@ -54,5 +54,5 @@
 
 .black {
   background-color: var(--color-dark);
-  color: var(--color-ivory);
+  color: var(--color-on-dark);
 }

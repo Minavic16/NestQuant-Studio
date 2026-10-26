@@ -50,6 +50,13 @@ Because the catalogue is a typed local module, `getProducts()` is synchronous an
 code runs on the server (HTML) and the client (filtering). When the catalogue grows past a few
 hundred items, only `lib/products/repository.ts` changes (see §16).
 
+The theme is **CSS-only**. `styles/tokens.css` defines the light palette and overrides the same
+custom properties under `prefers-color-scheme: dark`; `color-scheme` and two `theme-color`
+metas are emitted by the root layout. There is no theme script, cookie, storage key or client
+component, so the first paint is already correct and a theme change costs no JavaScript. The
+header logo is a decorative CSS background selected by `prefers-color-scheme`, which
+requests only the active theme's lockup without hydration.
+
 ---
 
 ## 3. Directory map
@@ -342,6 +349,7 @@ Measured on the production build (`npm run build && npm run start`, gzip, modern
 | Images above the fold | one hero photograph, plus the SVG logo | responsive AVIF/WebP hero; 23 kB logo |
 | Web fonts | 0 requests | 0 |
 | Third-party scripts | 0 | 0 |
+| Theme switch | 0 JS, no second stylesheet | CSS custom properties under `prefers-color-scheme` |
 
 Only the framework's React + App Router runtime is large, and it is shared and cached. The
 application itself is ~17 kB gzipped on the home page. (`next build` runs on Webpack in this
@@ -366,8 +374,10 @@ by shipping the whole catalogue into every bundle.
 Semantic landmarks, one `h1`, skip link, visible 2px focus rings, dialog semantics with focus
 trap and restore for the mobile menu and search panel, `aria-live` for enquiry feedback,
 44px minimum touch targets, labelled controls, `prefers-reduced-motion` and
-`prefers-contrast` support, keyboard-complete flows. Details and the component-level rules are
-in `DESIGN.md` §10; enforcement is by test and by review, not by convention alone.
+`prefers-contrast` support, keyboard-complete flows. Dark mode follows
+`prefers-color-scheme` and is covered by the same token contrast checks; the combined
+dark and high-contrast case has its own token overrides. Details and the component-level
+rules are in `DESIGN.md` §10; enforcement is by test and by review, not by convention alone.
 
 ---
 
@@ -517,7 +527,9 @@ built at the boundary V1 specified, not bolted on:
 The lockup and monogram are committed as SVG, so the header, footer and drawer
 use the client's own letterforms at any size. The flat SVG is the working asset;
 the 1200x1200 complete square is used for structured data, and the QR code points
-at the production origin.
+at the production origin. The header swaps between the ink and ivory lockups with
+a `prefers-color-scheme` CSS background; the footer and drawer always use the
+ivory lockup because their surfaces are always inverse.
 
 Media validation (`lib/media/drive.ts`) accepts four sources and rejects
 everything else:

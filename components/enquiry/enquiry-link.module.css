@@ -22,7 +22,7 @@
   padding-inline: var(--space-1);
   border-radius: var(--radius-md);
   background-color: var(--color-ink);
-  color: var(--color-paper);
+  color: var(--color-on-ink);
   font-size: var(--text-label);
   font-variant-numeric: tabular-nums;
   animation: count-in var(--duration-badge) var(--ease);

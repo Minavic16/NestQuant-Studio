@@ -6,12 +6,12 @@
   border: 1px solid var(--color-ink);
   border-radius: var(--radius-sm);
   background-color: var(--color-ink);
-  color: var(--color-paper);
+  color: var(--color-on-ink);
   font-size: var(--text-small);
   font-weight: var(--weight-medium);
   transition: background-color var(--duration-fast) var(--ease);
 }
 
 .action:hover {
-  background-color: var(--color-black);
+  background-color: var(--color-ink-hover);
 }

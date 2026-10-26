@@ -32,7 +32,7 @@
 
 .error {
   font-size: var(--text-small);
-  color: #a12727;
+  color: var(--color-danger);
 }
 
 .busy {

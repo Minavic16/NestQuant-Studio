@@ -11,7 +11,7 @@
   min-height: var(--header-height);
   padding-inline: var(--gutter);
   background-color: var(--color-black);
-  color: var(--color-ivory);
+  color: var(--color-on-dark);
 }
 
 .brand {
@@ -52,13 +52,13 @@
 }
 
 .link:hover {
-  color: var(--color-ivory);
+  color: var(--color-on-dark);
 }
 
 .active,
 .active:hover {
-  background-color: rgb(247 245 240 / 12%);
-  color: var(--color-ivory);
+  background-color: var(--color-inverse-wash);
+  color: var(--color-on-dark);
 }
 
 .signOutForm {
@@ -78,8 +78,8 @@
 }
 
 .signOut:hover {
-  color: var(--color-ivory);
-  border-color: var(--color-ivory);
+  color: var(--color-on-dark);
+  border-color: var(--color-on-dark);
 }
 
 .main {

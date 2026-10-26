@@ -38,7 +38,7 @@
 .filterActive {
   background-color: var(--color-ink);
   border-color: var(--color-ink);
-  color: var(--color-paper);
+  color: var(--color-on-ink);
 }
 
 .count {
@@ -141,7 +141,7 @@
 .approve {
   background-color: var(--color-ink);
   border-color: var(--color-ink);
-  color: var(--color-paper);
+  color: var(--color-on-ink);
 }
 
 .reject:hover {
@@ -149,6 +149,6 @@
 }
 
 .delete:hover {
-  border-color: #a12727;
-  color: #a12727;
+  border-color: var(--color-danger);
+  color: var(--color-danger);
 }
