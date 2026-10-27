@@ -79,6 +79,7 @@ components/
   enquiry/               EnquiryProvider, EnquiryButton, EnquiryView, EnquiryRow,
                          EnquiryActions, EnquiryCountBadge.
   search/                SearchLauncher (lazy), SearchPanel, SearchInput, SearchResults.
+  motion/                ScrollReveal, the single document-level reveal observer.
   ui/                    Button, IconButton, Eyebrow, VisuallyHidden, StatusText.
 
 config/
@@ -106,6 +107,7 @@ lib/
   contact/mailto.ts      Email enquiry construction.
   validation/validation.ts  Slug / quantity / enquiry-item validation.
   analytics/analytics.ts  No-op analytics abstraction (tracking call sites only).
+  motion/reveal.ts       Reveal selector and first-viewport predicate (tested).
   seo/metadata.ts        Shared metadata builders (title, canonical, Open Graph).
 
 public/brand/            Logo SVGs, app and social rasters, QR code, brand notes.
@@ -115,6 +117,7 @@ public/editorial/        Drop interior photography here (hero, about, category t
 
 styles/tokens.css        Design tokens: colour, type, space, radii, borders, motion, z.
 styles/base.css          Reset, element defaults, focus, reduced-motion, print.
+styles/motion.css        Shared keyframes and data-attribute motion rules.
 ```
 
 Rule: **business facts live in `config/`, content lives in `data/`, behaviour lives in
@@ -343,7 +346,7 @@ Measured on the production build (`npm run build && npm run start`, gzip, modern
 
 | Budget | Target | Measured |
 | --- | --- | --- |
-| First-load JS, home | < 200 kB | **~153 kB** (framework ~136 kB + app code ~17 kB) |
+| First-load JS, home | < 200 kB | **~151 kB** (framework ~134 kB + app code ~17 kB) |
 | Legacy-browser polyfills | modern browsers skip them | 39 kB, loaded with `nomodule` only |
 | Route JS: `/shop`, `/shop/[slug]`, `/enquiry` | < 40 kB each | 12–17 kB each |
 | Images above the fold | one hero photograph, plus the SVG logo | responsive AVIF/WebP hero; 23 kB logo |
@@ -369,12 +372,29 @@ by shipping the whole catalogue into every bundle.
 
 ---
 
+## 11a. Motion layer
+
+`styles/motion.css` owns every shared keyframe and the `data-reveal`, `data-reveal-group`,
+`data-page-enter` and `data-press` contracts. `components/motion/ScrollReveal.tsx` mounts once
+in the root layout and manages one IntersectionObserver plus one MutationObserver for the
+document. It never hides content until after mount, reveals each element once, unobserves it,
+and registers content added by client-side navigation. It stops and reveals everything when
+`prefers-reduced-motion` matches, and disconnects on unmount.
+
+The observer is intentionally the only motion JavaScript. Page entry is CSS-only, so it does
+not wait for hydration. No animation dependency is installed. `MOTION.md` documents the
+tokens, vocabulary and rules for adding motion.
+
+---
+
 ## 12. Accessibility engineering
 
 Semantic landmarks, one `h1`, skip link, visible 2px focus rings, dialog semantics with focus
 trap and restore for the mobile menu and search panel, `aria-live` for enquiry feedback,
 44px minimum touch targets, labelled controls, `prefers-reduced-motion` and
-`prefers-contrast` support, keyboard-complete flows. Dark mode follows
+`prefers-contrast` support, keyboard-complete flows. Scroll reveals are visible by default,
+never hide above-the-fold content and are disabled under reduced motion; hover states have
+matching keyboard focus states. Dark mode follows
 `prefers-color-scheme` and is covered by the same token contrast checks; the combined
 dark and high-contrast case has its own token overrides. Details and the component-level
 rules are in `DESIGN.md` §10; enforcement is by test and by review, not by convention alone.
@@ -446,7 +466,7 @@ npm run admin:hash -- "the-password-you-choose"
 ```
 
 Until `NEXT_PUBLIC_SITE_URL` is set, metadata falls back to the known production origin
-`https://desired-homes-interiors.vercel.app` (see `config/site.ts`). Set it explicitly before
+`https://desired-homes-interiors-amun.vercel.app` (see `config/site.ts`). Set it explicitly before
 launch if the domain differs. The dashboard refuses to sign anyone in while
 `ADMIN_PASSWORD_HASH` is unset, it fails closed rather than open.
 

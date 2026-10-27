@@ -130,11 +130,28 @@
   --touch-target: 2.75rem; /* 44px */
   --focus-ring: 2px;
 
-  /* ---- Motion ------------------------------------------------------------ */
+  /* ---- Motion ------------------------------------------------------------
+     One timing scale for the whole interface. Components reference these
+     tokens instead of choosing local durations (MOTION.md). */
   --duration-fast: 160ms;
   --duration-badge: 160ms;
   --duration-menu: 200ms;
+  --duration-panel: 220ms;
+  --duration-page: 460ms;
+  --duration-reveal: 520ms;
+  --duration-image: 620ms;
+  --duration-press: 90ms;
+
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-panel: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Small, consistent distances. Motion never moves layout. */
+  --reveal-distance: 0.75rem;
+  --stagger: 70ms;
+  --panel-distance: 0.5rem;
+  --image-zoom: 1.02;
+  --press-distance: 1px;
 
   /* ---- Stacking ---------------------------------------------------------- */
   --z-content: 1;

@@ -9,7 +9,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.link:hover {
+.link:hover,
+.link:focus-visible {
   color: var(--color-muted-strong);
 }
 

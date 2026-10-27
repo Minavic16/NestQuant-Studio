@@ -12,7 +12,7 @@ import type { Product } from "@/data/types";
 export function ShopPreview({ products, total }: { products: readonly Product[]; total: number }) {
   return (
     <Section tone="paper" className={styles.section}>
-      <div className={styles.head}>
+      <div className={styles.head} data-reveal>
         <div className={styles.text}>
           <p className={styles.eyebrow}>Finishing details</p>
           <h2 className={styles.heading}>The components that finish a window.</h2>
@@ -27,7 +27,9 @@ export function ShopPreview({ products, total }: { products: readonly Product[];
         </Link>
       </div>
 
-      <ProductGrid products={products} className={styles.grid} />
+      <div data-reveal>
+        <ProductGrid products={products} className={styles.grid} />
+      </div>
     </Section>
   );
 }

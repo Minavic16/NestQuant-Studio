@@ -15,7 +15,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.button:hover:not(:disabled) {
+.button:hover:not(:disabled),
+.button:focus-visible:not(:disabled) {
   color: var(--color-muted-strong);
 }
 

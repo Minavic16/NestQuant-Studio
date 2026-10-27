@@ -13,7 +13,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.result:hover {
+.result:hover,
+.result:focus-visible {
   color: var(--color-muted-strong);
 }
 

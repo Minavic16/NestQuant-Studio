@@ -10,6 +10,7 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.trigger:hover {
+.trigger:hover,
+.trigger:focus-visible {
   color: var(--color-muted-strong);
 }

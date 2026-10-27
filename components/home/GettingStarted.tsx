@@ -11,7 +11,7 @@ export function GettingStarted() {
   return (
     <Section tone="paper" className={styles.section}>
       <div className={styles.layout}>
-        <div className={styles.intro}>
+        <div className={styles.intro} data-reveal>
           <p className={styles.eyebrow}>What to send us</p>
           <h2 className={styles.heading}>A useful first message is simpler than you think.</h2>
           <p className={styles.body}>
@@ -26,11 +26,9 @@ export function GettingStarted() {
           </div>
         </div>
 
-        <ol className={styles.list}>
-          <li className={styles.item}>
-            <span className={styles.number} aria-hidden="true">
-              01
-            </span>
+        <ul className={styles.list} data-reveal-group>
+          <li className={styles.item} data-reveal>
+            <span className={styles.stepLabel}>Photo</span>
             <div>
               <h3 className={styles.itemTitle}>A photo or description of the space or item</h3>
               <p className={styles.itemBody}>
@@ -40,10 +38,8 @@ export function GettingStarted() {
             </div>
           </li>
 
-          <li className={styles.item}>
-            <span className={styles.number} aria-hidden="true">
-              02
-            </span>
+          <li className={styles.item} data-reveal>
+            <span className={styles.stepLabel}>Measurements</span>
             <div>
               <h3 className={styles.itemTitle}>Approximate measurements, if you have them</h3>
               <p className={styles.itemBody}>
@@ -53,10 +49,8 @@ export function GettingStarted() {
             </div>
           </li>
 
-          <li className={styles.item}>
-            <span className={styles.number} aria-hidden="true">
-              03
-            </span>
+          <li className={styles.item} data-reveal>
+            <span className={styles.stepLabel}>Direction</span>
             <div>
               <h3 className={styles.itemTitle}>The style or finish you have in mind</h3>
               <p className={styles.itemBody}>
@@ -64,7 +58,7 @@ export function GettingStarted() {
               </p>
             </div>
           </li>
-        </ol>
+        </ul>
       </div>
 
       <p className={styles.note}>

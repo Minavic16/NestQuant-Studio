@@ -31,7 +31,7 @@ export function MobileNav({
     <div className={styles.root}>
       <div className={styles.scrim} onClick={onClose} aria-hidden="true" />
       <div
-        className={styles.panel}
+        className={`${styles.panel} on-dark`}
         role="dialog"
         aria-modal="true"
         aria-label="Menu"

@@ -29,7 +29,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.nameLink:hover {
+.nameLink:hover,
+.nameLink:focus-visible {
   color: var(--color-muted-strong);
 }
 

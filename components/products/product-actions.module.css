@@ -19,6 +19,7 @@
   transition: border-color var(--duration-fast) var(--ease);
 }
 
-.whatsapp:hover {
+.whatsapp:hover,
+.whatsapp:focus-visible {
   border-color: var(--color-ink);
 }

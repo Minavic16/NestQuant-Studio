@@ -54,7 +54,8 @@
   box-shadow: none;
 }
 
-.primary:hover {
+.primary:hover,
+.primary:focus-visible {
   background-color: var(--color-inverse-action-hover);
   border-color: var(--color-inverse-action-hover);
 }
@@ -71,7 +72,8 @@
   text-underline-offset: 0.28em;
 }
 
-.whatsapp:hover {
+.whatsapp:hover,
+.whatsapp:focus-visible {
   color: var(--color-accent-soft);
 }
 

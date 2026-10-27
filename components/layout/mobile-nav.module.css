@@ -8,7 +8,7 @@
   position: absolute;
   inset: 0;
   background-color: var(--color-scrim);
-  animation: fade-in var(--duration-menu) var(--ease);
+  animation: panel-fade var(--duration-panel) var(--ease-panel) both;
 }
 
 .panel {
@@ -18,12 +18,14 @@
   display: flex;
   flex-direction: column;
   width: min(23rem, 100%);
-  padding: var(--space-5) var(--gutter) var(--space-6);
+  padding:
+    max(var(--space-5), env(safe-area-inset-top)) var(--gutter)
+    max(var(--space-6), env(safe-area-inset-bottom));
   overflow-y: auto;
   background-color: var(--color-dark);
   color: var(--color-on-dark);
   border-left: var(--border-hairline-dark);
-  animation: slide-in var(--duration-menu) var(--ease);
+  animation: panel-slide-in var(--duration-panel) var(--ease-panel) both;
 }
 
 .head {
@@ -59,7 +61,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.close:hover {
+.close:hover,
+.close:focus-visible {
   color: var(--color-on-dark-muted);
 }
 
@@ -86,7 +89,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.link:hover {
+.link:hover,
+.link:focus-visible {
   color: var(--color-on-dark-muted);
 }
 
@@ -128,26 +132,7 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.contact:hover {
+.contact:hover,
+.contact:focus-visible {
   color: var(--color-on-dark);
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slide-in {
-  from {
-    opacity: 0;
-    transform: translateX(0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }

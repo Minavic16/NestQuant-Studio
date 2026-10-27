@@ -28,7 +28,7 @@ export function PageHeader({
   backLabel?: string;
 }) {
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-page-enter>
       {backHref ? (
         <Link href={backHref} className={styles.back}>
           <span className={styles.backArrow} aria-hidden="true">

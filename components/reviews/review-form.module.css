@@ -85,7 +85,8 @@
   transition: background-color var(--duration-fast) var(--ease);
 }
 
-.submit:hover:not(:disabled) {
+.submit:hover:not(:disabled),
+.submit:focus-visible:not(:disabled) {
   background-color: var(--color-ink-hover);
 }
 

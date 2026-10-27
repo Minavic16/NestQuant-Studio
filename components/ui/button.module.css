@@ -17,7 +17,8 @@
   transition:
     background-color var(--duration-fast) var(--ease),
     color var(--duration-fast) var(--ease),
-    border-color var(--duration-fast) var(--ease);
+    border-color var(--duration-fast) var(--ease),
+    transform var(--duration-press) var(--ease);
 }
 
 .primary {
@@ -27,7 +28,8 @@
   box-shadow: var(--shadow-control);
 }
 
-.primary:hover {
+.primary:hover,
+.primary:focus-visible {
   background-color: var(--color-ink-hover);
   border-color: var(--color-ink-hover);
 }
@@ -38,7 +40,8 @@
   color: var(--color-ink);
 }
 
-.secondary:hover {
+.secondary:hover,
+.secondary:focus-visible {
   border-color: var(--color-ink);
 }
 
@@ -55,7 +58,8 @@
   text-underline-offset: 0.25em;
 }
 
-.quiet:hover {
+.quiet:hover,
+.quiet:focus-visible {
   color: var(--color-ink);
 }
 
@@ -64,28 +68,32 @@
 }
 
 /* On inverse surfaces the primary control stays a fixed warm light. */
-.on-dark .primary,
+:global(.on-dark) .primary,
 .primaryOnDark {
   background-color: var(--color-inverse-action);
   border-color: var(--color-inverse-action);
   color: var(--color-inverse-action-text);
 }
 
-.on-dark .primary:hover,
-.primaryOnDark:hover {
+:global(.on-dark) .primary:hover,
+:global(.on-dark) .primary:focus-visible,
+.primaryOnDark:hover,
+.primaryOnDark:focus-visible {
   background-color: var(--color-inverse-action-hover);
   border-color: var(--color-inverse-action-hover);
 }
 
-.on-dark .secondary,
+:global(.on-dark) .secondary,
 .secondaryOnDark {
   background-color: transparent;
   border-color: var(--color-line-dark);
   color: var(--color-on-dark);
 }
 
-.on-dark .secondary:hover,
-.secondaryOnDark:hover {
+:global(.on-dark) .secondary:hover,
+:global(.on-dark) .secondary:focus-visible,
+.secondaryOnDark:hover,
+.secondaryOnDark:focus-visible {
   border-color: var(--color-on-dark);
 }
 

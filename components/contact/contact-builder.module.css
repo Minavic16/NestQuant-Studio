@@ -125,7 +125,8 @@
   color: var(--color-on-ink);
 }
 
-.primary:hover {
+.primary:hover,
+.primary:focus-visible {
   background-color: var(--color-ink-hover);
 }
 
@@ -135,7 +136,8 @@
   color: var(--color-ink);
 }
 
-.secondary:hover {
+.secondary:hover,
+.secondary:focus-visible {
   border-color: var(--color-ink);
 }
 
@@ -148,7 +150,8 @@
   text-underline-offset: 0.25em;
 }
 
-.copy:hover {
+.copy:hover,
+.copy:focus-visible {
   color: var(--color-ink);
 }
 

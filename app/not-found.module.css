@@ -41,6 +41,7 @@
   text-underline-offset: 0.25em;
 }
 
-.home:hover {
+.home:hover,
+.home:focus-visible {
   color: var(--color-ink);
 }

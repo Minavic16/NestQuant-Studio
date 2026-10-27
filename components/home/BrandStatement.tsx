@@ -13,7 +13,7 @@ export function BrandStatement() {
   return (
     <Section tone="ivory" className={styles.section}>
       <div className={styles.layout}>
-        <figure className={styles.figure}>
+        <figure className={styles.figure} data-reveal>
           <div className={styles.media}>
             <Image
               src="/editorial/about-material.webp"
@@ -28,7 +28,7 @@ export function BrandStatement() {
           </figcaption>
         </figure>
 
-        <div className={styles.content}>
+        <div className={styles.content} data-reveal>
           <p className={styles.eyebrow}>About Desired Homes Interiors</p>
           <h2 className={styles.heading}>A considered eye for the details.</h2>
           <p className={styles.body}>

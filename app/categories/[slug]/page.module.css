@@ -12,7 +12,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.back:hover {
+.back:hover,
+.back:focus-visible {
   color: var(--color-ink);
 }
 
@@ -20,7 +21,8 @@
   transition: transform var(--duration-fast) var(--ease);
 }
 
-.back:hover .backArrow {
+.back:hover .backArrow,
+.back:focus-visible .backArrow {
   transform: translateX(-0.2rem);
 }
 
@@ -83,7 +85,8 @@
   transition: transform var(--duration-fast) var(--ease);
 }
 
-.textLink:hover .arrow {
+.textLink:hover .arrow,
+.textLink:focus-visible .arrow {
   transform: translateX(0.2rem);
 }
 
@@ -215,7 +218,8 @@
   transition: opacity var(--duration-fast) var(--ease);
 }
 
-.workCard:hover .workMedia {
+.workCard:hover .workMedia,
+.workCard:focus-visible .workMedia {
   opacity: 0.94;
 }
 

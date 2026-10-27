@@ -7,7 +7,7 @@
  * never ship an example domain.
  */
 
-const PRODUCTION_ORIGIN = "https://desired-homes-interiors.vercel.app";
+const PRODUCTION_ORIGIN = "https://desired-homes-interiors-amun.vercel.app";
 
 function resolveSiteUrl(): string {
   const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();

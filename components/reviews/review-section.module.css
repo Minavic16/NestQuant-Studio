@@ -42,7 +42,8 @@
   cursor: pointer;
 }
 
-.formSummary:hover {
+.formSummary:hover,
+.formSummary:focus-visible {
   color: var(--color-accent);
 }
 

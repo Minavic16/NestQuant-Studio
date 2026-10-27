@@ -16,7 +16,7 @@
 
 .media {
   position: relative;
-  min-height: clamp(17rem, 58vw, 24rem);
+  min-height: clamp(15rem, 58vw, 24rem);
   overflow: hidden;
 }
 
@@ -30,7 +30,16 @@
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-4);
-  padding: var(--space-7) var(--gutter) var(--space-8);
+  padding: var(--space-5) var(--gutter) var(--space-8);
+}
+
+/* Page entry is one restrained sequence: heading, then the actions. */
+.content > [data-page-enter]:nth-child(2) {
+  --enter-index: 0;
+}
+
+.content > [data-page-enter]:nth-child(4) {
+  --enter-index: 1;
 }
 
 .eyebrow {
@@ -69,6 +78,13 @@
   color: var(--color-muted-strong);
 }
 
+/* A standalone tertiary action still gets a full touch target. */
+.shopLink a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+}
+
 @media (min-width: 64rem) {
   .inner {
     grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -103,7 +119,7 @@
 
 @media (max-width: 63.999rem) and (min-width: 48rem) {
   .media {
-    min-height: 26rem;
+    min-height: 22rem;
   }
 
   .content {

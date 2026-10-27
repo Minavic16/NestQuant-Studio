@@ -49,7 +49,8 @@
   text-underline-offset: 0.28em;
 }
 
-.allLink:hover {
+.allLink:hover,
+.allLink:focus-visible {
   color: var(--color-accent);
 }
 
@@ -57,7 +58,8 @@
   transition: transform var(--duration-fast) var(--ease);
 }
 
-.allLink:hover .arrow {
+.allLink:hover .arrow,
+.allLink:focus-visible .arrow {
   transform: translateX(0.2rem);
 }
 

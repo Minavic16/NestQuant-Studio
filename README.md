@@ -19,6 +19,7 @@ no payment and no customer accounts.
 | --- | --- |
 | [`DESIGN.md`](./DESIGN.md) | The design system: brand, colour, typography, space, texture, motion, page composition, accessibility, content rules. |
 | [`ARCHITECTURE.md`](./ARCHITECTURE.md) | Engineering decisions: stack, rendering, directory map, the document store, enquiry/search/contact boundaries, dashboard security, performance, testing, containerisation. |
+| [`MOTION.md`](./MOTION.md) | The motion tokens, data attributes, observer behaviour and reduced-motion rules. |
 | [`public/brand/README.md`](./public/brand/README.md) | The supplied logo, how its SVG was traced, the colour values and the QR code. |
 
 ## Quick start
@@ -88,7 +89,7 @@ publishes anything it has not read.
 ## Before going live
 
 1. **Set `NEXT_PUBLIC_SITE_URL`** to the real domain. Until you do, canonical URLs, `sitemap.xml`
-   and Open Graph tags use the known production origin `https://desired-homes-interiors.vercel.app`.
+   and Open Graph tags use the known production origin `https://desired-homes-interiors-amun.vercel.app`.
 2. **Set the three `ADMIN_*` values** (see Quick start). The dashboard refuses to sign anyone in
    while the password hash is missing.
 3. **Replace the seeded catalogue** in `data/store/` with real products through the dashboard.

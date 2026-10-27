@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-heading">
       <div className={styles.inner}>
-        <div className={styles.media}>
+        <div className={styles.media} data-page-enter="image">
           <Image
             src="/editorial/hero.webp"
             alt="A furnished bedroom with full-length brown curtains and sheer panels at the window"
@@ -26,20 +26,20 @@ export function Hero() {
         </div>
 
         <div className={styles.content}>
-          <p className={styles.eyebrow}>Interiors · Curtains · Window solutions</p>
+          <p className={styles.eyebrow}>Curtains · Accessories · Window solutions</p>
 
-          <h1 id="hero-heading" className={styles.heading}>
+          <h1 id="hero-heading" className={styles.heading} data-page-enter>
             Curtains that bring a room together.
           </h1>
 
           <p className={styles.lede}>
-            Explore curtains, accessories and window solutions from Desired Homes Interiors, or
-            tell us about the room you have in mind.
+            Explore curtains, accessories and window solutions, or tell us about the room you
+            have in mind.
           </p>
 
-          <div className={styles.actions}>
-            <ButtonLink href="/work" variant="primary">
-              View our work
+          <div className={styles.actions} data-page-enter>
+            <ButtonLink href="/shop" variant="primary">
+              Explore the collection
             </ButtonLink>
             <ButtonLink href="/contact" variant="secondary">
               Discuss your space
@@ -47,8 +47,8 @@ export function Hero() {
           </div>
 
           <p className={styles.shopLink}>
-            <Link href="/shop" className="link-underline">
-              Shop the collection
+            <Link href="/work" className="link-underline">
+              View our work
             </Link>
           </p>
         </div>

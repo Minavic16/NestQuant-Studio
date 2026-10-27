@@ -23,8 +23,8 @@ export async function EnquiryCta() {
 
   return (
     <section className={`on-dark ${styles.band}`} aria-labelledby="closing-heading">
-      <div className={styles.inner}>
-        <div className={styles.content}>
+      <div className={styles.inner} data-reveal-group>
+        <div className={styles.content} data-reveal>
           <p className={styles.eyebrow}>Start a conversation</p>
           <h2 id="closing-heading" className={styles.heading}>
             Let&rsquo;s discuss your space.
@@ -36,7 +36,7 @@ export async function EnquiryCta() {
           </p>
         </div>
 
-        <div className={styles.actions}>
+        <div className={styles.actions} data-reveal>
           <ButtonLink href="/contact" variant="primary" className={styles.primary}>
             Discuss your space
           </ButtonLink>

@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Motion system, Desired Homes Interiors
+   --------------------------------------------------------------------------
+   One timing scale, one set of distances and one small vocabulary shared by
+   the whole interface. Components opt in with data attributes instead of
+   inventing local keyframes or durations. See MOTION.md for the conventions.
+
+   Content is visible by default. Scroll reveals only exist after the client
+   observer has marked an element as pending, so a failed script, reduced
+   motion or a direct anchor never hides anything.
+   ========================================================================== */
+
+/* ---- Page entry --------------------------------------------------------- */
+
+@keyframes page-rise {
+  from {
+    transform: translateY(var(--reveal-distance));
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes image-reveal {
+  from {
+    transform: scale(1.015);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+[data-page-enter] {
+  animation: page-rise var(--duration-page) var(--ease-out) both;
+  animation-delay: calc(var(--enter-index, 0) * var(--stagger));
+}
+
+[data-page-enter="image"] {
+  animation-name: image-reveal;
+  animation-duration: var(--duration-image);
+}
+
+/* ---- Scroll reveal ------------------------------------------------------ */
+
+[data-reveal] {
+  transition:
+    opacity var(--duration-reveal) var(--ease-out),
+    transform var(--duration-reveal) var(--ease-out);
+}
+
+[data-reveal-state="hidden"] {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+}
+
+[data-reveal-state="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Related elements only: three or four in a row, then stop adding delay. */
+[data-reveal-group] > [data-reveal]:nth-child(2) {
+  transition-delay: var(--stagger);
+}
+
+[data-reveal-group] > [data-reveal]:nth-child(3) {
+  transition-delay: calc(var(--stagger) * 2);
+}
+
+[data-reveal-group] > [data-reveal]:nth-child(4) {
+  transition-delay: calc(var(--stagger) * 3);
+}
+
+/* ---- Interaction feedback ---------------------------------------------- */
+
+[data-press]:not(:disabled):active {
+  transform: translateY(var(--press-distance));
+}
+
+/* ---- Panels ------------------------------------------------------------- */
+
+@keyframes panel-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes panel-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(var(--panel-distance));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes panel-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--panel-distance) * -1));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Reduced motion ----------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-page-enter] {
+    animation: none;
+  }
+
+  [data-reveal],
+  [data-reveal-state="hidden"],
+  [data-reveal-state="visible"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  [data-press]:active {
+    transform: none;
+  }
+}

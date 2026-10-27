@@ -47,7 +47,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.back:hover {
+.back:hover,
+.back:focus-visible {
   color: var(--color-ink);
 }
 
@@ -57,6 +58,7 @@
   transition: transform var(--duration-fast) var(--ease);
 }
 
-.back:hover .backArrow {
+.back:hover .backArrow,
+.back:focus-visible .backArrow {
   transform: rotate(180deg) translateX(0.125rem);
 }

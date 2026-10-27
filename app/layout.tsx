@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import "@/styles/tokens.css";
 import "@/styles/base.css";
+import "@/styles/motion.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { EnquiryProvider } from "@/lib/enquiry/context";
 import { GrainOverlay } from "@/components/effects/GrainOverlay";
 import { MetricsReporter } from "@/components/effects/MetricsReporter";
+import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { siteConfig } from "@/config/site";
 import styles from "./layout.module.css";
 
@@ -76,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <GrainOverlay />
         <MetricsReporter />
+        <ScrollReveal />
 
         <EnquiryProvider>
           <Header />

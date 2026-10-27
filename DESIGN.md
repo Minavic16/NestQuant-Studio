@@ -139,13 +139,30 @@ headers add their own top padding, so no blanket margin is applied twice.
 
 ## 6. Motion
 
-Motion only confirms interaction. Allowed: colour/opacity transitions (160ms), the enquiry
-count badge fading in (160ms), mobile drawer and search panel open/close (200ms, opacity +
-6px translate), gallery thumbnail selection (160ms border colour). No parallax, no bouncing,
-no spinning, no scroll-triggered reveals, no animated backgrounds, no autoplay media.
-`prefers-reduced-motion: reduce` collapses every animation and transition to 0.01ms.
+Motion confirms interaction and eases content into view. It never delays navigation, hides
+content or competes with the photography. The full contract is in `MOTION.md`; the visible
+rules are:
 
-Easing: `cubic-bezier(0.4, 0, 0.2, 1)`.
+- Page entry: the home hero heading and action row rise by 12px over 460ms; the hero
+  photograph settles from a 1.015 scale inside its fixed frame. Both use transform only, so
+  the photograph and text are visible from the first paint. The eyebrow, lede and work link
+  are still immediately visible. Interior route headers use the same restrained entry.
+- Scroll reveal: below-the-fold section heads, short card groups and the About pair fade and
+  rise 12px once. Content inside the first viewport is never hidden. One observer serves the
+  document; it reveals once, unregisters each element and disconnects on unmount.
+- Interaction: colour, border and opacity transitions at 160ms; a 1px press translate at
+  90ms; a 1.02 product image crop on hover and keyboard focus. Chips use the same 2px control
+  radius and press feedback as buttons.
+- Panels: the mobile drawer and search panel use 220ms opacity and 8px transform transitions.
+  Escape, focus trapping and focus restoration are unchanged.
+
+No parallax, bouncing, spinning, animated backgrounds or autoplay media. There are no route
+transitions: static App Router navigation is already fast, and an exit animation would risk
+back/forward behaviour and direct links.
+
+Easing: `cubic-bezier(0.4, 0, 0.2, 1)` for state feedback,
+`cubic-bezier(0.22, 1, 0.36, 1)` for entrances. `prefers-reduced-motion: reduce` removes
+entrance and reveal movement, keeps state changes immediate and leaves every control usable.
 
 ---
 
@@ -196,13 +213,16 @@ The drawer is the only place the light lockup appears outside the footer.
 
 ### 8.3 Home
 1. **Hero**, warm paper. Editorial room photograph on one side; eyebrow
-   "Interiors · Curtains · Window solutions", headline "Curtains that bring a room together.",
-   supporting copy, `View our work` and `Discuss your space`, then `Shop the collection`.
+   "Curtains · Accessories · Window solutions", headline "Curtains that bring a room together.",
+   supporting copy, `Explore the collection` and `Discuss your space`, then `View our work`.
+   The collection is the primary action; the project conversation is equally visible and does
+   not require a product or an enquiry list.
 2. **Selected work**, the published portfolio with real project photography and a link to
-   `Our work`.
+   `Our work`. Real completed rooms are the strongest proof, so they follow the hero directly.
 3. **What we help with**, the three category entries.
-4. **What to send us**, a short guide to a useful first message.
-5. **Finishing details**, a preview of four catalogue pieces with a link to the shop.
+4. **Finishing details**, a preview of four catalogue pieces with a link to the shop.
+5. **What to send us**, a short guide to a useful first message. Its three items are labelled
+   Photo, Measurements and Direction, not decorative ordinals.
 6. **About**, the material study and Desire Nwakor's role.
 7. **Closing enquiry band**, dark, "Start a conversation" and `Discuss your space`.
 
@@ -371,13 +391,23 @@ fixed overlay at 5% opacity with `mix-blend-mode: multiply`.
 
 ## 15. Motion implementation
 
-There is no animation library. Interaction feedback is CSS transitions on colour, opacity and
-a 6px translate, all driven by the tokens in §6. The only scripted motion is the dashboard's
-metric counter, a single `requestAnimationFrame` loop that eases a number to its value over
-700ms. The counter renders the final value first, so a failed script, a reduced-motion
-preference or a zero value leaves the number visible and correct rather than blank.
+There is no animation library. The motion layer is `styles/motion.css` plus
+`components/motion/ScrollReveal.tsx`; the conventions, tokens and extension rules are in
+`MOTION.md`.
 
-Nothing animates on scroll, and no motion blocks input or reading.
+- Entrances use CSS keyframes triggered by data attributes, so they work without JavaScript
+  and do not wait for hydration.
+- Scroll reveals use one IntersectionObserver and one MutationObserver for the whole document.
+  Elements already in the first viewport are shown immediately; below-fold elements are hidden
+  only after mount and revealed once.
+- Content is visible by default. No-JavaScript, reduced-motion and failed-observer states all
+  leave the page readable.
+- The only other scripted motion is the dashboard's metric counter, a single
+  `requestAnimationFrame` loop that eases a number to its value over 700ms. It renders the
+  final value first, so a failed script, a reduced-motion preference or a zero value leaves
+  the number visible and correct rather than blank.
+
+No motion blocks input or reading, and no route transition delays content.
 
 ## 16. Explicit non-goals
 

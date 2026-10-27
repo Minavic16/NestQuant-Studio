@@ -53,7 +53,8 @@
   transition: opacity var(--duration-fast) var(--ease);
 }
 
-.card:hover .frame {
+.card:hover .frame,
+.card:focus-visible .frame {
   opacity: 0.94;
 }
 
@@ -88,7 +89,8 @@
   transition: transform var(--duration-fast) var(--ease);
 }
 
-.card:hover .arrow {
+.card:hover .arrow,
+.card:focus-visible .arrow {
   transform: translateX(0.2rem);
 }
 

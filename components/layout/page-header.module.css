@@ -20,7 +20,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.back:hover {
+.back:hover,
+.back:focus-visible {
   color: var(--color-ink);
 }
 

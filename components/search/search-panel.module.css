@@ -7,6 +7,8 @@
 .backdrop {
   position: absolute;
   inset: 0;
+  background-color: var(--color-scrim);
+  animation: panel-fade var(--duration-panel) var(--ease-panel) both;
 }
 
 /* Mobile: a dedicated full-screen search view. */
@@ -16,13 +18,14 @@
   display: flex;
   flex-direction: column;
   background-color: var(--color-paper);
+  animation: panel-fade var(--duration-panel) var(--ease-panel) both;
 }
 
 .head {
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--gutter);
+  padding: max(var(--space-3), env(safe-area-inset-top)) var(--gutter) var(--space-3);
   border-bottom: var(--border-hairline);
 }
 
@@ -57,14 +60,15 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.close:hover {
+.close:hover,
+.close:focus-visible {
   color: var(--color-muted-strong);
 }
 
 .body {
   flex: 1 1 auto;
   overflow-y: auto;
-  padding: var(--space-4) var(--gutter) var(--space-7);
+  padding: var(--space-4) var(--gutter) max(var(--space-7), env(safe-area-inset-bottom));
 }
 
 .hint {
@@ -100,16 +104,13 @@
   text-underline-offset: 0.25em;
 }
 
-.all:hover {
+.all:hover,
+.all:focus-visible {
   color: var(--color-ink);
 }
 
 /* Desktop: a compact panel under the header. */
 @media (min-width: 48rem) {
-  .backdrop {
-    top: var(--header-height);
-  }
-
   .panel {
     top: var(--header-height);
     inset-inline: 0 auto;
@@ -118,6 +119,7 @@
     max-height: min(70vh, 34rem);
     border: var(--border-hairline);
     border-top: 0;
+    animation-name: panel-rise-in;
   }
 
   .head {

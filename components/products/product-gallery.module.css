@@ -35,11 +35,13 @@
   border-radius: calc(var(--radius-sm) - 1px);
 }
 
-.thumb:hover {
+.thumb:hover,
+.thumb:focus-visible {
   border-color: var(--color-muted);
 }
 
 .active,
-.active:hover {
+.active:hover,
+.active:focus-visible {
   border-color: var(--color-ink);
 }

@@ -9,7 +9,7 @@ import { categories, getCategoryProfile } from "@/data/categories";
 export function HelpOffers() {
   return (
     <Section tone="ivory" className={styles.section}>
-      <div className={styles.head}>
+      <div className={styles.head} data-reveal>
         <p className={styles.eyebrow}>What we help with</p>
         <h2 className={styles.heading}>Start with the part of the room that matters.</h2>
         <p className={styles.intro}>
@@ -18,12 +18,12 @@ export function HelpOffers() {
         </p>
       </div>
 
-      <ul className={styles.grid}>
+      <ul className={styles.grid} data-reveal-group>
         {categories.map((category) => {
           const profile = getCategoryProfile(category.id);
 
           return (
-            <li key={category.id} className={styles.item}>
+            <li key={category.id} className={styles.item} data-reveal>
               <Link href={`/categories/${category.slug}`} className={styles.card}>
                 <MediaSlot
                   image={{ src: profile.image, alt: profile.alt }}

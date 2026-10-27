@@ -47,7 +47,8 @@
   transition: opacity var(--duration-fast) var(--ease);
 }
 
-.featureLink:hover .featureMedia {
+.featureLink:hover .featureMedia,
+.featureLink:focus-visible .featureMedia {
   opacity: 0.94;
 }
 
@@ -94,7 +95,9 @@
 }
 
 .featureLink:hover .arrow,
-.cardLink:hover .arrow {
+.featureLink:focus-visible .arrow,
+.cardLink:hover .arrow,
+.cardLink:focus-visible .arrow {
   transform: translateX(0.2rem);
 }
 
@@ -122,7 +125,8 @@
   transition: opacity var(--duration-fast) var(--ease);
 }
 
-.cardLink:hover .cardMedia {
+.cardLink:hover .cardMedia,
+.cardLink:focus-visible .cardMedia {
   opacity: 0.94;
 }
 
@@ -199,7 +203,8 @@
   text-underline-offset: 0.28em;
 }
 
-.secondaryLink:hover {
+.secondaryLink:hover,
+.secondaryLink:focus-visible {
   color: var(--color-ink);
 }
 

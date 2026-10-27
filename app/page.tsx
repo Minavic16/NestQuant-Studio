@@ -37,9 +37,9 @@ export default async function HomePage() {
 
       <HelpOffers />
 
-      <GettingStarted />
-
       {preview.length > 0 ? <ShopPreview products={preview} total={products.length} /> : null}
+
+      <GettingStarted />
 
       <BrandStatement />
 

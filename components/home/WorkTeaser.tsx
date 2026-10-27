@@ -23,7 +23,7 @@ function WorkCard({
   priority?: boolean;
 }) {
   return (
-    <article className={feature ? styles.feature : styles.card}>
+    <article className={feature ? styles.feature : styles.card} data-reveal>
       <Link href={`/work/${item.slug}`} className={styles.link}>
         <MediaSlot
           image={{ src: item.image, alt: item.title }}
@@ -72,7 +72,7 @@ export function WorkTeaser({ items }: { items: readonly PortfolioItem[] }) {
 
   return (
     <Section tone="paper" className={styles.section}>
-      <div className={styles.head}>
+      <div className={styles.head} data-reveal>
         <div className={styles.headText}>
           <p className={styles.eyebrow}>Selected work</p>
           <h2 className={styles.heading}>Details that shape a room.</h2>
@@ -89,7 +89,7 @@ export function WorkTeaser({ items }: { items: readonly PortfolioItem[] }) {
 
       <div className={styles.grid}>
         {feature ? <WorkCard item={feature} feature priority /> : null}
-        <div className={styles.supporting}>
+        <div className={styles.supporting} data-reveal-group>
           {supporting.map((item) => (
             <WorkCard key={item.slug} item={item} />
           ))}

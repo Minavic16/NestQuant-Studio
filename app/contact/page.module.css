@@ -70,7 +70,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.channelLink:hover {
+.channelLink:hover,
+.channelLink:focus-visible {
   color: var(--color-accent);
 }
 
@@ -125,7 +126,8 @@
   text-underline-offset: 0.2em;
 }
 
-.link:hover {
+.link:hover,
+.link:focus-visible {
   color: var(--color-accent);
 }
 

@@ -35,6 +35,7 @@
 }
 
 .link:hover::after,
+.link:focus-visible::after,
 .link[aria-current="page"]::after {
   transform: scaleX(1);
 }

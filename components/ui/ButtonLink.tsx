@@ -28,7 +28,7 @@ export function ButtonLink({
     .join(" ");
 
   return (
-    <Link href={href} className={classes} {...rest}>
+    <Link href={href} className={classes} data-press {...rest}>
       {children}
     </Link>
   );

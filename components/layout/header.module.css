@@ -97,7 +97,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.iconButton:hover {
+.iconButton:hover,
+.iconButton:focus-visible {
   color: var(--color-accent);
 }
 

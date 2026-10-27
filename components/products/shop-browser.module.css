@@ -42,19 +42,25 @@
   min-height: var(--touch-target);
   padding-inline: var(--space-4);
   border: var(--border-hairline);
-  border-radius: 999px;
+  border-radius: var(--radius-sm);
   background-color: transparent;
   font-size: var(--text-small);
   color: var(--color-muted-strong);
   transition:
     border-color var(--duration-fast) var(--ease),
     color var(--duration-fast) var(--ease),
-    background-color var(--duration-fast) var(--ease);
+    background-color var(--duration-fast) var(--ease),
+    transform var(--duration-press) var(--ease);
 }
 
-.chip:hover {
+.chip:hover,
+.chip:focus-visible {
   border-color: var(--color-line-strong);
   color: var(--color-ink);
+}
+
+.chip:active {
+  transform: translateY(var(--press-distance));
 }
 
 .chipActive,
@@ -89,7 +95,8 @@
   text-underline-offset: 0.25em;
 }
 
-.reset:hover {
+.reset:hover,
+.reset:focus-visible {
   color: var(--color-ink);
 }
 
@@ -131,7 +138,8 @@
   color: var(--color-ink);
 }
 
-.resetButton:hover {
+.resetButton:hover,
+.resetButton:focus-visible {
   border-color: var(--color-ink);
 }
 
@@ -146,6 +154,7 @@
   text-underline-offset: 0.25em;
 }
 
-.emptyLink:hover {
+.emptyLink:hover,
+.emptyLink:focus-visible {
   color: var(--color-ink);
 }

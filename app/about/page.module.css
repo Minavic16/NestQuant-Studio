@@ -152,7 +152,8 @@
   transition: transform var(--duration-fast) var(--ease);
 }
 
-.serviceLink:hover .arrow {
+.serviceLink:hover .arrow,
+.serviceLink:focus-visible .arrow {
   transform: translateX(0.2rem);
 }
 

@@ -13,8 +13,21 @@
   transition: opacity var(--duration-fast) var(--ease);
 }
 
-.link:hover .media {
+.link:hover .media,
+.link:focus-visible .media {
   opacity: 0.92;
+}
+
+/* A very small crop change, never enough to lose a fixing or a finish. */
+@media (prefers-reduced-motion: no-preference) {
+  .media img {
+    transition: transform var(--duration-image) var(--ease-out);
+  }
+
+  .link:hover .media img,
+  .link:focus-visible .media img {
+    transform: scale(var(--image-zoom));
+  }
 }
 
 .body {
@@ -51,7 +64,8 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.link:hover .details {
+.link:hover .details,
+.link:focus-visible .details {
   color: var(--color-ink);
 }
 
@@ -59,6 +73,7 @@
   transition: transform var(--duration-fast) var(--ease);
 }
 
-.link:hover .arrow {
+.link:hover .arrow,
+.link:focus-visible .arrow {
   transform: translateX(0.125rem);
 }

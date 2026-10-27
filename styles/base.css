@@ -19,6 +19,9 @@ html {
   text-size-adjust: 100%;
   scroll-padding-top: calc(var(--header-height) + var(--space-5));
   accent-color: var(--color-accent);
+  /* `clip` contains the fixed grain overlay's scrollbar-width rounding without
+     creating a scroll container, so sticky positioning keeps working. */
+  overflow-x: clip;
 }
 
 body {
@@ -153,8 +156,10 @@ b {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
@@ -193,7 +198,8 @@ b {
   transition: color var(--duration-fast) var(--ease);
 }
 
-.link-underline:hover {
+.link-underline:hover,
+.link-underline:focus-visible {
   color: var(--color-muted-strong);
 }
 
