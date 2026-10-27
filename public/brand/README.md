@@ -57,7 +57,7 @@ The logo is flat colour. Do not add gradients, shadows or metallic effects.
 
 ## QR code
 
-The QR code points to `https://desired-homes-interiors-amun.vercel.app`. It uses
+The QR code points to `https://desired-home-interiors.vercel.app`. It uses
 error correction level H, a four-module quiet zone, ink modules on an ivory
 field. If the production domain changes, regenerate both QR files with the new
 origin.
